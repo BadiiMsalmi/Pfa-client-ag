@@ -1,0 +1,88 @@
+/* Center the card in the middle of the page */
+.register-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #d8e2dc, #ffcad4);
+}
+
+.register-card {
+  max-width: 34%; /* Increased width to accommodate two columns */
+  width: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+/* Adjust the Register title spacing */
+.register-title {
+  padding-top: 1rem;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+/* Styling for form fields */
+.field {
+  margin-bottom: 1.5rem;
+}
+
+.field label {
+  font-weight: bold;
+  color: #6c757d;
+}
+
+/* Flexbox layout for fields in rows */
+.field-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.col {
+  width: 48%; /* Each field takes up 48% of the row */
+}
+
+/* Styling for buttons */
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.signin-button {
+  padding: 1rem 1rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  background-color: #007ad9;
+  color: white;
+  min-width: 100%;
+}
+
+.register-button {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  color: #007ad9;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* Register button hover effect */
+.register-button:hover {
+  color: #005bb5;
+}
+
+/* Custom error message styling */
+.p-message-error {
+  background-color: #f8d7da;  /* Light red background */
+  color: #721c24;  /* Dark red text */
+  border-color: #f5c6cb;  /* Light red border */
+}
+
+.p-messages {
+  border-radius: 5px;
+  padding: 10px;
+}

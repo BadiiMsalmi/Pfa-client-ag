@@ -1,0 +1,51 @@
+
+<div class="login-wrapper">
+  <p-card class="login-card">
+    <ng-template pTemplate="header">
+      <h3 class="login-title">Sign in</h3>
+    </ng-template>
+
+    <ng-template pTemplate="content">
+      <!-- Error Messages -->
+      <div *ngIf="errorMsg.length" class="p-messages p-component p-message-error mb-3">
+        <ul>
+          <li *ngFor="let msg of errorMsg">{{ msg }}</li>
+        </ul>
+      </div>
+
+      <!-- Email Input -->
+      <div class="field">
+        <label for="login" class="p-text-secondary">Email address</label>
+        <input
+          type="email"
+          id="login"
+          pInputText
+          [(ngModel)]="authRequest.email"
+          placeholder="name@example.com"
+          class="w-full"
+        />
+      </div>
+
+      <!-- Password Input -->
+      <div class="field">
+        <label for="password" class="p-text-secondary">Password</label>
+        <input
+          type="password"
+          id="password"
+          pInputText
+          [(ngModel)]="authRequest.password"
+          placeholder="Password"
+          class="w-full"
+        />
+      </div>
+
+      <!-- Actions -->
+      <div class="button-group">
+        <button pButton label="Sign in" icon="pi pi-sign-in" class="signin-button" (click)="login()"></button>
+
+      </div>
+      Don't have an account? join us.
+      <button pButton label="Register" class="register-button" (click)="register()"></button>
+    </ng-template>
+  </p-card>
+</div>

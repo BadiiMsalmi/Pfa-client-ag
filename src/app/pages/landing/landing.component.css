@@ -1,0 +1,49 @@
+.background-image-section {
+  background-image: url('/bg.png');
+  background-size: 40%;
+  background-position: right center;
+  background-repeat: no-repeat;
+  min-height: 100vh; /* Full height */
+  align-items: center;
+  justify-content: center;
+}
+
+.content{
+  padding-left:40px;
+  padding-top: 15%;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Adds space between the buttons */
+  margin-top: 20px; /* Adds space above the button group */
+}
+
+button {
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 50px;
+}
+
+button.p-button-raised {
+  /* For Join Now button */
+  background-color: #007ad9;
+  color: white;
+}
+
+button.p-button-raised:hover {
+  background-color: #005bb5;
+}
+
+button.white-signin {
+  /* For Sign In button */
+  background-color: white;
+  color: #007ad9; /* Blue text */
+  border: 2px solid #007ad9; /* Blue border */
+}
+
+button.white-signin:hover {
+  background-color: #007ad9;
+  color: white; /* Text turns white when hovered */
+}

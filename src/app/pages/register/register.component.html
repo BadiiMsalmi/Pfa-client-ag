@@ -1,0 +1,99 @@
+<div class="register-wrapper">
+  <p-card class="register-card">
+
+    <!-- Header Template -->
+
+    <!-- Content Template -->
+    <ng-template pTemplate="content">
+      <!-- Error Messages -->
+      <div *ngIf="errorMsg.length" class="p-messages p-component p-message-error mb-3">
+        <ul>
+          <li *ngFor="let msg of errorMsg">{{ msg }}</li>
+        </ul>
+      </div>
+
+      <!-- Form fields in two columns -->
+      <div class="field-row">
+
+        <!-- First Name Input -->
+        <div class="field col">
+          <p-floatLabel>
+            <input pInputText id="firstname" [(ngModel)]="registerRequest.firstname" />
+            <label for="firstname">Firstname</label>
+          </p-floatLabel>
+        </div>
+
+        <!-- Last Name Input -->
+        <div class="field col">
+          <p-floatLabel>
+            <input pInputText id="lastname" [(ngModel)]="registerRequest.lastname" />
+            <label for="lastname">Lastname</label>
+          </p-floatLabel>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <!-- Email Input -->
+        <div class="field col">
+          <p-floatLabel>
+            <input pInputText id="email" [(ngModel)]="registerRequest.email" />
+            <label for="email">Email address</label>
+          </p-floatLabel>
+        </div>
+
+        <!-- Account Name Input -->
+        <div class="field col">
+          <p-floatLabel>
+            <input pInputText id="accountname" [(ngModel)]="registerRequest.accountname" />
+            <label for="accountname">Account name</label>
+          </p-floatLabel>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <!-- Password Input -->
+        <div class="field col">
+          <p-floatLabel>
+            <input pInputText id="password" [(ngModel)]="registerRequest.password" type="password" />
+            <label for="password">Password</label>
+          </p-floatLabel>
+        </div>
+
+        <!-- Role Radio Buttons -->
+        <div class="field col">
+          <label class="p-text-secondary">Role</label>
+          <div class="flex flex-wrap gap-3">
+            <div class="flex align-items-center">
+              <p-radioButton
+                name="role"
+                value="ROLE_CANDIDAT"
+                [(ngModel)]="registerRequest.role"
+                inputId="role1"
+              />
+              <label class="ml-1">Candidate</label>
+            </div>
+
+            <div class="flex align-items-center">
+              <p-radioButton
+                name="role"
+                value="ROLE_RECRUTEUR"
+                [(ngModel)]="registerRequest.role"
+                inputId="role2"
+              />
+              <label class="ml-1">Recruiter</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="button-group">
+        <button pButton label="Register" icon="pi pi-user-plus" class="signin-button" (click)="register()"></button>
+
+      </div>
+      Already have an account ?
+      <button pButton label="Back to Login" class="register-button" (click)="goToLogin()"></button>
+    </ng-template>
+
+  </p-card>
+</div>
