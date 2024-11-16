@@ -1,11 +1,122 @@
 <div class="background-image-section">
   <div class="content">
-    <div class="text-700 warrper-text">
-      <div class="text-900 font-bold text-5xl mb-3">Welcome to your professional community</div>
-      <div class="text-700 text-2xl mb-5">Explore collaborative articles.<br> Find the right job or internship for you. <br>Learn the skills you need to succeed.</div>
-      <div class="button-group">
-        <button pButton pRipple label="Join Now" (click)="goToRegister()" icon="pi pi-discord" class="font-bold px-5 py-3 p-button-raised p-button-rounded white-space-nowrap"></button>
-        <button pButton pRipple label="Sign in" (click)="goToLogin()" icon="pi pi-discord" class="font-bold px-5 py-3 p-button-rounded white-signin white-space-nowrap"></button>
+    <div class="text-700 wrapper-text">
+      <!-- Default content when no form is shown -->
+      <div *ngIf="!showLoginForm && !showRegisterForm">
+        <div class="text-900 font-bold text-5xl mb-3">Welcome to your professional community</div>
+        <div class="text-700 text-2xl mb-5">
+          This is where your professional journey takes off. Connect with top <br> employers, find job and internship opportunities, 
+          and access the <br> resources you need to grow professionally.
+        </div> 
+        <div class="button-group">
+          <button pButton pRipple label="Join Now" (click)="goToRegister()" icon="pi pi-discord" class="font-bold px-5 py-3 p-button-raised p-button-rounded white-space-nowrap"></button>
+          <button pButton pRipple label="Sign in" (click)="goToLogin()" icon="pi pi-discord" class="font-bold px-5 py-3 p-button-rounded white-signin white-space-nowrap"></button>
+        </div>
+      </div>
+
+      <!-- Registration form -->
+      <div *ngIf="showRegisterForm">
+        <div class="text-900 font-bold text-5xl mb-3">Sign up here please!</div>
+
+        <!-- Error Messages -->
+        <div *ngIf="errorMsg.length > 0" class="error-messages">
+          <ul>
+            <li *ngFor="let msg of errorMsg">{{ msg }}</li>
+          </ul>
+        </div>
+
+        <!-- First Name and Last Name Fields -->
+        <div class="flex mb-3" style="gap: 150px;">
+          <div class="field p-fluid">
+            <label for="firstname">First name:</label>
+            <input type="text" pInputText [(ngModel)]="firstname" placeholder="Enter your first name" [style]="{'width': '120%'}" />
+          </div>
+          <div class="field p-fluid">
+            <label for="lastname">Last name:</label>
+            <input type="text" pInputText [(ngModel)]="lastname" placeholder="Enter your last name" [style]="{'width': '120%'}" />
+          </div>
+        </div>
+      
+        <!-- Email and Password Fields -->
+        <div class="flex mb-3" style="gap: 180px;">
+          <div class="field p-fluid">
+            <label for="email">Email:</label>
+            <input type="email" pInputText [(ngModel)]="email" placeholder="Enter your email" [style]="{'width': '140%'}" />
+          </div>
+          <div class="field p-fluid">
+            <label for="password">Password:</label>
+            <input type="password" pInputText [(ngModel)]="password" placeholder="Enter your password" [style]="{'width': '125%'}" />
+          </div>
+        </div>
+      
+        <!-- Role Selection -->
+        <div class="field mb-3">
+          <label>Role:</label>
+          <div class="flex gap-4">
+            <div class="p-field-radiobutton">
+              <p-radioButton name="role" value="Candidate" [(ngModel)]="role" label="Candidate"></p-radioButton>
+            </div>
+            <div class="p-field-radiobutton">
+              <p-radioButton name="role" value="Recruiter" [(ngModel)]="role" label="Recruiter"></p-radioButton>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sign Up Button and Redirect Text -->
+        <div class="absolute-position">
+          <button 
+            pButton 
+            pRipple 
+            label="Sign up" 
+            (click)="register()" 
+            icon="pi pi-sign-in" 
+            class="font-bold px-5 py-2 p-button-raised p-button-rounded white-space-nowrap mb-3">
+          </button>
+          <div class="w-full text-center">
+            <span>You already have an account? <a href="#" (click)="goToLogin()">Sign in</a></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Login form -->
+      <div *ngIf="showLoginForm">
+        <div class="text-900 font-bold text-5xl mb-5">Login here please!</div>
+
+        <!-- Error Messages -->
+        <div *ngIf="errorMsg.length > 0" class="error-messages">
+          <ul>
+            <li *ngFor="let msg of errorMsg">{{ msg }}</li>
+          </ul>
+        </div>
+
+        <!-- Email Field -->
+        <div class="field p-fluid mb-4" style="width: 45%; display: flex; align-items: center; gap: 48px;">
+          <label for="email" style="margin-bottom: 0; flex-shrink: 0;">Email :</label>
+          <input type="text" pInputText [(ngModel)]="email" placeholder="Enter your email" style="flex-grow: 1;" />
+        </div>
+        
+        <!-- Password Field -->
+        <div class="field p-fluid mb-4" style="width: 45%; display: flex; align-items: center; gap: 20px;">
+          <label for="password" style="margin-bottom: 0; flex-shrink: 0;">Password :</label>
+          <input type="password" pInputText [(ngModel)]="password" placeholder="Enter your password" style="flex-grow: 1;" />
+        </div>
+
+
+        <!-- Redirect to Sign Up -->
+        <div class="absolutee-position">
+          <button 
+            pButton 
+            pRipple 
+            label="Sign in" 
+            (click)="login()" 
+            icon="pi pi-sign-in" 
+            class="font-bold px-5 py-2 p-button-raised p-button-rounded white-space-nowrap mb-3">
+          </button>
+          <div class="w-full text-center">
+            <span>Don't have an account? <a href="#" (click)="goToRegister()">Sign up</a></span>
+          </div>
+        </div>
+        
       </div>
     </div>
   </div>

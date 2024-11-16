@@ -17,8 +17,8 @@
   display: flex;
   justify-content: center;
   gap: 20px; /* Adds space between the buttons */
-  margin-top: 20px; /* Adds space above the button group */
-}
+  margin-top: 20px;
+  justify-content: flex-start;}
 
 button {
   font-weight: bold;
@@ -46,4 +46,148 @@ button.white-signin {
 button.white-signin:hover {
   background-color: #007ad9;
   color: white; /* Text turns white when hovered */
+}
+/* Ajoutez ces styles pour la mise en forme des formulaires */
+.input-field {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  margin-top: 20px;
+}
+.pre-line-text {
+  white-space: pre-line;
+}
+/* Réduit la taille de la police et ajuste les paddings */
+input {
+  font-size: 14px;
+  padding: 0.5rem;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column; /* Aligne les éléments de manière verticale */
+  justify-content: center; /* Centrer verticalement les éléments si nécessaire */
+  align-items: center; /* Centrer horizontalement les éléments */
+}
+
+.text-left {
+  text-align: center; /* Aligne le texte à gauche */
+}
+
+.mt-3 {
+  margin-top: 1rem; /* Ajoute un espace au-dessus de la phrase */
+}
+
+
+
+/* Positionnement absolu pour le bouton et le texte sous le bouton */
+.absolute-position {
+  position: absolute;
+  bottom: 10px;  /* Positionne le conteneur à 20px du bas du formulaire */
+  left: 29%;  /* Centrer horizontalement par rapport au parent */
+  transform: translateX(-50%);  /* Ajuste l'élément pour qu'il soit vraiment centré */
+  text-align: center;  /* Assure que le texte sous le bouton est centré */
+  width: 100%;
+}
+
+/* Optionnel : Ajuster le style du bouton */
+.absolute-position button {
+  display: inline-block;
+  margin-bottom: 10px;  /* Pour ajouter un espace entre le bouton et le texte */
+}
+
+.absolute-position span {
+  font-size: 14px;
+  color: #6c757d;  /* Couleur de texte grise */
+  margin-top: 10px;
+}
+/* Assurez-vous que le formulaire a une largeur appropriée et un bon espacement */
+.field {
+  margin-bottom: 15px;
+}
+
+/* Si vous voulez ajuster l'espacement des boutons radio */
+.p-field-radiobutton {
+  display: inline-block;
+  margin-right: 10px;
+}
+/* Assurez-vous que les champs de saisie et le bouton ont un espacement uniforme */
+.field {
+  margin-right: 16px;  /* Espacement entre les éléments */
+}
+
+/* Si vous voulez que le bouton ait une largeur plus grande (par exemple 70% de la largeur du formulaire) */
+.field button {
+  width: 100%;
+  left: 200%;
+}
+/* Personnalisation du texte sous le bouton */
+.field span {
+  font-size: 16px;
+  color: #6c757d; /* Couleur bleue */
+  cursor: pointer;
+  text-decoration: underline; 
+  right: 20%;
+  /* Optionnel, pour simuler un lien */
+}
+
+/* Changer la couleur au survol */
+.field span:hover {
+  color: #6c757d;
+}
+/* Conteneur pour l'input avec icône */
+.input-with-icon {
+  position: relative;
+}
+
+/* Icône dans l'input */
+.icon {
+  position: absolute;
+  top: 50%;
+  left: 10px; /* Espacement à gauche */
+  transform: translateY(-50%); /* Centrer verticalement */
+  font-size: 1.2em; /* Taille de l'icône */
+  color: #000000; /* Couleur de l'icône */
+}
+
+/* Décalage du champ d'entrée pour laisser de l'espace à l'icône */
+.input-with-icon input {
+  padding-left: 30px; /* Ajuster la valeur pour que l'icône ne chevauche pas le texte */
+}
+.error-messages {
+  color: red;
+  margin-bottom: 10px;
+}
+
+.error-messages ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+.error-messages li {
+  margin-bottom: 5px;
+}
+.absolutee-position {
+  position: absolute;
+  top: 430px;  /* Positionne le conteneur à 20px du bas du formulaire */
+  left: 26%;  /* Centrer horizontalement par rapport au parent */
+  transform: translateX(-50%);  /* Ajuste l'élément pour qu'il soit vraiment centré */
+  text-align: center;  /* Assure que le texte sous le bouton est centré */
+  width: 100%;
+}
+
+/* Optionnel : Ajuster le style du bouton */
+.absolutee-position button {
+  display: inline-block;
+  margin-bottom: 10px;  /* Pour ajouter un espace entre le bouton et le texte */
+}
+
+.absolutee-position span {
+  font-size: 14px;
+  color: #6c757d;  /* Couleur de texte grise */
+  margin-top: 5px;
 }

@@ -1,0 +1,41 @@
+<!-- src/app/pages/accueil/accueil.component.html -->
+
+<div class="card">
+    <p-menubar [model]="items"></p-menubar>
+  </div>
+  
+  <!-- Sections -->
+  <div class="section" *ngIf="currentSection === 'accueil'">
+    <h2>Bienvenue sur la page d'Accueil</h2>
+    <p>Découvrez plus d'informations sur notre plateforme ici.</p>
+    <p-dataView [value]="filteredJobs">
+        <ng-template let-job pTemplate="item">
+          <div>
+            <h3>{{ job.title }}</h3>
+            <p>{{ job.company }}</p>
+          </div>
+        </ng-template>
+      </p-dataView>
+  </div>
+  
+  <div class="section" *ngIf="currentSection === 'contact'">
+    <h2>Contact</h2>
+    <p>Si vous avez des questions, contactez-nous à l'adresse suivante : </p>
+  </div>
+  
+  <div class="section" *ngIf="currentSection === 'annonces'">
+    <h2>Consulter les Annonces</h2>
+    <div class="search-bar">
+      <input
+        pInputText
+        type="text"
+        [(ngModel)]="searchQuery"
+        (ngModelChange)="onSearchChange()"
+        placeholder="Rechercher des emplois..."
+      />
+    </div>
+  
+    <!-- DataView pour afficher les emplois -->
+  
+  </div>
+  
