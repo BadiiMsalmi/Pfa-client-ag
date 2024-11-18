@@ -35,6 +35,7 @@ export class LandingComponent {
   showRegisterForm = false;
   firstname?: string;
   lastname?: string;
+  accountname? :string;
   email?: string;
   password?: string;
   role: string = 'ROLE_CANDIDAT';
@@ -44,6 +45,7 @@ export class LandingComponent {
     email: '',
     firstname: '',
     lastname: '',
+    accountname: '',
     password: '',
     role: 'ROLE_CANDIDAT'
   };
@@ -74,8 +76,9 @@ export class LandingComponent {
       body: this.authRequest,
     }).subscribe({
       next: (res) => {
-        this.tokenService.token = res.token as string;
-        console.log(res);
+        //todo save the token and check if the account if not locked
+        this.tokenService.token = res.token as string
+        console.log(res)
         this.router.navigate(['books']);
       },
       error: (err) => {
@@ -83,17 +86,9 @@ export class LandingComponent {
       }
     });
   }
-
   // Register method
   register() {
     this.errorMsg = [];
-
-    // Validate password before proceeding
-    if (!this.validatePassword(this.registerRequest.password)) {
-      this.errorMsg.push("Password must contain at least 8 characters, including an uppercase letter, a lowercase letter, a number, and a special character.");
-      return; // Stop further processing if password is invalid
-    }
-
     this.authService.register({
       body: this.registerRequest
     }).subscribe({
@@ -104,12 +99,6 @@ export class LandingComponent {
         this.handleErrors(err);
       }
     });
-  }
-
-  // Password validation logic
-  private validatePassword(password: string): boolean {
-    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-    return passwordPattern.test(password);
   }
 
   // General error handling method
@@ -123,3 +112,7 @@ export class LandingComponent {
     }
   }
 }
+
+
+
+
