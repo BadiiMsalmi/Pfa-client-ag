@@ -1,0 +1,80 @@
+.users-list {
+    padding: 20px;
+    display: flex;
+    flex-direction: column; /* Stack cards and table vertically */
+    align-items: center;
+  }
+  
+  .users-cards {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 1200px;
+  }
+  
+  .card {
+    width: 30%;
+    background-color: #f8f9fa; /* Light background for cards */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-10px); /* Slight lift effect */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+  }
+  
+  .card .p-card {
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #007bff, #ff7f50); /* Blue to orange gradient */
+    color: white;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .card .p-card .p-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Icon on the left */
+    font-size: 18px;
+    padding: 15px;
+  }
+  
+  .card .p-card .p-card-header i {
+    font-size: 24px; /* Icon size */
+    margin-right: 10px; /* Space between icon and text */
+  }
+  
+  .card .p-card .p-card-content {
+    text-align: center;
+    padding: 20px;
+    flex-grow: 1; /* Ensure content is centered vertically */
+  }
+  
+  .card .p-card .p-card-content h2 {
+    font-size: 30px;
+    margin: 0;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .card {
+      width: 100%; /* Cards take full width on small screens */
+    }
+  
+    .users-cards {
+      flex-direction: column;
+    }
+  }
+  
+  p-table {
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 20px;
+  }
+  

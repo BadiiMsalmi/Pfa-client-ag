@@ -1,0 +1,327 @@
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+  background: linear-gradient(135deg, #e7eff5e1, #f4f4f4);
+  color: #333;
+}
+
+.sidebar {
+  width: 250px;
+  background: linear-gradient(135deg, #0c3261, #1b3a5c);
+  padding: 1rem;
+  color: white;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.custom-menu {
+  width: 100%;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+}
+
+.users-cards {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* Card styles */
+.card {
+  flex: 1 1 calc(33.333% - 20px);
+  min-width: 250px;
+  max-width: 400px;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15), 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card .p-card {
+  border: none;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #4caf50, #81c784);
+  color: white;
+  padding: 20px;
+}
+
+.card.blue {
+  background: linear-gradient(135deg, #2196f3, #64b5f6);
+}
+
+.card.orange {
+  background: linear-gradient(135deg, #ff9800, #ffb74d);
+}
+
+.card .p-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 18px;
+  padding: 10px 0;
+}
+
+.card .p-card-header i {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.card .p-card-content {
+  text-align: center;
+  padding: 20px;
+}
+
+.card .p-card-content h2 {
+  font-size: 2rem;
+  margin: 0;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* Table Card Style */
+.card-table {
+  flex: 1 1 100%; /* Take full width in smaller screens */
+  min-width: 100%; /* Ensure the table fills space */
+  max-width: 100%; /* Prevent overflow beyond container */
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+p-table {
+  width: 100%;
+  margin-top: 20px;
+  background: #dbdbdb;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+p-table th {
+  background: #ffffff;
+  color: rgb(44, 44, 44);
+  padding: 10px;
+  text-align: left;
+}
+
+p-table td {
+  padding: 10px;
+}
+
+p-tag.success {
+  background-color: #28a745;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 0.85rem;
+}
+
+p-tag.danger {
+  background-color: #dc3545;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 0.85rem;
+}
+
+p-tag.warning {
+  background-color: #ffc107;
+  color: black;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 0.85rem;
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    flex: 1 1 100%;
+  }
+
+  .users-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* For smaller screens, adjust table to take full width */
+  .card-table {
+    min-width: 100%; /* Make table responsive */
+    max-width: 100%;
+  }
+}
+.table-title {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
+
+.table-title h2 {
+  margin: 0;
+}
+/* CSS Styles for Modern Info Cards */
+.info-box {
+  background-color: #ffffff; /* White background */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 20px; /* Spacing below the card */
+  color: #ffffff; /* Default text color (white) */
+  height: 90%;
+  width: 90%;
+}
+
+.info-box-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-box h6 {
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.info-box h4 {
+  margin: 10px 0;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-box h4 i {
+  margin-right: 10px;
+}
+
+.info-box p {
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+/* Blue Turquoise */
+.blue-turquoise {
+  background-color: #1abc9c;
+}
+
+/* Mint Green */
+.mint-green {
+  background-color: #2ecc71;
+}
+
+/* Purple Pastel */
+.purple-pastel {
+  background-color: #9b59b6;
+}
+
+/* Gray Gradient */
+.gray-gradient {
+  background: linear-gradient(135deg, #f0f0f0, #d0d0d0);
+}
+
+/* Additional Media Queries (if needed) */
+@media (max-width: 768px) {
+  .info-box {
+      width: 100%; /* Full width on smaller screens */
+  }
+}
+/* CSS Styles for Modern Info Cards */
+.info-box {
+  background-color: #ffffff; /* White background */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 20px; /* Spacing below the card */
+  color: #ffffff; /* Default text color (white) */
+  height: 90%;
+  width: 90%;
+}
+
+.info-box-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-box h6 {
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.info-box h4 {
+  margin: 10px 0;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-box h4 i {
+  margin-right: 10px;
+}
+
+.info-box p {
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+/* Blue Turquoise */
+.blue-turquoise {
+  background-color: #1abc9c;
+}
+
+/* Mint Green */
+.mint-green {
+  background-color: #2ecc71;
+}
+
+/* Purple Pastel */
+.purple-pastel {
+  background-color: #9b59b6;
+}
+
+/* Gray Gradient */
+.gray-gradient {
+  background: linear-gradient(135deg, #f0f0f0, #d0d0d0);
+}
+
+/* Additional Media Queries (if needed) */
+@media (max-width: 768px) {
+  .info-box {
+      width: 100%; /* Full width on smaller screens */
+  }
+}
+.custom-button {
+  margin-right: 10px; /* Espacement entre les boutons */
+  border-radius: 10px; /* Border radius */
+  width: 10%; /* Ajustez la largeur des boutons */
+}
+
+.custom-button:last-child {
+  margin-right: 0; /* Supprime l'espacement après le dernier bouton */
+}
+
+
+

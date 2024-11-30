@@ -1,7 +1,7 @@
 .background-image-section {
   background-image: url('/bg.png');
   background-size: 40%;
-  background-position: right center;
+  background-position: right ;
   background-repeat: no-repeat;
   min-height: 100vh; /* Full height */
   align-items: center;
@@ -9,8 +9,8 @@
 }
 
 .content{
-  padding-left:40px;
-  padding-top: 15%;
+  padding-left:60px;
+  padding-top: 10%;
 }
 
 .button-group {
@@ -50,8 +50,8 @@ button.white-signin:hover {
 /* Ajoutez ces styles pour la mise en forme des formulaires */
 .input-field {
   width: 100%;
-  padding: 10px;
-  margin: 10px 0;
+  padding-top: 20px;
+  margin: 5px 0;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
@@ -87,7 +87,7 @@ input {
 /* Positionnement absolu pour le bouton et le texte sous le bouton */
 .absolute-position {
   position: absolute;
-  bottom: 10px;  /* Positionne le conteneur à 20px du bas du formulaire */
+  top: 525px;  /* Positionne le conteneur à 20px du bas du formulaire */
   left: 29%;  /* Centrer horizontalement par rapport au parent */
   transform: translateX(-50%);  /* Ajuste l'élément pour qu'il soit vraiment centré */
   text-align: center;  /* Assure que le texte sous le bouton est centré */
@@ -107,7 +107,7 @@ input {
 }
 /* Assurez-vous que le formulaire a une largeur appropriée et un bon espacement */
 .field {
-  margin-bottom: 15px;
+  margin-bottom: 0px;
 }
 
 /* Si vous voulez ajuster l'espacement des boutons radio */
@@ -117,7 +117,7 @@ input {
 }
 /* Assurez-vous que les champs de saisie et le bouton ont un espacement uniforme */
 .field {
-  margin-right: 16px;  /* Espacement entre les éléments */
+  margin-right: 10px;  /* Espacement entre les éléments */
 }
 
 /* Si vous voulez que le bouton ait une largeur plus grande (par exemple 70% de la largeur du formulaire) */
@@ -173,7 +173,7 @@ input {
 }
 .absolutee-position {
   position: absolute;
-  top: 430px;  /* Positionne le conteneur à 20px du bas du formulaire */
+  top: 340px;  /* Positionne le conteneur à 20px du bas du formulaire */
   left: 26%;  /* Centrer horizontalement par rapport au parent */
   transform: translateX(-50%);  /* Ajuste l'élément pour qu'il soit vraiment centré */
   text-align: center;  /* Assure que le texte sous le bouton est centré */
