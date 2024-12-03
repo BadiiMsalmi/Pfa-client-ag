@@ -1,31 +1,26 @@
-<div class="layout-container">
-    <!-- Sidebar -->
-    <div class="sidenav">
-      <div class="logo-container">
-        <button class="logo" (click)="toggleCollapse()">
-          <i class="pi pi-bars"></i>
-        </button>
-        <div *ngIf="!isLeftSidebarCollapsed" class="logo-text">Admin Dashboard</div>
-      </div>
-  
-      <ul class="sidenav-nav">
-        <li *ngFor="let item of items" class="sidenav-nav-item">
-          <a
-            class="sidenav-nav-link"
-            [routerLink]="item.routeLink"
-            routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }"
-          >
-            <i class="pi" [ngClass]="item.icon"></i>
-            <span *ngIf="!isLeftSidebarCollapsed" class="sidenav-link-text">{{ item.label }}</span>
+<div class="layout">
+  <!-- Sidebar -->
+  <aside class="sidebar" [class.open]="isSidebarOpen">
+    <nav>
+      <ul>
+        <li *ngFor="let item of sidebarItems">
+          <a [routerLink]="item.route" routerLinkActive="active">
+            <i [class]="item.icon"></i>
+            {{ item.label }}
           </a>
         </li>
       </ul>
-    </div>
-  
-    <!-- Main Content Area -->
-    <div class="main-content">
-      <router-outlet></router-outlet> <!-- This will render the UsersListComponent here -->
-    </div>
-  </div>
-  
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="content">
+    <!-- Bouton Toggle -->
+
+    <button class="toggle-sidebar" (click)="toggleSidebar()">
+      <i class="pi pi-bars"></i>
+    </button>
+        <!-- Contenu chargé via router-outlet -->
+    <router-outlet></router-outlet>
+  </main>
+</div>

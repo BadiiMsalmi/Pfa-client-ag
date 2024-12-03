@@ -8,20 +8,19 @@ import { SidebarModule } from 'primeng/sidebar';
   selector: 'app-layout',
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.css'],
-  imports: [RouterModule, CommonModule, ButtonModule, SidebarModule],
+  imports: [RouterModule, CommonModule, ButtonModule, SidebarModule,],
   standalone: true,
 })
 export class LayoutComponent {
+  isSidebarOpen = true; // Sidebar ouverte par défaut
 
-  isLeftSidebarCollapsed: boolean = false;
-  items = [
-    { label: 'Dashboard', routeLink: '/dashboard', icon: 'pi pi-chart-line' },
-    { label: 'Users List', routeLink: '/user', icon: 'pi pi-user' },
-    { label: 'Jobs List', routeLink: '/jobs', icon: 'pi pi-list' },
-    { label: 'Contacts List', routeLink: '/contacts', icon: 'pi pi-envelope' }
+  sidebarItems = [
+    { label: 'Dashboard', route: '/dashboard', icon: 'pi pi-home' },
+    { label: 'Gestion Utilisateurs', route: '/gestion-users', icon: 'pi pi-users' },
+    { label: 'Gestion Annonces', route: '/gestion-annonces', icon: 'pi pi-briefcase' },
   ];
 
-  toggleCollapse(): void {
-    this.isLeftSidebarCollapsed = !this.isLeftSidebarCollapsed;
+  toggleSidebar() {
+    this.isSidebarOpen = !this.isSidebarOpen; // Inverse l'état d'ouverture
   }
 }

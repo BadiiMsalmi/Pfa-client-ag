@@ -26,7 +26,14 @@ export const routes: Routes = [
   },
  
 
-  { path: 'dashboard', component: DashboardComponent },
-
+  {
+    path: '',
+    component: LayoutComponent,
+    children: [
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'gestion-users', component: UsersListComponent },
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+    ],
+  },
 ];
 export const routing = RouterModule.forRoot(routes);  // Register routes
