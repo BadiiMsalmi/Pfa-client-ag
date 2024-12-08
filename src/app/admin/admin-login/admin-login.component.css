@@ -1,0 +1,92 @@
+/* Wrapper pour centrer le formulaire et appliquer le dégradé d'arrière-plan */
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(180deg, #1c094b, #1c094b); /* Dégradé moderne */
+    margin: 0;
+  }
+  
+  /* Carte contenant le formulaire avec un effet transparent */
+  .login-card {
+    background: rgba(255, 255, 255, 0.1); /* Transparence */
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    backdrop-filter: blur(10px); /* Effet de flou derrière */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Bordure subtile */
+  }
+  
+  /* Titre du formulaire */
+  .login-card h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  /* Style des champs de formulaire */
+  .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  
+  .form-group label {
+    display: block;
+    font-weight: bold;
+    color: #ffffff; /* Texte blanc */
+    margin-bottom: 5px;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    font-size: 16px;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.2); /* Transparence légère */
+  }
+  
+  .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.7); /* Placeholder avec opacité */
+  }
+  
+  .form-control:focus {
+    outline: none;
+    border-color: #ffffff;
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  }
+  
+  /* Bouton de soumission */
+  .btn {
+    font-size: 16px;
+    padding: 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 30%;
+  }
+  
+  .btn-primary {
+    background: #ffffff;
+    color: #1c094b;
+  }
+  
+  .btn-primary:hover {
+    background: #e0e0e0;
+    color: #1c094b;
+  }
+  
+  /* Message d'erreur */
+  .error-message {
+    color: #ff4d4f;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  

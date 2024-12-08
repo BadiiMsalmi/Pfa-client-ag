@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { CardModule } from 'primeng/card';
@@ -10,7 +10,7 @@ import { InputGroupModule } from 'primeng/inputgroup';
 import { SortEvent } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
 import { FormsModule } from '@angular/forms';
-
+import { BreadcrumbModule } from 'primeng/breadcrumb';
 @Component({
   selector: 'app-users-list',
   standalone: true,
@@ -26,17 +26,31 @@ import { FormsModule } from '@angular/forms';
     InputTextModule,
     InputGroupModule,
     ButtonModule,
-    FormsModule 
+    FormsModule,
+    BreadcrumbModule
      ]
 })
-export class UsersListComponent {
+export class UsersListComponent implements OnInit {
+  items: MenuItem[] | undefined;
+
+  home: MenuItem | undefined;
+
+  ngOnInit() {
+      this.items = [
+          { label: 'User management' }, 
+         
+      ];
+
+      this.home = { icon: 'pi pi-home', routerLink: '/' };
+  }
   searchQuery: string = ''; 
 
   users = [
-    { firstName: 'Ranya', lastName: 'Jamel', accountName: 'Ran123', email: 'ranjm@gmail.com' },
-    { firstName: 'Oumayma', lastName: 'Hammemi', accountName: 'Ouma12', email: 'ouma12@gmail.com' },
-    { firstName: 'Badiaa', lastName: 'Msalmi', accountName: 'Badiaa12', email: 'badiaa1@gmail.com' },
-  ];
+    { firstName: 'Ranya', lastName: 'Jamel', accountName: 'Ran123', email: 'ranjm@gmail.com',role:'Condidat' },
+    { firstName: 'Oumayma', lastName: 'Hammemi', accountName: 'Ouma12', email: 'ouma12@gmail.com',role:'Recruiter' },
+    { firstName: 'Badiaa', lastName: 'Msalmi', accountName: 'Badiaa12', email: 'badiaa1@gmail.com',role:'Condidat' },
+    { firstName: 'Male', lastName: 'Yakoudi', accountName: 'Malek21', email: 'malek21@gmail.com',role:'Recruiter' },
+    ];
 
   cards = [
     { title: 'Total user', value: this.users.length, icon: 'pi pi-users' },
@@ -76,6 +90,7 @@ export class UsersListComponent {
         user.firstName.toLowerCase().includes(query) ||
         user.lastName.toLowerCase().includes(query) ||
         user.accountName.toLowerCase().includes(query) ||
-        user.email.toLowerCase().includes(query)
+        user.email.toLowerCase().includes(query)||
+        user.role.toLowerCase().includes(query)
     );
   }}

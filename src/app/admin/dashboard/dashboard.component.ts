@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { CardModule } from 'primeng/card';
@@ -10,6 +10,7 @@ import { InputGroupModule } from 'primeng/inputgroup';
 import { SortEvent } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
 import { FormsModule } from '@angular/forms';
+import { ChartModule } from 'primeng/chart';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -17,72 +18,69 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [
     CommonModule,
-    RouterModule,
     CardModule,
     TableModule,
     MenuModule,
     InputTextModule,
     InputGroupModule,
     ButtonModule,
-    FormsModule 
+    FormsModule,
+    ChartModule
   ],
 })
-export class DashboardComponent {
-  searchQuery: string = ''; 
+export class DashboardComponent implements OnInit {
+  basicData: any;
 
-  menuItems: MenuItem[] = [
-    { label: 'Accueil', icon: 'pi pi-home' },
-    { label: 'Tableau de Bord', icon: 'pi pi-chart-bar' },
-    { label: 'Paramètres', icon: 'pi pi-cog' },
-  ];
+  basicOptions: any;
 
-  users = [
-    { firstName: 'Ranya', lastName: 'Jamel', accountName: 'Ran123', email: 'ranjm@gmail.com' },
-    { firstName: 'Oumayma', lastName: 'Hammemi', accountName: 'Ouma12', email: 'ouma12@gmail.com' },
-    { firstName: 'Badiaa', lastName: 'Msalmi', accountName: 'Badiaa12', email: 'badiaa1@gmail.com' },
-  ];
+  ngOnInit() {
+      const documentStyle = getComputedStyle(document.documentElement);
+      const textColor = documentStyle.getPropertyValue('--text-color');
+      const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
+      const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
 
-  cards = [
-    { title: 'Total user', value: this.users.length, icon: 'pi pi-users' },
-    { title: 'Total recruiters', value: this.users.length, icon: 'pi pi-check-circle' },
-    { title: 'Total candidates', value: this.users.length, icon: 'pi pi-times-circle' },
-  ];
-  customSort(event: SortEvent) {
-    if (event.data && Array.isArray(event.data) && event.field) {
-        const order = event.order ?? 1; 
-  
-        event.data.sort((data1, data2) => {
-            if (event.field) {
-                let value1 = data1[event.field];
-                let value2 = data2[event.field];
-                let result = null;
-  
-                if (value1 == null && value2 != null) result = -1;
-                else if (value1 != null && value2 == null) result = 1;
-                else if (value1 == null && value2 == null) result = 0;
-                else if (typeof value1 === 'string' && typeof value2 === 'string') result = value1.localeCompare(value2);
-                else result = value1 < value2 ? -1 : value1 > value2 ? 1 : 0;
-  
-                return order * result; 
-            }
-            return 0; 
-        });
-    } else {
-        console.warn('Aucune donnée à trier ou event.field est undefined');
-    }
+      this.basicData = {
+          labels: ['Job', 'Condidat', 'Recommandation', 'Recruiter'],
+          datasets: [
+              {
+                  label: 'Job',
+                  data: [540, 325, 702, 620],
+                  backgroundColor: ['rgba(255, 159, 64, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(153, 102, 255, 0.2)'],
+                  borderColor: ['rgb(255, 159, 64)', 'rgb(75, 192, 192)', 'rgb(54, 162, 235)', 'rgb(153, 102, 255)'],
+                  borderWidth: 1
+              }
+          ]
+      };
+
+      this.basicOptions = {
+          plugins: {
+              legend: {
+                  labels: {
+                      color: textColor
+                  }
+              }
+          },
+          scales: {
+              y: {
+                  beginAtZero: true,
+                  ticks: {
+                      color: textColorSecondary
+                  },
+                  grid: {
+                      color: surfaceBorder,
+                      drawBorder: false
+                  }
+              },
+              x: {
+                  ticks: {
+                      color: textColorSecondary
+                  },
+                  grid: {
+                      color: surfaceBorder,
+                      drawBorder: false
+                  }
+              }
+          }
+      };
   }
-  filteredUsers = [...this.users]; 
-
-  onSearch() {
-    const query = this.searchQuery.toLowerCase().trim();
-    this.filteredUsers = this.users.filter(
-      user =>
-        user.firstName.toLowerCase().includes(query) ||
-        user.lastName.toLowerCase().includes(query) ||
-        user.accountName.toLowerCase().includes(query) ||
-        user.email.toLowerCase().includes(query)
-    );
-  }
-  
 }
-

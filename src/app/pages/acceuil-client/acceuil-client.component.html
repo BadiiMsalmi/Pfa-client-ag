@@ -1,0 +1,193 @@
+<!-- home.component.html -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <span class="brand-name">
+              <span class="brand-bold">KHEDMTI</span><span class="brand-highlight">.TN</span>
+            </span>
+          </a>
+          
+      <!-- Menu -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/">Accueil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/contact">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/profile">Profil</a>
+          </li>
+          <li class="nav-item">
+
+          <a class="nav-link logout-link" href="#">
+            <i class="logout-icon"></i>
+            Logout
+          </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Search input -->
+  <div class="container mt-4">
+    <input type="text" class="form-control custom-search" placeholder="Rechercher..." />
+  </div>
+  
+  <!-- Main section -->
+  <section class="section section-lg pt-lg-4 mt--200">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-12">
+          <div class="row row-grid">
+            <!-- Card 1: Trouvez des offres d'emploi -->
+            <div class="col-lg-4">
+              <div class="card card-lift--hover shadow border-0">
+                <div class="card-body py-5">
+                  <div class="icon icon-shape icon-shape-primary rounded-circle mb-4">
+                    <i class="ni ni-briefcase-24"></i>
+                  </div>
+                  <h6 class="text-primary text-uppercase">Rechercher un emploi</h6>
+                  <p class="description mt-3">
+                    Explorez une vaste sélection d'offres d'emploi adaptées à vos compétences et aspirations professionnelles.
+                  </p>
+                  <div>
+                    <span class="badge badge-pill badge-primary">emploi</span>
+                    <span class="badge badge-pill badge-primary">carrière</span>
+                    <span class="badge badge-pill badge-primary">opportunité</span>
+                  </div>
+                  <a href="javascript:void(0)" class="btn btn-primary mt-4">Explorer les offres</a>
+                </div>
+              </div>
+            </div>
+            <!-- Card 2: Créez un profil -->
+            <div class="col-lg-4">
+              <div class="card card-lift--hover shadow border-0">
+                <div class="card-body py-5">
+                  <div class="icon icon-shape icon-shape-success rounded-circle mb-4">
+                    <i class="ni ni-single-02"></i>
+                  </div>
+                  <h6 class="text-success text-uppercase">Créer un profil</h6>
+                  <p class="description mt-3">
+                    Mettez en avant vos compétences et expériences grâce à un profil professionnel attractif.
+                  </p>
+                  <div>
+                    <span class="badge badge-pill badge-success">profil</span>
+                    <span class="badge badge-pill badge-success">compétences</span>
+                    <span class="badge badge-pill badge-success">réseau</span>
+                  </div>
+                  <a href="javascript:void(0)" class="btn btn-success mt-4">Créer mon profil</a>
+                </div>
+              </div>
+            </div>
+            <!-- Card 3: Conseils carrière -->
+            <div class="col-lg-4">
+              <div class="card card-lift--hover shadow border-0">
+                <div class="card-body py-5">
+                  <div class="icon icon-shape icon-shape-warning rounded-circle mb-4">
+                    <i class="ni ni-books"></i>
+                  </div>
+                  <h6 class="text-warning text-uppercase">Conseils carrière</h6>
+                  <p class="description mt-3">
+                    Découvrez des astuces et recommandations pour optimiser votre recherche d'emploi et réussir vos entretiens.
+                  </p>
+                  <div>
+                    <span class="badge badge-pill badge-warning">conseils</span>
+                    <span class="badge badge-pill badge-warning">carrière</span>
+                    <span class="badge badge-pill badge-warning">succès</span>
+                  </div>
+                  <a href="javascript:void(0)" class="btn btn-warning mt-4">Voir les conseils</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+        <p-dataView #dv [value]="jobs" [layout]="layout">
+          <!-- Header Template -->
+          <ng-template pTemplate="header">
+            <div class="flex justify-content-end"></div>
+          </ng-template>
+  
+          <!-- List Template -->
+          <ng-template pTemplate="list" let-job>
+            <div class="grid grid-nogutter">
+              <div class="col-12" *ngFor="let job of jobs; let first = first" class="col-12">
+                <div class="flex flex-column sm:flex-row sm:align-items-center p-4 gap-3" [ngClass]="{ 'border-top-1 surface-border': !first }">
+                  <div class="md:w-10rem relative">
+                    <img class="block xl:block mx-auto border-round w-full" [src]="'https://example.com/images/' + job.image" [alt]="job.company" />
+                  </div>
+                  <div class="flex flex-column md:flex-row justify-content-between md:align-items-center flex-1 gap-4">
+                    <div class="flex flex-row md:flex-column justify-content-between align-items-start gap-2">
+                      <div>
+                        <span class="font-medium text-secondary text-sm">{{ job.location }}</span>
+                        <div class="text-lg font-medium text-900 mt-2">{{ job.title }}</div>
+                        <div class="text-sm font-medium text-700">{{ job.company }}</div>
+                      </div>
+                      <div class="surface-100 p-1" style="border-radius: 30px">
+                        <div class="surface-0 flex align-items-center gap-2 justify-content-center py-1 px-2" style="border-radius: 30px; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.06)">
+                          <span class="text-900 font-medium text-sm">{{ job.rating }}</span>
+                          <i class="pi pi-star-fill text-yellow-500"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex flex-column md:align-items-end gap-5">
+                      <span class="text-xl font-semibold text-900">{{ job.salary }}</span>
+                      <div class="flex flex-row-reverse md:flex-row gap-2">
+                        <p-button icon="pi pi-heart" [outlined]="true"></p-button>
+                        <p-button icon="pi pi-eye" label="Voir l'offre"></p-button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+  
+          <!-- Grid Template -->
+          <ng-template pTemplate="grid" let-job>
+            <div class="grid grid-nogutter">
+              <div class="col-12 sm:col-6 md:col-4 xl:col-6 p-2" *ngFor="let job of jobs">
+                <div class="p-4 border-1 surface-border surface-card border-round flex flex-column">
+                  <div class="surface-50 flex justify-content-center border-round p-3">
+                    <div class="relative mx-auto">
+                      <img class="border-round w-full" [src]="'https://example.com/images/' + job.image" [alt]="job.company" style="max-width: 300px;" />
+                      <p-tag [value]="job.status" [severity]="getSeverity(job)"></p-tag>
+                    </div>
+                  </div>
+                  <div class="pt-4">
+                    <div class="flex flex-row justify-content-between align-items-start gap-2">
+                      <div>
+                        <span class="font-medium text-secondary text-sm">{{ job.location }}</span>
+                        <div class="text-lg font-medium text-900 mt-1">{{ job.title }}</div>
+                        <div class="text-sm font-medium text-700">{{ job.company }}</div>
+                      </div>
+                      <div class="surface-100 p-1" style="border-radius: 30px">
+                        <div class="surface-0 flex align-items-center gap-2 justify-content-center py-1 px-2" style="border-radius: 30px; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.06)">
+                          <span class="text-900 font-medium text-sm">{{ job.rating }}</span>
+                          <i class="pi pi-star-fill text-yellow-500"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex flex-column gap-4 mt-4">
+                      <span class="text-2xl font-semibold">{{ job.salary }}</span>
+                      <div class="flex gap-2">
+                        <p-button icon="pi pi-eye" label="Voir l'offre"></p-button>
+                        <p-button icon="pi pi-heart" [outlined]="true"></p-button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </p-dataView>
+      </div>
+    
+  </section>
+  
+  

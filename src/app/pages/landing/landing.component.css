@@ -1,100 +1,193 @@
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background-color: #f4f6f8; /* Fond gris clair */
-  color: #333333; /* Texte par défaut */
-}
-
-.layout {
-  display: flex;
-  min-height: 100vh;
-}
-
-.sidebar {
-  width: 240px;
-  background: linear-gradient(180deg, #6a11cb, #2575fc); /* Dégradé moderne */
-  color: #ffffff; /* Texte blanc */
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Ombre subtile */
-  padding: 1rem;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  transition: transform 0.3s ease;
-  z-index: 1000;
-}
-
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.sidebar li {
-  margin-bottom: 1rem;
-}
-
-.sidebar a {
-  display: flex;
+.background-image-section {
+  background-image: url('/bg.png');
+  background-size: 40%;
+  background-position: right ;
+  background-repeat: no-repeat;
+  min-height: 100vh; /* Full height */
   align-items: center;
-  padding: 0.8rem 1rem;
-  color: #ffffff; /* Texte blanc */
-  text-decoration: none;
-  border-radius: 8px;
-  transition: background 0.3s ease, color 0.3s ease;
+  justify-content: center;
 }
 
-.sidebar a.active,
-.sidebar a:hover {
-  background-color: rgba(255, 255, 255, 0.2); /* Survol avec opacité */
-  color: #ffffff; /* Texte blanc */
+.content{
+  padding-left:60px;
+  padding-top: 10%;
 }
 
-.sidebar a i {
-  margin-right: 0.5rem;
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Adds space between the buttons */
+  margin-top: 20px;
+  justify-content: flex-start;}
+
+button {
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 50px;
 }
 
-.content {
-  flex: 1;
-  margin-left: 240px; /* Largeur de la sidebar */
-  padding: 1.5rem;
-  background-color: #f4f6f8; /* Fond gris clair */
+button.p-button-raised {
+  /* For Join Now button */
+  background-color: #007ad9;
+  color: white;
 }
 
-.toggle-sidebar {
-  display: none; /* Masqué sur desktop */
+button.p-button-raised:hover {
+  background-color: #005bb5;
+}
+
+button.white-signin {
+  /* For Sign In button */
+  background-color: white;
+  color: #007ad9; /* Blue text */
+  border: 2px solid #007ad9; /* Blue border */
+}
+
+button.white-signin:hover {
+  background-color: #007ad9;
+  color: white; /* Text turns white when hovered */
+}
+/* Ajoutez ces styles pour la mise en forme des formulaires */
+.input-field {
+  width: 100%;
+  padding-top: 20px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  margin-top: 20px;
+}
+.pre-line-text {
+  white-space: pre-line;
+}
+/* Réduit la taille de la police et ajuste les paddings */
+input {
+  font-size: 14px;
+  padding: 0.5rem;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column; /* Aligne les éléments de manière verticale */
+  justify-content: center; /* Centrer verticalement les éléments si nécessaire */
+  align-items: center; /* Centrer horizontalement les éléments */
+}
+
+.text-left {
+  text-align: center; /* Aligne le texte à gauche */
+}
+
+.mt-3 {
+  margin-top: 1rem; /* Ajoute un espace au-dessus de la phrase */
+}
+
+
+
+/* Positionnement absolu pour le bouton et le texte sous le bouton */
+.absolute-position {
   position: absolute;
-  top: 1rem;
-  left: 1rem;
-  background: #2575fc; /* Bouton bleu */
-  color: #ffffff; /* Texte blanc */
-  border: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  top: 525px;  /* Positionne le conteneur à 20px du bas du formulaire */
+  left: 29%;  /* Centrer horizontalement par rapport au parent */
+  transform: translateX(-50%);  /* Ajuste l'élément pour qu'il soit vraiment centré */
+  text-align: center;  /* Assure que le texte sous le bouton est centré */
+  width: 100%;
+}
+
+/* Optionnel : Ajuster le style du bouton */
+.absolute-position button {
+  display: inline-block;
+  margin-bottom: 10px;  /* Pour ajouter un espace entre le bouton et le texte */
+}
+
+.absolute-position span {
+  font-size: 14px;
+  color: #6c757d;  /* Couleur de texte grise */
+  margin-top: 10px;
+}
+/* Assurez-vous que le formulaire a une largeur appropriée et un bon espacement */
+.field {
+  margin-bottom: 0px;
+}
+
+/* Si vous voulez ajuster l'espacement des boutons radio */
+.p-field-radiobutton {
+  display: inline-block;
+  margin-right: 10px;
+}
+/* Assurez-vous que les champs de saisie et le bouton ont un espacement uniforme */
+.field {
+  margin-right: 10px;  /* Espacement entre les éléments */
+}
+
+/* Si vous voulez que le bouton ait une largeur plus grande (par exemple 70% de la largeur du formulaire) */
+.field button {
+  width: 100%;
+  left: 200%;
+}
+/* Personnalisation du texte sous le bouton */
+.field span {
+  font-size: 16px;
+  color: #6c757d; /* Couleur bleue */
   cursor: pointer;
-  z-index: 1100;
+  text-decoration: underline; 
+  right: 20%;
+  /* Optionnel, pour simuler un lien */
 }
 
-.toggle-sidebar:hover {
-  background: #1e63d9; /* Bleu plus foncé au survol */
+/* Changer la couleur au survol */
+.field span:hover {
+  color: #6c757d;
+}
+/* Conteneur pour l'input avec icône */
+.input-with-icon {
+  position: relative;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .sidebar {
-    transform: translateX(-100%); /* Cache la sidebar */
-  }
+/* Icône dans l'input */
+.icon {
+  position: absolute;
+  top: 50%;
+  left: 10px; /* Espacement à gauche */
+  transform: translateY(-50%); /* Centrer verticalement */
+  font-size: 1.2em; /* Taille de l'icône */
+  color: #000000; /* Couleur de l'icône */
+}
 
-  .sidebar.open {
-    transform: translateX(0); /* Affiche la sidebar */
-  }
+/* Décalage du champ d'entrée pour laisser de l'espace à l'icône */
+.input-with-icon input {
+  padding-left: 30px; /* Ajuster la valeur pour que l'icône ne chevauche pas le texte */
+}
+.error-messages {
+  color: red;
+  margin-bottom: 10px;
+}
 
-  .content {
-    margin-left: 0;
-  }
+.error-messages ul {
+  padding: 0;
+  list-style-type: none;
+}
 
-  .toggle-sidebar {
-    display: block; /* Affiche le bouton toggle */
-  }
+.error-messages li {
+  margin-bottom: 5px;
+}
+.absolutee-position {
+  position: absolute;
+  top: 340px;  /* Positionne le conteneur à 20px du bas du formulaire */
+  left: 26%;  /* Centrer horizontalement par rapport au parent */
+  transform: translateX(-50%);  /* Ajuste l'élément pour qu'il soit vraiment centré */
+  text-align: center;  /* Assure que le texte sous le bouton est centré */
+  width: 100%;
+}
+
+/* Optionnel : Ajuster le style du bouton */
+.absolutee-position button {
+  display: inline-block;
+  margin-bottom: 10px;  /* Pour ajouter un espace entre le bouton et le texte */
+}
+
+.absolutee-position span {
+  font-size: 14px;
+  color: #6c757d;  /* Couleur de texte grise */
+  margin-top: 5px;
 }

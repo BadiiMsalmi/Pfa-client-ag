@@ -12,7 +12,7 @@ body {
 
 .sidebar {
   width: 240px;
-  background: linear-gradient(180deg, #1c094b, #2575fc); /* Dégradé moderne */
+  background: linear-gradient(180deg, #1c094b, #1c094b); /* Dégradé moderne */
   color: #ffffff; /* Texte blanc */
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Ombre subtile */
   padding: 1rem;
@@ -97,4 +97,20 @@ body {
   .toggle-sidebar {
     display: block; /* Affiche le bouton toggle */
   }
+}
+.sidebar-header {
+  font-size: 1.1rem; /* Taille du texte */
+  font-weight: bold; /* Texte en gras */
+  text-align: left; /* Centré */
+  padding: 0.3rem 0; /* Espace intérieur */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Ligne de séparation subtile */
+  margin-bottom: 1.2rem; /* Espace avec le contenu en dessous */
+  color: #ffffff; /* Texte blanc */
+}
+
+.sidebar-logo {
+  width: 60px; /* Adjust the size as needed */
+  height: 50px; /* Maintain aspect ratio */
+  margin-right: 3px; /* Space between the image and the text */
+  vertical-align:auto; /* Aligns the image with the text */
 }

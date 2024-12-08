@@ -1,6 +1,11 @@
 <div class="layout">
   <!-- Sidebar -->
   <aside class="sidebar" [class.open]="isSidebarOpen">
+    <div class="sidebar-header">
+      <img src="/admin.png" alt="Logo" class="sidebar-logo" />
+      Welcome Admin
+    </div>
+    
     <nav>
       <ul>
         <li *ngFor="let item of sidebarItems">
@@ -12,6 +17,7 @@
       </ul>
     </nav>
   </aside>
+  
 
   <!-- Main Content -->
   <main class="content">
