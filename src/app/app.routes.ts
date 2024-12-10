@@ -10,6 +10,7 @@ import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 import { AuthGuard } from './auth.guard';
 import { AcceuilClientComponent } from './pages/acceuil-client/acceuil-client.component';
 import { ContactClientComponent } from './pages/contact-client/contact-client.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 export const routes: Routes = [
   {
@@ -29,6 +30,13 @@ export const routes: Routes = [
     path:'contact',
     component:ContactClientComponent
   },
+  
+
+  {
+    path:'profile',
+    component:ProfileComponent
+  },
+
   { path: 'admin/login', component: AdminLoginComponent },
   { path: 'acceuil-client', component: AcceuilClientComponent },
 
