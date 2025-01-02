@@ -1,0 +1,126 @@
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  </head>
+  
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <span class="brand-name">
+            <span class="brand-bold">KHEDMTI</span><span class="brand-highlight">.TN</span>
+          </span>
+        </a>
+  
+        <!-- Menu -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/acceuil-client">Accueil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/contact">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/profile">Profil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link logout-link" href="#">
+                <i class="logout-icon"></i>
+                Logout
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  
+    <!-- Conteneur principal avec fond blanc -->
+    <div class="main-container">
+      <p-steps [(activeIndex)]="activeIndex"  [readonly]="true" [model]="steps"></p-steps>
+    </div>
+      <!-- Étape 1 : Nom et Pays -->    <div class="main-container">
+
+      <div *ngIf="activeIndex === 0" class="step-container">
+        <h3 class="step-title">Étape 1 : Informations de base</h3>
+        <form [formGroup]="step1Form">
+          <div class="field-row">
+            <div class="field">
+              <label for="name">Nom :</label>
+              <input id="name" type="text" formControlName="name" pInputText class="input-field" />
+            </div>
+            <div class="field">
+              <label for="country">Age :</label>
+              <input id="country" type="text" formControlName="country" pInputText class="input-field" />
+            </div>
+          </div>
+            <div class="field">
+              <label for="name">Adresse :</label>
+              <input id="name" type="text" formControlName="name" pInputText class="input-field" />
+            </div>
+           
+          <div class="button-container">
+            <button pButton type="button" label="Suivant" (click)="nextStep()" [disabled]="!step1Form.valid" class="button-next"></button>
+          </div>
+        </form>
+      </div>
+  
+      <!-- Étape 2 : Description de motivation -->
+      <div *ngIf="activeIndex === 1" class="step-container">
+        <h3 class="step-title">Étape 2 : Motivation et profession</h3>
+        <form [formGroup]="step2Form">
+          <div class="field-row">
+            <div class="field">
+              <label for="name">Spécialité :</label>
+              <input id="name" type="text" formControlName="name" pInputText class="input-field" />
+            </div>
+            <div class="field">
+              <label for="country">Université :</label>
+              <input id="country" type="text" formControlName="country" pInputText class="input-field" />
+            </div>
+          </div>
+          <div class="field">
+            <label for="description">Description :</label>
+            <textarea id="description" rows="5" formControlName="description" pInputTextarea class="input-textarea"></textarea>
+          </div>
+          <div class="button-container">
+            <button pButton type="button" label="Précédent" (click)="prevStep()" class="button-prev"></button>
+            <button pButton type="button" label="Suivant" (click)="nextStep()" [disabled]="!step2Form.valid" class="button-next"></button>
+          </div>
+        </form>
+      </div>
+  
+      <!-- Étape 3 : Téléchargement du CV -->
+      <div *ngIf="activeIndex === 2" class="step-container">
+        <h3 class="step-title">Étape 3 : Téléchargement du CV</h3>
+        
+        <p-fileUpload name="cv" (onUpload)="onUpload($event)" accept=".pdf,.doc,.docx" class="file-upload"></p-fileUpload>
+        <div class="button-container">
+          <button pButton type="button" label="Précédent" (click)="prevStep()" class="button-prev"></button>
+          <button pButton type="button" label="Suivant" (click)="nextStep()" class="button-next"></button>
+        </div>
+      </div>
+  
+      <!-- Étape 4 : Confirmation -->
+      <div *ngIf="activeIndex === 3" class="step-container">
+        <h3 class="step-title">Étape 4 : Confirmation</h3>
+        <p>Merci de vérifier les informations saisies et de confirmer.</p>
+        <div class="button-container">
+          <button pButton type="button" label="Précédent" (click)="prevStep()" class="button-prev"></button>
+          <button pButton type="button" label="confirmer" (click)="submit()" class="button-submit"></button>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Footer -->
+    <footer class="footer navbar-light ">
+      <div class="container">
+         
+          <!-- Copyright -->
+          <div class="row">
+              <div class="col text-center">
+                  <p class="small mb-0">© 2024 KHEDMTI.TN. All rights reserved. | Designed with <span style="color: red;">♥</span> by KHEDMTI Team.</p>
+              </div>
+          </div>
+      </div>
+    </footer>
+    

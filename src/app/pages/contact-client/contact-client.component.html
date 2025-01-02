@@ -1,67 +1,87 @@
+<head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"></head>
 <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
-    <div class="container">
-        <a class="navbar-brand" href="#">
-            <span class="brand-name">
-              <span class="brand-bold">KHEDMTI</span><span class="brand-highlight">.TN</span>
-            </span>
-          </a>
-          
+  <div class="container">
+      <a class="navbar-brand" href="#">
+          <span class="brand-name">
+            <span class="brand-bold">KHEDMTI</span><span class="brand-highlight">.TN</span>
+          </span>
+      </a>
+
       <!-- Menu -->
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/">Accueil</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/contact">Contact</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/profile">Profil</a>
-          </li>
-          <li class="nav-item">
-
-          <a class="nav-link logout-link" href="#">
-            <i class="logout-icon"></i>
-            Logout
-          </a>
-          </li>
-        </ul>
+          <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                  <a class="nav-link" routerLink="/acceuil-client">Accueil</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" routerLink="/contact">Contact</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" routerLink="/profile">Profil</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link logout-link" href="#">
+                      <i class="logout-icon"></i>
+                      Logout
+                  </a>
+              </li>
+          </ul>
       </div>
-    </div>
-  </nav>
-  
+  </div>
+</nav>
+
 <section class="section section-lg pt-lg-0 section-contact-us">
     <div class="container">
       <div class="row justify-content-center mt--300">
         <div class="col-lg-8">
+          <!-- Bandeau de message de succès -->
+          <div *ngIf="successMessage" class="alert alert-success" role="alert">
+            {{ successMessage }}
+          </div>
+          
           <div class="card bg-gradient-secondary shadow">
             <div class="card-body p-lg-5">
               <h4 class="mb-1">Want to work with us?</h4>
               <p class="mt-0">Your project is very important to us.</p>
-              <div class="form-group mt-5" [ngClass]="{'focused':focus===true}">
+              
+              <!-- Champs de formulaire -->
+              <div class="form-group mt-5" [ngClass]="{'focused': focus}">
                 <div class="input-group input-group-alternative">
-                  <div class="input-group-prepend">
-                  </div>
-                  <input class="form-control" placeholder="Your name" type="text" (focus)="focus=true" (blur)="focus=false">
+                  <input [(ngModel)]="contact.name" class="form-control" placeholder="Your name" type="text" (focus)="focus=true" (blur)="focus=false">
                 </div>
               </div>
-              <div class="form-group" [ngClass]="{'focused':focus1===true}">
+              <div class="form-group" [ngClass]="{'focused': focus1}">
                 <div class="input-group input-group-alternative">
-                  <div class="input-group-prepend">
-                  </div>
-                  <input class="form-control" placeholder="Email address" type="email" (focus)="focus1=true" (blur)="focus1=false">
+                  <input [(ngModel)]="contact.email" class="form-control" placeholder="Email address" type="email" (focus)="focus1=true" (blur)="focus1=false">
                 </div>
               </div>
               <div class="form-group mb-4">
-                <textarea class="form-control form-control-alternative" name="name" rows="4" cols="80" placeholder="Type a message..."></textarea>
+                <textarea [(ngModel)]="contact.message" class="form-control form-control-alternative" name="message" rows="4" placeholder="Type a message..."></textarea>
               </div>
+  
+              <!-- Bouton d'envoi -->
               <div class="btn-center">
-                <button type="button" class="btn btn-default btn-round btn-block btn-lg">Send Message</button>
+                <button type="button" class="btn btn-default btn-round btn-block btn-lg" (click)="onSubmit()">
+                  Send Message
+                </button>
               </div>
-              
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
+  
+  
+
+<footer class="footer navbar-light ">
+  <div class="container">
+     
+      <!-- Copyright -->
+      <div class="row">
+          <div class="col text-center">
+              <p class="small mb-0">© 2024 KHEDMTI.TN. All rights reserved. | Designed with <span style="color: red;">♥</span> by KHEDMTI Team.</p>
+          </div>
+      </div>
+  </div>
+</footer>

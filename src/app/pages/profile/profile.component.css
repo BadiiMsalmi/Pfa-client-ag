@@ -87,7 +87,7 @@ body {
     background-color: rgba(255, 255, 255, 0.95); /* Fond blanc avec légère transparence */
     border-radius: 12px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-    margin-bottom: 150px; /* Espacement entre les sections */
+    margin-bottom: 0; /* Espacement entre les sections */
   }
   
   /* Carte */
@@ -153,4 +153,26 @@ body {
     color: #007bff; /* Bleu pour .TN */
     margin-left: 5px; /* Espacement entre KHEDMTI et .TN */
   }
-  
+  .footer {
+    background: #464545; /* Changer la couleur de fond ici */
+    color: #ffffff;
+    padding: 20px 0;
+    margin-top: 0; /* Suppression de l'espace entre le footer et la section */
+    position: relative; /* Ajouter si nécessaire pour éviter un décalage */
+    }
+    
+    /* Autres styles de footer */
+    .footer a:hover {
+    color: #ff6f61;
+    text-decoration: underline;
+    }
+    a {
+      text-decoration: none;
+      color: #007bff; /* Violet pour le contraste */
+    font-weight: 600;/* Couleur par défaut */
+    }
+    
+    a:hover {
+      color: #333; /* Couleur au survol */
+    }
+    

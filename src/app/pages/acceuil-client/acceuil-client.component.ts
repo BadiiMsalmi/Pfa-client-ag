@@ -1,24 +1,38 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { DataViewModule } from 'primeng/dataview';
 import { TagModule } from 'primeng/tag';
 import { RatingModule } from 'primeng/rating';
+import { DialogModule } from 'primeng/dialog';
+import { StepsModule } from 'primeng/steps';
+import { FileUploadModule } from 'primeng/fileupload';
+
 @Component({
   selector: 'app-acceuil-client',
   standalone: true,
   imports: [
+
+    ReactiveFormsModule,  
+    FileUploadModule,
+    StepsModule,
     FormsModule,
     CommonModule,
     DataViewModule,
     TagModule,
     ButtonModule,
+    DialogModule
   ],
   templateUrl: './acceuil-client.component.html',
   styleUrls: ['./acceuil-client.component.css']
 })
 export class AcceuilClientComponent implements OnInit {
+  visible: boolean = false;
+
+    showDialog() {
+        this.visible = true;
+    }
   focus: any;
   focus1: any;
   layout: 'list' | 'grid' = 'list';

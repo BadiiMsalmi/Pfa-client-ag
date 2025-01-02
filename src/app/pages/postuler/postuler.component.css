@@ -1,0 +1,539 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f8cdda, #fbc2eb); /* Dégradé rose clair à blanc cassé */
+  color: #333;
+  margin: 0;
+  padding: 0;
+  height: 100vh; /* Assurer que le fond couvre toute la page */
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+/* Navbar */
+.custom-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: #c9c1f5; /* Fond blanc cassé */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  margin-bottom: 0px;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+
+}
+
+/* Logo dans la navbar */
+.custom-navbar .navbar-brand img {
+  height: 50px;
+}
+
+/* Liens dans la navbar */
+.custom-navbar .nav-link {
+  color: #007bff; /* Violet pour le contraste */
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: background-color 0.3s, transform 0.2s;
+  margin: 0 10px;
+}
+
+.custom-navbar .nav-link:hover {
+  background-color: #cdd5f8; /* Rose clair */
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+/* Champ de recherche */
+.custom-search {
+  width: 100%;
+  max-width: 800px;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background-color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  margin: 30px auto; /* Espacement */
+  display: block;
+  transition: box-shadow 0.3s, border-color 0.3s, transform 0.2s;
+  margin-bottom: 200px; /* Ajustez la valeur pour créer l'espace voulu */
+
+}
+/* Container principal */
+.modern-container {
+  display: flex;
+  height: 143vh;
+  background: #ffffff; /* Couleur de fond de la page */
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin: 2rem auto; /* Espace autour du conteneur principal */
+  max-width: 1200px; /* Largeur maximale pour un alignement centré */
+  flex-direction: column; /* Empile les blocs principalement en mobile */
+}
+/* Style pour le texte "KHEDMTI.TN" */
+.brand-name {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  color: #6c757d;
+}
+
+.brand-bold {
+  font-weight: bold;
+  color: #6c757d;
+}
+
+.brand-highlight {
+  font-weight: bold;
+  color: #007bff;
+  margin-left: 5px;
+}
+/* Bloc gauche */
+.modern-left-block {
+  flex: 1;
+  display: flex;
+  flex-direction: column; /* Empile les éléments verticalement */
+  align-items: center;
+  justify-content: flex-start; /* Aligne les éléments en haut */
+  background: #f5f7fa;
+  border-radius: 10px; /* Ajout d'arrondis */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Ombre douce */
+  padding: 1.5rem;
+  margin: 1rem; /* Espace autour du bloc gauche */
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Légère bordure */
+  gap: 1rem; /* Espacement uniforme entre les éléments */
+  width: 90%;
+}
+
+.modern-left-block p {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.modern-left-block input {
+  width: 80%;
+  padding: 0.75rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre pour l'input */
+  transition: all 0.3s ease;
+}
+
+.modern-left-block input:focus {
+  border-color: #42a5f5;
+  box-shadow: 0 2px 8px rgba(66, 165, 245, 0.3);
+}
+
+/* Bloc droit */
+.modern-right-block {
+  flex: 2;
+  display: flex;
+  flex-direction: column; /* Empile les éléments verticalement */
+  gap: 1rem; /* Espacement uniforme entre les éléments */
+  margin: 1rem;
+}
+
+.modern-top-block,
+.modern-bottom-block {
+  width: 115%; /* Utiliser toute la largeur disponible */
+
+  flex: 1;
+  display: flex;
+  flex-direction: column; /* Dispose les contenus verticalement */
+  align-items: flex-start; /* Aligne à gauche */
+  justify-content: flex-start; /* Aligne en haut */
+  padding: 2rem;
+  background: #f5f7fa;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.modern-top-block label,
+.modern-bottom-block label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.modern-top-block input,
+.modern-top-block select,
+.modern-bottom-block textarea,
+.modern-bottom-block input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+  margin-bottom: 1rem; /* Espacement entre les champs */
+}
+
+.modern-bottom-block textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.modern-top-block button,
+.modern-bottom-block button {
+  align-self: center;
+  padding: 0.7rem 1.5rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+
+
+
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (min-width: 900px) {
+  .modern-container {
+    flex-direction: row; /* Passe en disposition horizontale */
+  }
+}
+  .modern-left-block,
+  .modern-right-block {
+    width: auto; /* Adapte la largeur en mode desktop */
+  }
+  /* Conteneur pour Pays et Région */
+.form-group-inline {
+  display: flex;
+  justify-content: space-between; /* Espacement entre les champs */
+  align-items: center; /* Alignement vertical centré */
+  gap: 1rem; /* Espace entre les deux champs */
+  margin-bottom: 1rem; /* Espacement avec les autres éléments */
+}
+
+.form-group-inline label {
+  font-weight: bold;
+  margin-right: 0.5rem; /* Espacement entre label et champ */
+}
+
+.form-group-inline select {
+  flex: 3; /* Les sélections prennent la même largeur */
+  padding: 0.5rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+}
+/* Conteneur pour Pays et Région */
+.form-group-inline {
+  display: flex;
+  flex-direction: column; /* Empile les champs en mobile */
+  gap: 1rem; /* Espace entre les deux champs */
+  width: 100%; /* Les champs prennent toute la largeur */
+  margin-bottom: 1rem; /* Espacement avec les autres éléments */
+}
+
+.form-group-inline label {
+  font-weight: bold;
+  margin-bottom: 0.5rem; /* Espacement entre label et champ */
+}
+
+.form-group-inline select {
+  width: 100%; /* Les sélections s'étendent sur toute la largeur */
+  padding: 0.75rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+}
+
+/* Conteneur pour le code pays et numéro de téléphone */
+.phone-input-container {
+  display: flex;
+  justify-content: space-between; /* Espacement entre les deux champs */
+  gap: 1rem; /* Espacement entre le code pays et le numéro de téléphone */
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+/* Code pays */
+.country-code {
+  width: 40%; /* Le code pays prend 40% de la largeur */
+  padding: 0.75rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+/* Numéro de téléphone */
+.phone-number {
+  width: 200%; /* Le numéro de téléphone prend 60% de la largeur */
+  padding: 0.75rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+/* Disposition horizontale sur écrans larges */
+@media (min-width: 900px) {
+  .form-group-inline {
+    flex-direction: row; /* Affiche Pays et Région côte à côte */
+    justify-content: space-between; /* Sépare les champs horizontalement */
+    gap: 2rem; /* Augmente l'espace entre les deux champs */
+  }
+
+  .form-group-inline > div {
+    flex: 1; /* Chaque champ prend une largeur égale */
+  }
+
+  .phone-input-container {
+    flex-direction: row; /* Afficher en ligne sur grands écrans */
+    gap: 1rem;
+  }
+
+  .country-code,
+  .phone-number {
+    width: 70%; /* Chaque champ prend 48% de la largeur (ajusté pour être équilibré) */
+  }
+}
+
+
+/* Effet de focus pour les champs */
+.phone-number:focus,
+.country-code:focus {
+  border-color: #42a5f5; /* Change la couleur de la bordure quand le champ est actif */
+  box-shadow: 0 2px 8px rgba(66, 165, 245, 0.3); /* Ajoute une ombre légère autour du champ */
+}
+
+
+/* Style pour le label */
+label {
+  font-size: 1.1rem; /* Taille du texte du label */
+  font-weight: bold; /* Gras pour le label */
+  margin-bottom: 0.5rem; /* Espacement sous le label */
+  display: block; /* Pour s'assurer que le label occupe toute la largeur */
+  color: #333; /* Couleur sombre pour le texte */
+}
+
+/* Style pour l'input */
+div input {
+  width: 100%; /* L'input prend toute la largeur disponible */
+  padding: 0.75rem; /* Espacement intérieur de l'input */
+  border: 1px solid #e0e0e0; /* Bordure subtile */
+  border-radius: 8px; /* Coins arrondis pour un aspect plus doux */
+  font-size: 1rem; /* Taille de la police dans l'input */
+  outline: none; /* Retire la bordure bleue par défaut du focus */
+  transition: all 0.3s ease; /* Transition fluide lors du focus */
+  margin-bottom: 1rem; /* Espacement sous l'input */
+}
+
+/* Effet de focus pour l'input */
+div input:focus {
+  border-color: #42a5f5; /* Bordure bleue lorsque l'input est sélectionné */
+  box-shadow: 0 2px 8px rgba(66, 165, 245, 0.3); /* Ombre légère pour attirer l'attention */
+}
+/* Style général pour les titres h5 */
+/* Style général pour les titres h5 */
+h5 {
+  font-size: 1rem; /* Réduit la taille du texte */
+  font-weight: 500;   /* Poids de la police légèrement plus léger */
+  color: #333;        /* Couleur sombre */
+  margin-bottom: 0.5rem; /* Moins d'espace sous le titre */
+  text-transform: none; /* Retirer les majuscules */
+  letter-spacing: 0.5px; /* Espacement léger entre les lettres */
+  font-family: 'Arial', sans-serif; /* Police sans empattement */
+  text-align: left; /* Alignement à gauche */
+}
+
+/* Style pour h5 dans un conteneur spécifique */
+.modern-right-block h5 {
+  color: #007bff; /* Couleur bleue spécifique pour un h5 dans ce bloc */
+  margin-top: 0.5rem; /* Espacement au-dessus du h5 */
+}
+
+/* Style pour h5 dans un conteneur spécifique */
+.modern-right-block h5 {
+  color: #007bff; /* Couleur bleue spécifique pour un h5 dans ce bloc */
+  margin-top: 1rem; /* Espacement au-dessus du h5 */
+}
+/* Mettre en valeur les labels */
+.modern-left-block .details ul li strong {
+  font-weight: bold; /* Surligner les titres dans les détails */
+  color: #333; /* Couleur plu
+  
+  s sombre pour plus de contraste */
+}
+
+/* Ajout d'une petite bordure pour séparer les sections */
+.modern-left-block .details ul li + li {
+  border-top: 1px solid #eee; /* Séparation légère entre les éléments */
+  padding-top: 0.8rem; /* Un peu d'espace avant le prochain élément */
+}
+
+/* Style général pour le bloc des détails */
+.modern-left-block .details {
+  width: 100%; /* Utiliser toute la largeur disponible */
+  max-width: 60px; /* Augmenter la largeur maximale */
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 1px; /* Réduire légèrement le padding */
+  margin: 1px auto; /* Espacement plus large autour */
+}
+
+/* Titre du bloc */
+.modern-left-block .details h3 {
+  font-size: 1.3rem; /* Réduire légèrement la taille de la police */
+  font-weight: bold; /* Titre en gras pour plus de contraste */
+  color:#007bff; /* Couleur sombre pour lisibilité */
+  text-align: center; /* Centrer le titre */
+  margin-bottom: 0.8rem; /* Réduire l'espacement sous le titre */
+}
+
+
+
+.nom-prenom {
+  display: flex; /* Affiche les éléments sur une seule ligne */
+  justify-content: space-between; /* Espace égal entre les champs */
+  gap: 2rem; /* Espacement entre le nom et le prénom */
+  width: 100%; /* Assure que tout occupe la largeur disponible */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column; /* Empile le label et l'input */
+  flex: 1; /* Les deux champs prennent un espace égal */
+}
+
+label h5 {
+  font-size: 1rem; /* Taille de texte plus petite */
+  margin-bottom: 0.5rem; /* Espacement entre le label et le champ */
+}
+
+input {
+  padding: 0.75rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+input:focus {
+  border-color: #42a5f5;
+  box-shadow: 0 2px 8px rgba(66, 165, 245, 0.3);
+}
+
+
+/* Bloc gauche */
+.modern-left-block {
+  flex: 0 2 100px; /* Flexibilité et largeur minimale */
+  display: flex;
+  flex-direction: column;
+ 
+  background: #f5f7fa; /* Couleur de fond douce */
+  border-radius: 10px; /* Coins arrondis pour un design moderne */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Ombre légère pour un effet de profondeur */
+  padding: 1.5rem; /* Espacement interne */
+  margin: 1rem; /* Espacement autour du bloc */
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Bordure fine pour délimiter le bloc */
+  width: 100%; /* Prendre toute la largeur disponible */
+  max-width: 300px; /* Largeur maximale */
+  box-sizing: border-box; /* Inclure padding et bordure dans la largeur */
+}
+
+/* Style général pour le bloc des détails */
+.modern-left-block .details {
+  width: 90%; /* Utiliser toute la largeur disponible */
+  max-width: 600px; /* Largeur maximale */
+  background: #f9f9f9; /* Couleur de fond des détails */
+  border: 1px solid #ddd; /* Bordure légère pour délimiter les sections */
+  border-radius: 8px; /* Coins arrondis */
+  padding: 20px; /* Espacement interne */
+  margin: 15px auto; /* Espacement autour pour centrer le contenu */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Ombre douce */
+}
+
+/* Titre du bloc des détails */
+.modern-left-block .details h3 {
+  font-size: 1.3rem; /* Taille de police légèrement plus grande */
+  font-weight: bold; /* Titre en gras pour le contraste */
+  color: #444; /* Couleur de texte plus foncée */
+  text-align: center; /* Centrer le titre */
+  margin-bottom: 1.2rem; /* Espacement sous le titre */
+  text-transform: uppercase; /* Mettre en majuscules */
+  letter-spacing: 1px; /* Espacement des lettres */
+}
+
+/* Liste des détails */
+.modern-left-block .details ul {
+  list-style: none; /* Supprimer les puces de la liste */
+  padding: 0;
+  margin: 0;
+}
+
+/* Élément de liste */
+.modern-left-block .details ul li {
+  font-size: 1rem; /* Taille de police standard */
+  line-height: 1.6; /* Espacement entre les lignes */
+  color: #555; /* Couleur du texte */
+  margin-bottom: 0.8rem; /* Espacement entre les éléments de la liste */
+  text-align: left; /* Aligner le texte à gauche */
+}
+
+/* Mettre en valeur les labels dans la liste des détails */
+.modern-left-block .details ul li strong {
+  font-weight: bold; /* Surligner les titres dans les éléments de liste */
+  color: #333; /* Couleur plus sombre pour une meilleure lisibilité */
+}
+
+/* Séparation légère entre les éléments de la liste */
+.modern-left-block .details ul li + li {
+  border-top: 1px solid #eee; /* Ajouter une bordure légère pour séparer les éléments */
+  padding-top: 0.8rem; /* Espacement avant le prochain élément */
+}
+
+.modern-container {
+  display: flex;
+}
+
+.modern-left-block {
+  flex: 1;
+  width: 40%;
+}
+
+.modern-right-block {
+  flex: 1.5; /* Pour donner un peu plus de poids au bloc de droite */
+  width: 130%;
+}
+.footer {
+  background: #464545; /* Changer la couleur de fond ici */
+  color: #ffffff;
+  padding: 20px 0;
+  margin-top: 0; /* Suppression de l'espace entre le footer et la section */
+  position: relative; /* Ajouter si nécessaire pour éviter un décalage */
+  }
+  
+
+/* Autres styles de footer */
+.footer a:hover {
+color: #ff6f61;
+text-decoration: underline;
+}

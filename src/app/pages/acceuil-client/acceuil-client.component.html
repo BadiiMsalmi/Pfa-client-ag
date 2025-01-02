@@ -11,10 +11,10 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" routerLink="/">Accueil</a>
+            <a class="nav-link" routerLink="/acceuil-client">Accueil</a> 
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/contact">Contact</a>
+            <a class="nav-link" routerLink="/contact"  >Contact</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/profile">Profil</a>
@@ -32,10 +32,12 @@
   </nav>
   
   <!-- Search input -->
-  <div class="container mt-4">
+  <div class="container mt-4 custom-search-container" >
     <input type="text" class="form-control custom-search" placeholder="Rechercher..." />
   </div>
   
+  
+  <br>
   <!-- Main section -->
   <section class="section section-lg pt-lg-4 mt--200">
     <div class="container">
@@ -128,18 +130,14 @@
                         <div class="text-lg font-medium text-900 mt-2">{{ job.title }}</div>
                         <div class="text-sm font-medium text-700">{{ job.company }}</div>
                       </div>
-                      <div class="surface-100 p-1" style="border-radius: 30px">
-                        <div class="surface-0 flex align-items-center gap-2 justify-content-center py-1 px-2" style="border-radius: 30px; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.06)">
-                          <span class="text-900 font-medium text-sm">{{ job.rating }}</span>
-                          <i class="pi pi-star-fill text-yellow-500"></i>
-                        </div>
-                      </div>
+                      
                     </div>
                     <div class="flex flex-column md:align-items-end gap-5">
                       <span class="text-xl font-semibold text-900">{{ job.salary }}</span>
                       <div class="flex flex-row-reverse md:flex-row gap-2">
                         <p-button icon="pi pi-heart" [outlined]="true"></p-button>
-                        <p-button icon="pi pi-eye" label="Voir l'offre"></p-button>
+                        <p-button icon="pi pi-eye"   routerLink="/postuler"
+                          label="Voir et postuler"   />
                       </div>
                     </div>
                   </div>
@@ -147,7 +145,7 @@
               </div>
             </div>
           </ng-template>
-  
+         
           <!-- Grid Template -->
           <ng-template pTemplate="grid" let-job>
             <div class="grid grid-nogutter">
@@ -166,17 +164,12 @@
                         <div class="text-lg font-medium text-900 mt-1">{{ job.title }}</div>
                         <div class="text-sm font-medium text-700">{{ job.company }}</div>
                       </div>
-                      <div class="surface-100 p-1" style="border-radius: 30px">
-                        <div class="surface-0 flex align-items-center gap-2 justify-content-center py-1 px-2" style="border-radius: 30px; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.06)">
-                          <span class="text-900 font-medium text-sm">{{ job.rating }}</span>
-                          <i class="pi pi-star-fill text-yellow-500"></i>
-                        </div>
-                      </div>
+                    
                     </div>
                     <div class="flex flex-column gap-4 mt-4">
                       <span class="text-2xl font-semibold">{{ job.salary }}</span>
                       <div class="flex gap-2">
-                        <p-button icon="pi pi-eye" label="Voir l'offre"></p-button>
+                        <p-button icon="pi pi-eye" label="Voir et postuler"   />
                         <p-button icon="pi pi-heart" [outlined]="true"></p-button>
                       </div>
                       <a href="javascript:void(0)" class="btn btn-primary mt-4">Explorer les offres</a>
@@ -189,7 +182,57 @@
           </ng-template>
         </p-dataView>
       </div>
-    
+
+      <p-dialog 
+      header="Header" 
+      [modal]="true"
+      [(visible)]="visible" 
+      [style]="{ width: '50rem' }" 
+      [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }">
+          <p class="mb-5">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+          <p class="mb-5">
+              "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
+              ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
+              adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea
+              commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+          </p>
+          <p class="mb-5">
+              At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui
+              officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime
+              placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non
+              recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
+          </p>
+          <p class="mb-5">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+          <p class="mb-5">
+              "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
+              ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
+              adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea
+              commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+          </p>
+          <p>
+              At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui
+              officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime
+              placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non
+              recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
+          </p>
+  </p-dialog>
   </section>
   
+  <footer class="footer navbar-light ">
+    <div class="container">
+       
+        <!-- Copyright -->
+        <div class="row">
+            <div class="col text-center">
+                <p class="small mb-0">© 2024 KHEDMTI.TN. All rights reserved. | Designed with <span style="color: red;">♥</span> by KHEDMTI Team.</p>
+            </div>
+        </div>
+    </div>
+  </footer>
   

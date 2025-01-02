@@ -17,8 +17,8 @@ export class LayoutComponent {
   sidebarItems = [
     { label: 'Dashboard', route: '/dashboard', icon: 'pi pi-home' },
     { label: 'User Manager', route: '/gestion-users', icon: 'pi pi-users' },
-    { label: 'Job Manager', route: '/gestion-annonces', icon: 'pi pi-briefcase' },
-    { label: 'Contact Manager', route: '/gestion-annonces', icon: 'pi pi-envelope'    },
+    { label: 'Job Manager', route: '/gestion-jobs', icon: 'pi pi-briefcase' },
+    { label: 'Contact Manager', route: '/gestion-contacts', icon: 'pi pi-envelope'    },
     { label: 'Recommandation ', route: '/gestion-annonces', icon: 'pi pi-thumbs-up'    },
 
 

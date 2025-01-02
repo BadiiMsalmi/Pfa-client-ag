@@ -1,0 +1,24 @@
+<br>
+<div class="grid">
+  <!-- Parcours des contacts filtrés -->
+  <div *ngFor="let contact of filteredContacts; let i = index" class="col-12 sm:col-6 md:col-4">
+    <p-card [header]="contact.name" subheader="{{ contact.address }}" [style]="{ width: '100%' }">
+      
+      <!-- Contenu principal -->
+      <p>
+        <strong>Message :</strong> {{ contact.message }}
+      </p>
+      
+      <p>
+        <strong>Date de création :</strong> {{ contact.createdAt }}
+      </p>
+
+      <ng-template pTemplate="footer">
+        <div class="flex gap-3 mt-1">
+          <p-button   icon="pi pi-times" label="Cancel" severity="secondary" class="w-full" styleClass="w-full" />
+          <p-button  icon="pi pi-trash" label="Save" severity="danger" class="w-full" styleClass="w-full" />
+        </div>
+      </ng-template>
+    </p-card>
+  </div>
+</div>

@@ -1,0 +1,119 @@
+
+<div class="grid">
+    <div class="col-12 md:col-6 lg:col-4">
+        <div class="surface-card shadow-2 p-3 border-round">
+            <div class="flex justify-content-between mb-3">
+                <div>
+                    <span class="block text-500 font-medium mb-3">Total Job</span>
+                    <div class="text-900 font-medium text-xl">152</div>
+                </div>
+                <div class="flex align-items-center justify-content-center bg-blue-100 border-round" style="width:2.5rem;height:2.5rem">
+                    <i class="pi pi-user text-blue-500 text-xl"></i>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+    <div class="col-12 md:col-6 lg:col-4">
+        <div class="surface-card shadow-2 p-3 border-round">
+            <div class="flex justify-content-between mb-3">
+                <div>
+                    <span class="block text-500 font-medium mb-3">Total Company Job</span>
+                    <div class="text-900 font-medium text-xl">52</div>
+                </div>
+                <div class="flex align-items-center justify-content-center bg-orange-100 border-round" style="width:2.5rem;height:2.5rem">
+                    <i class="pi pi-building text-orange-500 text-xl"></i>
+                </div>
+            </div>
+     
+        </div>
+    </div>
+    <div class="col-12 md:col-6 lg:col-4">
+        <div class="surface-card shadow-2 p-3 border-round">
+            <div class="flex justify-content-between mb-3">
+                <div>
+                    <span class="block text-500 font-medium mb-3">Total Condidat Job</span>
+                    <div class="text-900 font-medium text-xl">100</div>
+                </div>
+                <div class="flex align-items-center justify-content-center bg-cyan-100 border-round" style="width:2.5rem;height:2.5rem">
+                  <i class="pi pi-user text-cyan-500 text-xl"></i>
+                </div>
+            </div>
+ 
+        </div>
+    </div>
+ 
+</div>
+<div class="main-content">
+
+    <p-table
+    #dt
+    [value]="filteredJobs"
+    (sortFunction)="customSort($event)"
+    styleClass="p-datatable-striped"
+    [paginator]="true"
+    [rows]="5"
+    [tableStyle]="{ 'min-width': '60rem' }"
+    [customSort]="true"
+  >
+    <ng-template pTemplate="caption">
+      <div class="flex align-center justify-center ml-auto">
+        <h5 class="mr-3">Manage Jobs</h5>
+        <div class="flex align-center ml-auto">
+          <span class="p-input-icon-left ml-auto">
+            <i class="pi pi-search"></i>
+            <input
+              type="text"
+              [(ngModel)]="searchQuery"
+              (input)="onSearch()"
+              pInputText
+              style="width: 180px;"
+              placeholder="Search jobs"
+            />
+          </span>
+        </div>
+      </div>
+    </ng-template>
+  
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="profession">
+          Profession <p-sortIcon field="profession"></p-sortIcon>
+        </th>
+        <th pSortableColumn="company">
+          Company <p-sortIcon field="company"></p-sortIcon>
+        </th>
+        <th pSortableColumn="address">
+          Address <p-sortIcon field="address"></p-sortIcon>
+        </th>
+        <th pSortableColumn="candidate">
+          Candidate <p-sortIcon field="candidate"></p-sortIcon>
+        </th>
+        <th pSortableColumn="createdAt">
+            Created_at <p-sortIcon field="createdAt"></p-sortIcon>
+          </th>
+          
+        <th>Action</th>
+      </tr>
+    </ng-template>
+  
+    <ng-template pTemplate="body" let-job>
+      <tr>
+        <td>{{ job.profession }}</td>
+        <td>{{ job.company }}</td>
+        <td>{{ job.address }}</td>
+        <td>{{ job.candidate }}</td>
+        <td>{{ job.createdAt }}</td>
+        <td>
+          <p-button
+            pRipple
+            icon="pi pi-trash text-blue-500 text-xl"
+            [rounded]="true"
+            [outlined]="true"
+          ></p-button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  
+</div>

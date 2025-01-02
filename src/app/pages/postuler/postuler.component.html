@@ -1,0 +1,135 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
+  <div class="container">
+      <a class="navbar-brand" href="#">
+          <span class="brand-name">
+            <span class="brand-bold">KHEDMTI</span><span class="brand-highlight">.TN</span>
+          </span>
+        </a>
+
+    <!-- Menu -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/acceuil-client">Accueil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/contact">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/profile">Profil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link logout-link" href="#">
+            <i class="logout-icon"></i>
+            Logout
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="modern-container">
+  <!-- Bloc gauche -->
+  <div class="modern-left-block">
+    <img src="path_to_your_logo.png" alt="Logo" class="details-logo">
+    <br>
+    <div class="details">
+      <ul>
+        <li><strong>Type de poste :</strong> CDI</li>
+        <li><strong>Lieu de travail :</strong> Mejez El Bab, Béja, Tunisie</li>
+        <li><strong>Expérience :</strong> Plus que 10 ans</li>
+        <li><strong>Niveau d'études </strong> Bac + 5</li>
+        <li><strong>Salaire :</strong> 1500D </li>
+        <li><strong>Disponibilité :</strong> Plein temps</li>
+        <li><strong>Langues :</strong> Arabe, Français, Anglais</li>
+        <li><strong>Mobilité :</strong> Locale</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Bloc droit -->
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit">
+    <div class="modern-right-block">
+      <div class="modern-top-block">
+        <div class="nom-prenom">
+          <div class="form-group">
+            <label for="nom"><h5>Nom:</h5></label>
+            <input type="text" id="nom" placeholder="Taper votre nom" formControlName="nom" />
+          </div>
+          <div class="form-group">
+            <label for="prenom"><h5>Prénom:</h5></label>
+            <input type="text" id="prenom" placeholder="Taper votre prénom"formControlName="prénom" />
+          </div>
+        </div>
+
+        <div class="form-group-inline">
+          <div>
+            <label for="pays"><h5>Pays :</h5></label>
+            <select id="pays" name="pays" class="form-control">
+              <option value="tunisie">Tunisie</option>
+              <option value="france">France</option>
+              <option value="maroc">Maroc</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="region"><h5>Région :</h5></label>
+            <select id="region" name="region" class="form-control">
+              <option value="ariana">Ariana</option>
+              <option value="tunis">Tunis</option>
+              <option value="sfax">Sfax</option>
+              <option value="monastir">Monastir</option>
+              <option value="gabes">Gabès</option>
+              <option value="gafsa">Gafsa</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Téléphone -->
+        <div class="form-group">
+          <label for="telephone"><h5>Téléphone :</h5></label>
+          <div class="phone-input-container">
+            <select class="country-code" id="country-code" name="country-code">
+              <option value="+216">Tunisie (+216)</option>
+              <option value="+33">France (+33)</option>
+              <option value="+1">États-Unis (+1)</option>
+              <option value="+44">Royaume-Uni (+44)</option>
+              <option value="+212">Maroc (+212)</option>
+            </select>
+            <input type="tel" class="phone-number" placeholder="Numéro de téléphone" id="telephone" name="telephone" required  formControlName="telephone">
+          </div>
+        </div>
+      </div>
+
+      <div class="modern-bottom-block">
+        <h5>Lettre de Motivation:</h5>
+        <textarea placeholder="Entrez votre message"></textarea>
+
+        <!-- Formulaire pour télécharger le CV -->
+        <div class="form-group">
+          <label for="cv"><h5>Votre CV :</h5></label>
+          <input type="file" id="cv" name="cv" class="form-control-file" multiple />
+        </div>
+
+        <div >
+          <button type="submit" class="btn btn-primary">Envoyer</button>
+        </div>
+      </div>
+    </div>
+
+  </form>
+</div>
+    <!-- Footer -->
+    <footer class="footer navbar-light ">
+      <div class="container">
+         
+          <!-- Copyright -->
+          <div class="row">
+              <div class="col text-center">
+                  <p class="small mb-0">© 2024 KHEDMTI.TN. All rights reserved. | Designed with <span style="color: red;">♥</span> by KHEDMTI Team.</p>
+              </div>
+          </div>
+      </div>
+    </footer>
+    

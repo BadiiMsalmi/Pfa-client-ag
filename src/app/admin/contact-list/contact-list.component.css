@@ -1,0 +1,54 @@
+/* Grid layout for cards */
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Adds space between cards */
+    justify-content: space-between;
+}
+
+/* Ensure all cards have the same width and height */
+.col-12 {
+    width: 100%; /* Full width for small screens */
+}
+
+.sm\:col-6 {
+    width: 48%; /* For small screens, cards take up half the width */
+}
+
+.md\:col-4 {
+    width: 31%; /* For medium screens, cards take up 1/3 of the width */
+}
+
+.lg\:col-3 {
+    width: 23%; /* For large screens, cards take up 1/4 of the width */
+}
+
+/* Apply equal height to all cards */
+.p-card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    min-height: 300px; /* Set a fixed minimum height for all cards */
+    display: flex;
+    flex-direction: column; /* Ensures the card content stacks vertically */
+    justify-content: space-between; /* Ensures the footer stays at the bottom */
+}
+
+/* Optional: Add hover effect for cards */
+.p-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+/* Ensure that any layout container around the breadcrumb doesn't add unwanted padding or background */
+.cardd {
+    background: transparent !important; /* Remove background from card container */
+    box-shadow: none !important; /* Optionally remove shadow if it's there */
+    padding: 0 !important; /* Remove padding if necessary */
+  }
+  
+  .p-breadcrumb {
+    background: transparent !important; /* Remove background from breadcrumb */
+    padding: 0 !important; /* Remove any padding */
+    box-shadow: none !important; /* Remove any shadow */
+  }
+  
