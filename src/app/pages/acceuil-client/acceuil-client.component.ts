@@ -8,6 +8,8 @@ import { RatingModule } from 'primeng/rating';
 import { DialogModule } from 'primeng/dialog';
 import { StepsModule } from 'primeng/steps';
 import { FileUploadModule } from 'primeng/fileupload';
+import { routes } from '../../app.routes';
+import { provideRouter } from '@angular/router';
 
 @Component({
   selector: 'app-acceuil-client',
@@ -24,6 +26,7 @@ import { FileUploadModule } from 'primeng/fileupload';
     ButtonModule,
     DialogModule
   ],
+ 
   templateUrl: './acceuil-client.component.html',
   styleUrls: ['./acceuil-client.component.css']
 })
