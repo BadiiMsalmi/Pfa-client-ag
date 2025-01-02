@@ -55,4 +55,13 @@ export class ContactListComponent implements OnInit {
       contact.message.toLowerCase().includes(query.toLowerCase())
     );
   }
+
+  // Fonction pour supprimer un contact
+  removeContact(contact: Contact) {
+    this.contacts = this.contacts.filter(c => c !== contact);
+    this.filteredContacts = this.filteredContacts.filter(c => c !== contact);
+
+    // Mettre à jour le localStorage après la suppression
+    localStorage.setItem('contacts', JSON.stringify(this.contacts));
+  }
 }
