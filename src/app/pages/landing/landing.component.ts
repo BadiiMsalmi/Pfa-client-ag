@@ -12,12 +12,14 @@ import { AuthControllerService } from '../../services/services/auth-controller.s
 import { TokenService } from '../../token/token.service';
 import { RegisterRequest } from '../../services/models/register-request';
 import { AuthenticationRequest } from '../../services/models/authentication-request';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-landing',
   standalone: true,
   imports: [
-    CommonModule,
+    CommonModule,  // Add this import
+    HttpClientModule,  // Add this import
     ButtonDirective,
     Ripple,
     InputTextModule,
