@@ -23,6 +23,13 @@ export class AuthControllerService extends BaseService {
     super(config, http);
   }
 
+  static readonly LogoutPath = '/api/v1/auth/logout';
+  logout(context?: HttpContext): Observable<void> {
+    return this.http.post<void>(this.rootUrl + AuthControllerService.LogoutPath, null, {
+      context,
+    });
+  }
+
   /** Path part for operation `register()` */
   static readonly RegisterPath = '/api/v1/auth/register';
 

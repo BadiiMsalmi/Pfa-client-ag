@@ -20,6 +20,8 @@ export function completeProfileRecruteur(http: HttpClient, rootUrl: string, para
     rb.body(params.body, 'application/json');
   }
 
+  rb.header('Authorization', `Bearer ${localStorage.getItem('token')}`);
+
   return http.request(
     rb.build({ responseType: 'text', accept: '*/*', context })
   ).pipe(

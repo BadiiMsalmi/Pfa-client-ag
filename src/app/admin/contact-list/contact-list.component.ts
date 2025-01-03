@@ -11,6 +11,7 @@ import { SortEvent } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
 import { FormsModule } from '@angular/forms';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
+// @ts-ignore
 import { Contact } from '../../services/models/contact';
 
 @Component({

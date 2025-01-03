@@ -15,13 +15,14 @@ import { EditProfilComponent } from './pages/edit-profil/edit-profil.component';
 import { JobListComponent } from './admin/job-list/job-list.component';
 import { ContactListComponent } from './admin/contact-list/contact-list.component';
 import { PostulerComponent } from './pages/postuler/postuler.component';
+import {CompleteProfileComponent} from './pages/complete-profile/complete-profile.component';
 
 export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
   },
-  
+
   {
     path: 'edit-profile',
     component: EditProfilComponent
@@ -35,12 +36,12 @@ export const routes: Routes = [
     path:'acceuil',
     component:LandingComponent
   },
-  
+
   {
     path:'contact',
     component:ContactClientComponent
   },
-  
+
 
   {
     path:'profile',
@@ -50,7 +51,7 @@ export const routes: Routes = [
 
   { path: 'admin/login', component: AdminLoginComponent },
   { path: 'acceuil-client', component: AcceuilClientComponent },
-  
+  {path: 'completeProfile' , component: CompleteProfileComponent},
   {
     path: '',
     component: LayoutComponent,

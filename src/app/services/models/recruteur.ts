@@ -19,6 +19,7 @@ export interface Recruteur {
   id?: number;
   inscriptionDate?: string;
   lastname?: string;
+  location?: string;
   notifications?: Array<Notification>;
   offres?: Array<OffreEmploi>;
   password?: string;

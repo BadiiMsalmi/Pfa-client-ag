@@ -1,1 +1,96 @@
-<p>complete-profile works!</p>
+<div class="container">
+  <form (ngSubmit)="onSubmit()" #competenceForm="ngForm">
+    <!-- Email Input -->
+    <div class="form-group mb-3">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        class="form-control"
+        [(ngModel)]="user.email"
+        required
+        placeholder="Enter your email"
+      />
+    </div>
+
+    <!-- Entreprise Input -->
+    <div class="form-group mb-3" [hidden]="!isRecruiter">
+      <label for="entreprise">Entreprise</label>
+      <input
+        type="text"
+        id="entreprise"
+        name="entreprise"
+        class="form-control"
+        [(ngModel)]="user.entreprise"
+
+        placeholder="Enter your entreprise"
+      />
+    </div>
+
+    <!-- Years of Experience Input -->
+    <div class="form-group mb-3" [hidden]="isRecruiter">
+      <label for="experience">Years of Experience</label>
+      <input
+        type="number"
+        id="experience"
+        name="experience"
+        class="form-control"
+        [(ngModel)]="user.experiences"
+        required
+        placeholder="Enter your years of experience"
+        min="0"
+      />
+    </div>
+
+    <!-- Competences Dropdown -->
+    <div class="form-group mb-3" [hidden]="isRecruiter">
+      <label for="competences">Select Competences</label>
+      <select
+        id="competences"
+        name="competences"
+        class="form-control"
+        [(ngModel)]="user.selectedCompetences"
+        multiple
+        required
+      >
+        <option *ngFor="let competence of competences" [value]="competence">
+          {{ competence.name }}
+        </option>
+      </select>
+    </div>
+
+    <!-- Add New Competence -->
+    <div class="form-group mb-3" [hidden]="isRecruiter">
+      <label for="newCompetence">Add New Competence</label>
+      <div class="input-group">
+        <input
+          type="text"
+          id="newCompetence"
+          name="newCompetence"
+          class="form-control"
+          [(ngModel)]="newCompetenceName"
+          placeholder="Enter a new competence"
+        />
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="addCompetence()"
+          [disabled]="!newCompetenceName.trim()"
+        >
+          Add Competence
+        </button>
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="form-group">
+      <button
+        type="submit"
+        class="btn btn-success"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+</div>

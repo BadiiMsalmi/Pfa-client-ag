@@ -20,6 +20,12 @@ import { getAllCandidats } from '../fn/candidat-controller/get-all-candidats';
 import { GetAllCandidats$Params } from '../fn/candidat-controller/get-all-candidats';
 import { getCandidatById } from '../fn/candidat-controller/get-candidat-by-id';
 import { GetCandidatById$Params } from '../fn/candidat-controller/get-candidat-by-id';
+import { getSavedJobs } from '../fn/candidat-controller/get-saved-jobs';
+import { GetSavedJobs$Params } from '../fn/candidat-controller/get-saved-jobs';
+import { OffreEmploi } from '../models/offre-emploi';
+import { OffreEmploiSearchDto } from '../models/offre-emploi-search-dto';
+import { searchOffres } from '../fn/candidat-controller/search-offres';
+import { SearchOffres$Params } from '../fn/candidat-controller/search-offres';
 import { updateCandidat } from '../fn/candidat-controller/update-candidat';
 import { UpdateCandidat$Params } from '../fn/candidat-controller/update-candidat';
 
@@ -54,6 +60,31 @@ export class CandidatControllerService extends BaseService {
     );
   }
 
+  /** Path part for operation `searchOffres()` */
+  static readonly SearchOffresPath = '/api/v1/candidats/searchOffre';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `searchOffres()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  searchOffres$Response(params: SearchOffres$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<OffreEmploiSearchDto>>> {
+    return searchOffres(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `searchOffres$Response()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  searchOffres(params: SearchOffres$Params, context?: HttpContext): Observable<Array<OffreEmploiSearchDto>> {
+    return this.searchOffres$Response(params, context).pipe(
+      map((r: StrictHttpResponse<Array<OffreEmploiSearchDto>>): Array<OffreEmploiSearchDto> => r.body)
+    );
+  }
+
   /** Path part for operation `createCandidat()` */
   static readonly CreateCandidatPath = '/api/v1/candidats/create';
 
@@ -76,6 +107,31 @@ export class CandidatControllerService extends BaseService {
   createCandidat(params: CreateCandidat$Params, context?: HttpContext): Observable<Candidat> {
     return this.createCandidat$Response(params, context).pipe(
       map((r: StrictHttpResponse<Candidat>): Candidat => r.body)
+    );
+  }
+
+  /** Path part for operation `getSavedJobs()` */
+  static readonly GetSavedJobsPath = '/api/v1/candidats/savedJobs';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `getSavedJobs()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getSavedJobs$Response(params?: GetSavedJobs$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<OffreEmploi>>> {
+    return getSavedJobs(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `getSavedJobs$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getSavedJobs(params?: GetSavedJobs$Params, context?: HttpContext): Observable<Array<OffreEmploi>> {
+    return this.getSavedJobs$Response(params, context).pipe(
+      map((r: StrictHttpResponse<Array<OffreEmploi>>): Array<OffreEmploi> => r.body)
     );
   }
 

@@ -11,9 +11,13 @@ import { BaseService } from '../base-service';
 import { ApiConfiguration } from '../api-configuration';
 import { StrictHttpResponse } from '../strict-http-response';
 
+import { deleteUserById } from '../fn/utilisateur-controller/delete-user-by-id';
+import { DeleteUserById$Params } from '../fn/utilisateur-controller/delete-user-by-id';
 import { getAllUsers } from '../fn/utilisateur-controller/get-all-users';
 import { GetAllUsers$Params } from '../fn/utilisateur-controller/get-all-users';
-import { UserEntity } from '../models/user-entity';
+import { getUserById } from '../fn/utilisateur-controller/get-user-by-id';
+import { GetUserById$Params } from '../fn/utilisateur-controller/get-user-by-id';
+import { UserDetailsDto } from '../models/user-details-dto';
 
 @Injectable({ providedIn: 'root' })
 export class UtilisateurControllerService extends BaseService {
@@ -21,17 +25,78 @@ export class UtilisateurControllerService extends BaseService {
     super(config, http);
   }
 
+  /** Path part for operation `getUserById()` */
+  static readonly GetUserByIdPath = '/api/v1/users/user/{id}';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `getUserById()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getUserById$Response(params: GetUserById$Params, context?: HttpContext): Observable<StrictHttpResponse<UserDetailsDto>> {
+    return getUserById(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `getUserById$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getUserById(params: GetUserById$Params, context?: HttpContext): Observable<UserDetailsDto> {
+    return this.getUserById$Response(params, context).pipe(
+      map((r: StrictHttpResponse<UserDetailsDto>): UserDetailsDto => r.body)
+    );
+  }
+
+  /** Path part for operation `deleteUserById()` */
+  static readonly DeleteUserByIdPath = '/api/v1/users/user/{id}';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `deleteUserById()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  deleteUserById$Response(params: DeleteUserById$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
+    return deleteUserById(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `deleteUserById$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  deleteUserById(params: DeleteUserById$Params, context?: HttpContext): Observable<void> {
+    return this.deleteUserById$Response(params, context).pipe(
+      map((r: StrictHttpResponse<void>): void => r.body)
+    );
+  }
+
+  /** Path part for operation `getAllUsers()` */
   static readonly GetAllUsersPath = '/api/v1/users/allUsers';
 
-
-  getAllUsers$Response(params?: GetAllUsers$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<UserEntity>>> {
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `getAllUsers()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getAllUsers$Response(params?: GetAllUsers$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<UserDetailsDto>>> {
     return getAllUsers(this.http, this.rootUrl, params, context);
   }
 
-  
-  getAllUsers(params?: GetAllUsers$Params, context?: HttpContext): Observable<Array<UserEntity>> {
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `getAllUsers$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getAllUsers(params?: GetAllUsers$Params, context?: HttpContext): Observable<Array<UserDetailsDto>> {
     return this.getAllUsers$Response(params, context).pipe(
-      map((r: StrictHttpResponse<Array<UserEntity>>): Array<UserEntity> => r.body)
+      map((r: StrictHttpResponse<Array<UserDetailsDto>>): Array<UserDetailsDto> => r.body)
     );
   }
 

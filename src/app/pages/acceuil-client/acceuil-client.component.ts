@@ -8,15 +8,17 @@ import { RatingModule } from 'primeng/rating';
 import { DialogModule } from 'primeng/dialog';
 import { StepsModule } from 'primeng/steps';
 import { FileUploadModule } from 'primeng/fileupload';
-import { routes } from '../../app.routes';
-import { provideRouter } from '@angular/router';
+import { AuthControllerService } from '../../services/services/auth-controller.service';
+import {Router} from '@angular/router';
+import {OffreEmploiControllerService} from '../../services/services/offre-emploi-controller.service';
+import {OffreEmploiDto} from '../../services/models/offre-emploi-dto';
 
 @Component({
   selector: 'app-acceuil-client',
   standalone: true,
   imports: [
 
-    ReactiveFormsModule,  
+    ReactiveFormsModule,
     FileUploadModule,
     StepsModule,
     FormsModule,
@@ -26,11 +28,18 @@ import { provideRouter } from '@angular/router';
     ButtonModule,
     DialogModule
   ],
- 
+
   templateUrl: './acceuil-client.component.html',
   styleUrls: ['./acceuil-client.component.css']
 })
 export class AcceuilClientComponent implements OnInit {
+
+  constructor(
+    private authService: AuthControllerService,
+    private router: Router,
+    private offreEmploiService: OffreEmploiControllerService
+  ) {
+  }
   visible: boolean = false;
 
     showDialog() {
@@ -40,52 +49,7 @@ export class AcceuilClientComponent implements OnInit {
   focus1: any;
   layout: 'list' | 'grid' = 'list';
 
-  jobs = [
-    {
-      id: '1',
-      title: 'Développeur Web Front-End',
-      company: 'Tech Innovators',
-      location: 'Tunis, Tunisie',
-      salary: '2500 TND / mois',
-      rating: 4.5,
-      jobType: 'CDI',
-      image: 'company1.jpg',
-      status: 'ACTIVE',
-    },
-    {
-      id: '2',
-      title: 'Chef de Projet IT',
-      company: 'Solutions Pro',
-      location: 'Sfax, Tunisie',
-      salary: '4000 TND / mois',
-      rating: 4.3,
-      jobType: 'CDD',
-      image: 'company2.jpg',
-      status: 'ACTIVE',
-    },
-    {
-      id: '3',
-      title: 'Consultant en Data Science',
-      company: 'Data Experts',
-      location: 'En télétravail',
-      salary: '3500 TND / mois',
-      rating: 4.7,
-      jobType: 'CDI',
-      image: 'company3.jpg',
-      status: 'ACTIVE',
-    },
-    {
-      id: '4',
-      title: 'Responsable Marketing',
-      company: 'Creative Minds',
-      location: 'Tunis, Tunisie',
-      salary: '3000 TND / mois',
-      rating: 4.0,
-      jobType: 'CDI',
-      image: 'company4.jpg',
-      status: 'INACTIVE',
-    },
-  ];
+  jobs : OffreEmploiDto[] = [];
 
   onLayoutChange(event: 'list' | 'grid') {
     this.layout = event;
@@ -102,5 +66,33 @@ export class AcceuilClientComponent implements OnInit {
     }
   }
 
-  ngOnInit() {}
+  ngOnInit():void {
+    this.offreEmploiService.getAllOffres().subscribe((
+      {
+        next:(res)=>{
+          this.jobs = res;
+          console.log(res)
+        },
+        error:(err)=>{
+
+        }
+      }
+    ))
+  }
+
+  goToOffre(id: number | undefined){
+    this.router.navigate(['postuler'], { queryParams: { jobId: id }})
+  }
+
+  logout(): void {
+    this.authService.logout().subscribe({
+      next: () => {
+        localStorage.removeItem('token'); // Remove token from localStorage
+        this.router.navigate(['/acceuil']); // Redirect to login page
+      },
+      error: (err) => {
+        console.error('Error during logout:', err);
+      },
+    });
+  }
 }

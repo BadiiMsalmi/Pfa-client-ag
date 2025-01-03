@@ -16,7 +16,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:8081",
+      "url": "http://localhost:8089",
       "description": "Local ENV"
     }
   ],
@@ -67,6 +67,36 @@
         }
       }
     },
+    "/formations/addFormation": {
+      "post": {
+        "tags": [
+          "formation-controller"
+        ],
+        "operationId": "createFormation",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Formation"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Formation"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/profile/recruteur/completeProfile": {
       "post": {
         "tags": [
@@ -100,7 +130,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ProfilCandidatDTO"
+                "type": "string"
               }
             }
           },
@@ -109,6 +139,130 @@
         "responses": {
           "200": {
             "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/offres/saveOffre/{id}": {
+      "post": {
+        "tags": [
+          "offre-emploi-controller"
+        ],
+        "operationId": "saveOffre",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/offres/postOffre": {
+      "post": {
+        "tags": [
+          "offre-emploi-controller"
+        ],
+        "operationId": "createOffre",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OffreEmploiDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/OffreEmploi"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/notification/createNew": {
+      "post": {
+        "tags": [
+          "notification-controller"
+        ],
+        "operationId": "createNotification",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NotificationDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotificationDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/candidats/searchOffre": {
+      "post": {
+        "tags": [
+          "candidat-controller"
+        ],
+        "operationId": "searchOffres",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OffreEmploiSearchDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OffreEmploiSearchDTO"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -203,6 +357,294 @@
         }
       }
     },
+    "/api/v1/administrateur/competence/addNew": {
+      "post": {
+        "tags": [
+          "administrateur-controller"
+        ],
+        "operationId": "addNewCompetence",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompetenceDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CompetenceDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/applications/refuserApplication/{appId}": {
+      "post": {
+        "tags": [
+          "application-controller"
+        ],
+        "operationId": "refuserApplication",
+        "parameters": [
+          {
+            "name": "appId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/applications/apply/{candidatId}/{offreId}": {
+      "post": {
+        "tags": [
+          "application-controller"
+        ],
+        "operationId": "apply",
+        "parameters": [
+          {
+            "name": "candidatId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "offreId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/applications/acceptApplication/{appId}": {
+      "post": {
+        "tags": [
+          "application-controller"
+        ],
+        "operationId": "accepterApplication",
+        "parameters": [
+          {
+            "name": "appId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/offres/updateoffre/{id}": {
+      "patch": {
+        "tags": [
+          "offre-emploi-controller"
+        ],
+        "operationId": "updateOffre",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OffreEmploiDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/OffreEmploi"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/formations": {
+      "get": {
+        "tags": [
+          "formation-controller"
+        ],
+        "operationId": "getAllFormations",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Formation"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/formations/{id}": {
+      "get": {
+        "tags": [
+          "formation-controller"
+        ],
+        "operationId": "getFormationById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Formation"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "formation-controller"
+        ],
+        "operationId": "deleteFormation",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/users/user/{id}": {
+      "get": {
+        "tags": [
+          "utilisateur-controller"
+        ],
+        "operationId": "getUserById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDetailsDTO"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "utilisateur-controller"
+        ],
+        "operationId": "deleteUserById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/v1/users/allUsers": {
       "get": {
         "tags": [
@@ -217,7 +659,209 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/UserEntity"
+                    "$ref": "#/components/schemas/UserDetailsDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/recommendations/offres/{candidatId}": {
+      "get": {
+        "tags": [
+          "recommendation-controller"
+        ],
+        "operationId": "getOffresRecommendations",
+        "parameters": [
+          {
+            "name": "candidatId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OffreRecommendationDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/recommendations/api/v1/recommendations/formations/{candidatId}": {
+      "get": {
+        "tags": [
+          "recommendation-controller"
+        ],
+        "operationId": "getFormationRecommendations",
+        "parameters": [
+          {
+            "name": "candidatId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FormationRecommendationDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/offres/trouverOffre/{id}": {
+      "get": {
+        "tags": [
+          "offre-emploi-controller"
+        ],
+        "operationId": "getOffreById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/OffreEmploi"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/offres/allOffres": {
+      "get": {
+        "tags": [
+          "offre-emploi-controller"
+        ],
+        "operationId": "getAllOffres",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OffreEmploi"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/offres/allOffresByRec/{id}": {
+      "get": {
+        "tags": [
+          "offre-emploi-controller"
+        ],
+        "operationId": "getAllOffresByRec",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OffreEmploi"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/notification/getNotifs": {
+      "get": {
+        "tags": [
+          "notification-controller"
+        ],
+        "operationId": "getAllNotifications",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/NotificationDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/candidats/savedJobs": {
+      "get": {
+        "tags": [
+          "candidat-controller"
+        ],
+        "operationId": "getSavedJobs",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OffreEmploi"
                   }
                 }
               }
@@ -280,6 +924,152 @@
         }
       }
     },
+    "/api/v1/administrateur/competence/getAll": {
+      "get": {
+        "tags": [
+          "administrateur-controller"
+        ],
+        "operationId": "getAllCompetences",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Competence"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/applications/offre/{offreId}": {
+      "get": {
+        "tags": [
+          "application-controller"
+        ],
+        "operationId": "getApplicationsForOffre",
+        "parameters": [
+          {
+            "name": "offreId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Application"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/applications/candidat/{candidatId}": {
+      "get": {
+        "tags": [
+          "application-controller"
+        ],
+        "operationId": "getApplicationsForCandidat",
+        "parameters": [
+          {
+            "name": "candidatId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Application"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/offres/unsaveOffre/{id}": {
+      "delete": {
+        "tags": [
+          "offre-emploi-controller"
+        ],
+        "operationId": "unsaveOffre",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/offres/deleteoffre/{id}": {
+      "delete": {
+        "tags": [
+          "offre-emploi-controller"
+        ],
+        "operationId": "deleteOffre",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/v1/candidats/remove/{id}": {
       "delete": {
         "tags": [
@@ -303,10 +1093,55 @@
           }
         }
       }
+    },
+    "/api/applications/annuler/{id}": {
+      "delete": {
+        "tags": [
+          "application-controller"
+        ],
+        "operationId": "annulerCandidature",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
+      "Application": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "appliedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "Pending",
+              "Accepted",
+              "Rejected"
+            ]
+          }
+        }
+      },
       "Candidat": {
         "type": "object",
         "properties": {
@@ -340,18 +1175,12 @@
           "profileCompleted": {
             "type": "boolean"
           },
+          "location": {
+            "type": "string"
+          },
           "inscriptionDate": {
             "type": "string",
             "format": "date-time"
-          },
-          "cv": {
-            "type": "string"
-          },
-          "tokens": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Token"
-            }
           },
           "notifications": {
             "type": "array",
@@ -359,19 +1188,32 @@
               "$ref": "#/components/schemas/Notification"
             }
           },
+          "cv": {
+            "type": "string"
+          },
+          "applications": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Application"
+            }
+          },
+          "tokens": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Token"
+            }
+          },
           "competences": {
             "type": "array",
             "items": {
-              "type": "string"
+              "$ref": "#/components/schemas/Competence"
             }
           },
           "experiences": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Experience"
-            }
+            "type": "integer",
+            "format": "int32"
           },
-          "offres": {
+          "offreEmploiSauvgarder": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/OffreEmploi"
@@ -386,38 +1228,29 @@
           "enabled": {
             "type": "boolean"
           },
-          "accountNonLocked": {
-            "type": "boolean"
-          },
           "username": {
             "type": "string"
+          },
+          "accountNonExpired": {
+            "type": "boolean"
           },
           "credentialsNonExpired": {
             "type": "boolean"
           },
-          "accountNonExpired": {
+          "accountNonLocked": {
             "type": "boolean"
           }
         }
       },
-      "Experience": {
+      "Competence": {
         "type": "object",
         "properties": {
           "id": {
             "type": "integer",
             "format": "int64"
           },
-          "post": {
+          "name": {
             "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "duree": {
-            "type": "string"
-          },
-          "candidat": {
-            "$ref": "#/components/schemas/Candidat"
           }
         }
       },
@@ -436,15 +1269,23 @@
             "type": "integer",
             "format": "int64"
           },
-          "message": {
+          "title": {
             "type": "string"
           },
-          "plateforme": {
+          "message": {
             "type": "string"
           },
           "dateCreation": {
             "type": "string",
-            "format": "date-time"
+            "format": "date"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "ROLE_ADMIN",
+              "ROLE_CANDIDAT",
+              "ROLE_RECRUTEUR"
+            ]
           },
           "user": {
             "$ref": "#/components/schemas/UserEntity"
@@ -464,12 +1305,6 @@
           "description": {
             "type": "string"
           },
-          "competences": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
           "experience": {
             "type": "integer",
             "format": "int32"
@@ -481,13 +1316,26 @@
             "type": "number",
             "format": "double"
           },
+          "status": {
+            "type": "string",
+            "enum": [
+              "OPEN",
+              "CLOSED"
+            ]
+          },
+          "competences": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Competence"
+            }
+          },
           "recruteur": {
             "$ref": "#/components/schemas/Recruteur"
           },
-          "candidats": {
+          "applications": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Candidat"
+              "$ref": "#/components/schemas/Application"
             }
           }
         }
@@ -525,9 +1373,18 @@
           "profileCompleted": {
             "type": "boolean"
           },
+          "location": {
+            "type": "string"
+          },
           "inscriptionDate": {
             "type": "string",
             "format": "date-time"
+          },
+          "notifications": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Notification"
+            }
           },
           "entreprise": {
             "type": "string"
@@ -536,12 +1393,6 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Token"
-            }
-          },
-          "notifications": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Notification"
             }
           },
           "offres": {
@@ -559,16 +1410,16 @@
           "enabled": {
             "type": "boolean"
           },
-          "accountNonLocked": {
-            "type": "boolean"
-          },
           "username": {
             "type": "string"
+          },
+          "accountNonExpired": {
+            "type": "boolean"
           },
           "credentialsNonExpired": {
             "type": "boolean"
           },
-          "accountNonExpired": {
+          "accountNonLocked": {
             "type": "boolean"
           }
         }
@@ -633,14 +1484,20 @@
           "profileCompleted": {
             "type": "boolean"
           },
+          "location": {
+            "type": "string"
+          },
           "inscriptionDate": {
             "type": "string",
             "format": "date-time"
           },
-          "enabled": {
-            "type": "boolean"
+          "notifications": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Notification"
+            }
           },
-          "accountNonLocked": {
+          "enabled": {
             "type": "boolean"
           },
           "authorities": {
@@ -652,11 +1509,38 @@
           "username": {
             "type": "string"
           },
+          "accountNonExpired": {
+            "type": "boolean"
+          },
           "credentialsNonExpired": {
             "type": "boolean"
           },
-          "accountNonExpired": {
+          "accountNonLocked": {
             "type": "boolean"
+          }
+        }
+      },
+      "Formation": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "titre": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "plateforme": {
+            "type": "string"
+          },
+          "competences": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Competence"
+            }
           }
         }
       },
@@ -671,26 +1555,91 @@
           }
         }
       },
-      "ProfilCandidatDTO": {
+      "OffreEmploiDTO": {
         "type": "object",
         "properties": {
-          "email": {
+          "titre": {
             "type": "string"
           },
-          "cv": {
+          "description": {
             "type": "string"
           },
           "competences": {
             "type": "array",
             "items": {
-              "type": "string"
+              "type": "integer",
+              "format": "int64"
             }
           },
-          "experiences": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Experience"
-            }
+          "experience": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "localisation": {
+            "type": "string"
+          },
+          "salaire": {
+            "type": "number",
+            "format": "double"
+          },
+          "recruteurId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "OPEN",
+              "CLOSED"
+            ]
+          }
+        }
+      },
+      "NotificationDTO": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "ROLE_ADMIN",
+              "ROLE_CANDIDAT",
+              "ROLE_RECRUTEUR"
+            ]
+          },
+          "user": {
+            "$ref": "#/components/schemas/UserEntity"
+          }
+        }
+      },
+      "OffreEmploiSearchDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "titre": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "experience": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "localisation": {
+            "type": "string"
+          },
+          "salaire": {
+            "type": "number",
+            "format": "double"
           }
         }
       },
@@ -757,6 +1706,90 @@
             "maxLength": 2147483647,
             "minLength": 8,
             "type": "string"
+          }
+        }
+      },
+      "CompetenceDTO": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "UserDetailsDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "firstname": {
+            "type": "string"
+          },
+          "lastname": {
+            "type": "string"
+          },
+          "accountname": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "ROLE_ADMIN",
+              "ROLE_CANDIDAT",
+              "ROLE_RECRUTEUR"
+            ]
+          }
+        }
+      },
+      "OffreRecommendationDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "titre": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "combinedScore": {
+            "type": "number",
+            "format": "double"
+          }
+        }
+      },
+      "FormationRecommendationDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "titre": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "plateforme": {
+            "type": "string"
+          },
+          "competence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "relevanceScore": {
+            "type": "number",
+            "format": "double"
           }
         }
       }

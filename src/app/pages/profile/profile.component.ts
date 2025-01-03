@@ -9,18 +9,22 @@ import { DialogModule } from 'primeng/dialog';
 import { MenuItem } from 'primeng/api';
 import { BrowserModule } from '@angular/platform-browser';
 import { FileUploadModule } from 'primeng/fileupload';  // Module pour FileUpload
-import { StepsModule } from 'primeng/steps'; 
+import { StepsModule } from 'primeng/steps';
+import {AuthControllerService} from '../../services/services/auth-controller.service';
+import {Router} from '@angular/router';
+import {UtilisateurControllerService} from '../../services/services/utilisateur-controller.service';
+import {UserDetailsDto} from '../../services/models/user-details-dto';
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [  
+  imports: [
     FormsModule,
     CommonModule,
     DataViewModule,
     TagModule,
     ButtonModule,
     DialogModule,
-    ReactiveFormsModule,  
+    ReactiveFormsModule,
     FileUploadModule,
     StepsModule
   ],
@@ -28,7 +32,37 @@ import { StepsModule } from 'primeng/steps';
   styleUrl: './profile.component.css'
 })
 export class ProfileComponent implements OnInit {
-  constructor() { }
 
-    ngOnInit() {}
+  profile: UserDetailsDto = {};
+  constructor(
+    private authService: AuthControllerService,
+    private userService: UtilisateurControllerService,
+    private router: Router
+  ) { }
+
+    ngOnInit() {
+
+      // @ts-ignore
+      let decodedJWT = JSON.parse(window.atob(localStorage.getItem('token').split('.')[1]));
+
+      console.log('name: ' + decodedJWT.id);
+      this.userService.getUserById({ id: decodedJWT.id }).subscribe({
+        next: (res)=>{
+          this.profile=res;
+          console.log(res)
+        }
+      })
+    }
+
+  logout(): void {
+    this.authService.logout().subscribe({
+      next: () => {
+        localStorage.removeItem('token'); // Remove token from localStorage
+        this.router.navigate(['/acceuil']); // Redirect to login page
+      },
+      error: (err) => {
+        console.error('Error during logout:', err);
+      },
+    });
+  }
 }

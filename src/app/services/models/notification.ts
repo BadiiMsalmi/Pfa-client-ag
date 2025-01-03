@@ -7,6 +7,7 @@ export interface Notification {
   dateCreation?: string;
   id?: number;
   message?: string;
-  plateforme?: string;
+  role?: 'ROLE_ADMIN' | 'ROLE_CANDIDAT' | 'ROLE_RECRUTEUR';
+  title?: string;
   user?: UserEntity;
 }

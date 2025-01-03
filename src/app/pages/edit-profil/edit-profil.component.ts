@@ -9,7 +9,9 @@ import { DialogModule } from 'primeng/dialog';
 import { MenuItem } from 'primeng/api';
 import { BrowserModule } from '@angular/platform-browser';
 import { FileUploadModule } from 'primeng/fileupload';  // Module pour FileUpload
-import { StepsModule } from 'primeng/steps'; 
+import { StepsModule } from 'primeng/steps';
+import {AuthControllerService} from '../../services/services/auth-controller.service';
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-edit-profil',
   standalone: true,
@@ -20,7 +22,7 @@ import { StepsModule } from 'primeng/steps';
     TagModule,
     ButtonModule,
     DialogModule,
-    ReactiveFormsModule,  
+    ReactiveFormsModule,
     FileUploadModule,
     StepsModule
   ],
@@ -33,7 +35,11 @@ export class EditProfilComponent {
   step1Form: FormGroup;
   step2Form: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthControllerService,
+    private router: Router
+  ) {
     // Formulaire pour l'étape 1 : Nom et pays
     this.step1Form = this.fb.group({
       name: ['', Validators.required],
@@ -76,5 +82,17 @@ export class EditProfilComponent {
   // Soumettre le formulaire
   submit() {
     console.log('Formulaire soumis avec succès !');
+  }
+
+  logout(): void {
+    this.authService.logout().subscribe({
+      next: () => {
+        localStorage.removeItem('token'); // Remove token from localStorage
+        this.router.navigate(['/acceuil']); // Redirect to login page
+      },
+      error: (err) => {
+        console.error('Error during logout:', err);
+      },
+    });
   }
 }

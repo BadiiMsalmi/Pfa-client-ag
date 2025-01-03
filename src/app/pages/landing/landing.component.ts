@@ -13,6 +13,7 @@ import { TokenService } from '../../token/token.service';
 import { RegisterRequest } from '../../services/models/register-request';
 import { AuthenticationRequest } from '../../services/models/authentication-request';
 import { HttpClientModule } from '@angular/common/http';
+import {AuthenticationResponse} from '../../services/models/authentication-response';
 
 @Component({
   selector: 'app-landing',
@@ -40,7 +41,7 @@ export class LandingComponent {
   accountname? :string;
   email?: string;
   password?: string;
-  role: string = 'ROLE_CANDIDAT';
+  role?: string;
 
   authRequest: AuthenticationRequest = { email: '', password: '' };
   registerRequest: RegisterRequest = {
@@ -49,7 +50,7 @@ export class LandingComponent {
     lastname: '',
     accountname: '',
     password: '',
-    role: 'ROLE_CANDIDAT'
+    role: ''
   };
   errorMsg: Array<string> = [];
 
@@ -77,25 +78,34 @@ export class LandingComponent {
     this.authService.authenticate({
       body: this.authRequest,
     }).subscribe({
-      next: (res) => {
-        //todo save the token and check if the account if not locked
-        this.tokenService.token = res.token as string
+      next: (res : AuthenticationResponse) => {
         console.log(res)
-        this.router.navigate(['books']);
+        console.log(res.message == "Profile not completed")
+        if (res.message == "Profile not completed"){
+          this.tokenService.token = res.token as string
+          this.router.navigate(['completeProfile'], { queryParams: { email: this.authRequest.email }})
+        }else {
+          this.tokenService.token = res.token as string
+          console.log(res)
+          this.router.navigate(['acceuil-client']);
+        }
       },
       error: (err) => {
         this.handleErrors(err);
       }
     });
   }
+
+
   // Register method
   register() {
     this.errorMsg = [];
     this.authService.register({
       body: this.registerRequest
     }).subscribe({
-      next: () => {
-        this.router.navigate(['completeProfile'], { queryParams: { email: this.registerRequest.email } });
+      next: (res) => {
+        this.tokenService.token = res.token as string
+        this.router.navigate(['completeProfile'], { queryParams: { email: this.registerRequest.email,role: this.registerRequest.role } });
       },
       error: (err) => {
         this.handleErrors(err);

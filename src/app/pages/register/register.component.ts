@@ -8,7 +8,7 @@ import {DropdownModule} from 'primeng/dropdown';
 import {FloatLabelModule} from 'primeng/floatlabel';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import {Router} from '@angular/router';
-import {AuthControllerService} from '../../services/services/auth-controller.service';
+import { AuthControllerService } from '../../services/services/auth-controller.service';
 import {RegisterRequest} from '../../services/models/register-request';
 
 @Component({
@@ -30,7 +30,7 @@ import {RegisterRequest} from '../../services/models/register-request';
 export class RegisterComponent {
 
 
-  registerRequest : RegisterRequest = {accountname:'',email:'',firstname:'',lastname:'',password:'',role:'ROLE_CANDIDAT'}
+  registerRequest : RegisterRequest = {accountname:'',email:'',firstname:'',lastname:'',password:'',role:'ROLE_RECRUTEUR'}
   errorMsg : Array<string> = []
 
   constructor(
@@ -49,9 +49,9 @@ export class RegisterComponent {
       body:this.registerRequest
     }).subscribe({
       next:()=>{
-        this.router.navigate(['completeProfile'], { queryParams: { email: this.registerRequest.email } });
+        this.router.navigate(['completeProfile'], { queryParams: { email: this.registerRequest.email,role:this.registerRequest.role } });
       },
-      error:(err)=>{
+      error:(err:any)=>{
         if (err.error.validationErrors) {
           this.errorMsg = err.error.validationErrors
         } else if(err.error.error){

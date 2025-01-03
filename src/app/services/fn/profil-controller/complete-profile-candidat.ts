@@ -8,10 +8,9 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
-import { ProfilCandidatDto } from '../../models/profil-candidat-dto';
 
 export interface CompleteProfileCandidat$Params {
-      body: ProfilCandidatDto
+      body: string
 }
 
 export function completeProfileCandidat(http: HttpClient, rootUrl: string, params: CompleteProfileCandidat$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
@@ -19,6 +18,9 @@ export function completeProfileCandidat(http: HttpClient, rootUrl: string, param
   if (params) {
     rb.body(params.body, 'application/json');
   }
+
+
+  rb.header('Authorization', `Bearer ${localStorage.getItem('token')}`);
 
   return http.request(
     rb.build({ responseType: 'text', accept: '*/*', context })

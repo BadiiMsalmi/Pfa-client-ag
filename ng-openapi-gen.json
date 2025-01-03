@@ -1,0 +1,5 @@
+{
+  "input": "./src/openApi/openapi.json",
+  "output": "./src/app/services",
+  "useHttpClient": true
+}

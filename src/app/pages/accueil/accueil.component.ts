@@ -7,7 +7,7 @@ import { ButtonModule } from 'primeng/button';
 import { DataViewModule } from 'primeng/dataview';
 import { InputTextModule } from 'primeng/inputtext';
 import { MenuModule } from 'primeng/menu';
-import { Job } from '../../services/models/job';
+import { OffreEmploi } from '../../services/models/offre-emploi';
 import { CommonModule } from '@angular/common';
 import { MenubarModule } from 'primeng/menubar';
 import { MenuItem } from 'primeng/api';
@@ -17,7 +17,7 @@ import { MenuItem } from 'primeng/api';
   standalone: true,
   imports: [
     MenubarModule,
-    
+
     InputTextModule,
     DataViewModule,
     ButtonModule,
@@ -32,14 +32,11 @@ export class AccueilComponent {
   searchQuery: string = ''; // La requête de recherche
   currentSection: string = 'accueil'; // Section active par défaut
 
-  jobs: Job[] = [
-    { title: 'Développeur Angular', company: 'ABC Corp' },
-    { title: 'Designer UX/UI', company: 'XYZ Ltd.' },
-    { title: 'Product Manager', company: 'Tech Innovations' },
-    // Ajouter plus d'emplois ici...
+
+  jobs: OffreEmploi[] = [
   ];
 
-  filteredJobs: Job[] = this.jobs;
+  filteredJobs: OffreEmploi[] = this.jobs;
 
   ngOnInit() {
     this.items = [
@@ -63,9 +60,7 @@ export class AccueilComponent {
 
   // Fonction de gestion de la recherche
   onSearchChange() {
-    this.filteredJobs = this.jobs.filter((job) =>
-      job.title.toLowerCase().includes(this.searchQuery.toLowerCase())
-    );
+
   }
 
   // Fonction pour changer la section affichée

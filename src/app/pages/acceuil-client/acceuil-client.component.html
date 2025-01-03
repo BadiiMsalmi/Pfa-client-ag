@@ -6,12 +6,12 @@
               <span class="brand-bold">KHEDMTI</span><span class="brand-highlight">.TN</span>
             </span>
           </a>
-          
+
       <!-- Menu -->
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" routerLink="/acceuil-client">Accueil</a> 
+            <a class="nav-link" routerLink="/acceuil-client">Accueil</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/contact"  >Contact</a>
@@ -21,7 +21,7 @@
           </li>
           <li class="nav-item">
 
-          <a class="nav-link logout-link" href="#">
+          <a class="nav-link logout-link" (click)="logout()">
             <i class="logout-icon"></i>
             Logout
           </a>
@@ -30,13 +30,13 @@
       </div>
     </div>
   </nav>
-  
+
   <!-- Search input -->
   <div class="container mt-4 custom-search-container" >
     <input type="text" class="form-control custom-search" placeholder="Rechercher..." />
   </div>
-  
-  
+
+
   <br>
   <!-- Main section -->
   <section class="section section-lg pt-lg-4 mt--200">
@@ -114,29 +114,28 @@
           <ng-template pTemplate="header">
             <div class="flex justify-content-end"></div>
           </ng-template>
-  
+
           <!-- List Template -->
           <ng-template pTemplate="list" let-job>
             <div class="grid grid-nogutter">
-              <div class="col-12" *ngFor="let job of jobs; let first = first" class="col-12">
+              <div class="col-12" *ngFor="let job of jobs; let first = first">
                 <div class="flex flex-column sm:flex-row sm:align-items-center p-4 gap-3" [ngClass]="{ 'border-top-1 surface-border': !first }">
                   <div class="md:w-10rem relative">
-                    <img class="block xl:block mx-auto border-round w-full" [src]="'https://example.com/images/' + job.image" [alt]="job.company" />
                   </div>
                   <div class="flex flex-column md:flex-row justify-content-between md:align-items-center flex-1 gap-4">
                     <div class="flex flex-row md:flex-column justify-content-between align-items-start gap-2">
                       <div>
-                        <span class="font-medium text-secondary text-sm">{{ job.location }}</span>
-                        <div class="text-lg font-medium text-900 mt-2">{{ job.title }}</div>
-                        <div class="text-sm font-medium text-700">{{ job.company }}</div>
+                        <span class="font-medium text-secondary text-sm">{{ job.localisation }}</span>
+                        <div class="text-lg font-medium text-900 mt-2">{{ job.titre }} </div>
+                        <div class="text-sm font-medium text-700">societé</div>
                       </div>
-                      
+
                     </div>
                     <div class="flex flex-column md:align-items-end gap-5">
-                      <span class="text-xl font-semibold text-900">{{ job.salary }}</span>
+                      <span class="text-xl font-semibold text-900">{{ job.salaire }}</span>
                       <div class="flex flex-row-reverse md:flex-row gap-2">
                         <p-button icon="pi pi-heart" [outlined]="true"></p-button>
-                        <p-button icon="pi pi-eye"   routerLink="/postuler"
+                        <p-button icon="pi pi-eye" (onClick)="goToOffre(job.id)"
                           label="Voir et postuler"   />
                       </div>
                     </div>
@@ -145,7 +144,7 @@
               </div>
             </div>
           </ng-template>
-         
+
           <!-- Grid Template -->
           <ng-template pTemplate="grid" let-job>
             <div class="grid grid-nogutter">
@@ -153,23 +152,22 @@
                 <div class="p-4 border-1 surface-border surface-card border-round flex flex-column">
                   <div class="surface-50 flex justify-content-center border-round p-3">
                     <div class="relative mx-auto">
-                      <img class="border-round w-full" [src]="'https://example.com/images/' + job.image" [alt]="job.company" style="max-width: 300px;" />
                       <p-tag [value]="job.status" [severity]="getSeverity(job)"></p-tag>
                     </div>
                   </div>
                   <div class="pt-4">
                     <div class="flex flex-row justify-content-between align-items-start gap-2">
                       <div>
-                        <span class="font-medium text-secondary text-sm">{{ job.location }}</span>
-                        <div class="text-lg font-medium text-900 mt-1">{{ job.title }}</div>
-                        <div class="text-sm font-medium text-700">{{ job.company }}</div>
+                        <span class="font-medium text-secondary text-sm">{{ job.localisation }}</span>
+                        <div class="text-lg font-medium text-900 mt-1">{{ job.titre }}</div>
+                        <div class="text-sm font-medium text-700">Societé</div>
                       </div>
-                    
+
                     </div>
                     <div class="flex flex-column gap-4 mt-4">
-                      <span class="text-2xl font-semibold">{{ job.salary }}</span>
+                      <span class="text-2xl font-semibold">{{ job.salaire }}</span>
                       <div class="flex gap-2">
-                        <p-button icon="pi pi-eye" label="Voir et postuler"   />
+                        <p-button icon="pi pi-eye" label="Voir et postuler" (onClick)="goToOffre(job.id)"  ></p-button>
                         <p-button icon="pi pi-heart" [outlined]="true"></p-button>
                       </div>
                       <a href="javascript:void(0)" class="btn btn-primary mt-4">Explorer les offres</a>
@@ -183,11 +181,11 @@
         </p-dataView>
       </div>
 
-      <p-dialog 
-      header="Header" 
+      <p-dialog
+      header="Header"
       [modal]="true"
-      [(visible)]="visible" 
-      [style]="{ width: '50rem' }" 
+      [(visible)]="visible"
+      [style]="{ width: '50rem' }"
       [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }">
           <p class="mb-5">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -223,10 +221,10 @@
           </p>
   </p-dialog>
   </section>
-  
+
   <footer class="footer navbar-light ">
     <div class="container">
-       
+
         <!-- Copyright -->
         <div class="row">
             <div class="col text-center">
@@ -235,4 +233,3 @@
         </div>
     </div>
   </footer>
-  

@@ -45,16 +45,16 @@
           </div>
           <div class="field p-fluid">
             <label for="accountname">Account name :</label>
-            <input type="text" pInputText [(ngModel)]="registerRequest.accountname" placeholder="Enter your account name" [style]="{'width': '100%'}" />
+            <input type="text" id="accountname" pInputText [(ngModel)]="registerRequest.accountname" placeholder="Enter your account name" [style]="{'width': '100%'}" />
           </div>
-        </div>  
+        </div>
         <div class="flex mb-3" style="gap: 180px;">
           <div class="field p-fluid">
             <label for="password">Password :</label>
             <input type="password" pInputText [(ngModel)]="registerRequest.password" placeholder="Enter your password" [style]="{'width': '105%'}" />
           </div>
-          
-        </div>  
+
+        </div>
         <!-- Role Selection -->
         <div class="field mb-3">
           <label>Role :</label>
@@ -69,7 +69,7 @@
         </div>
 
 
-       
+
 
         <!-- Sign Up Button and Redirect Text -->
         <div class="absolute-position">

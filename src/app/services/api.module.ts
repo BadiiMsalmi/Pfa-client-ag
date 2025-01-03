@@ -7,9 +7,15 @@ import { HttpClient } from '@angular/common/http';
 import { ApiConfiguration, ApiConfigurationParams } from './api-configuration';
 
 import { CandidatControllerService } from './services/candidat-controller.service';
+import { FormationControllerService } from './services/formation-controller.service';
 import { ProfilControllerService } from './services/profil-controller.service';
+import { OffreEmploiControllerService } from './services/offre-emploi-controller.service';
+import { NotificationControllerService } from './services/notification-controller.service';
 import { AuthControllerService } from './services/auth-controller.service';
+import { AdministrateurControllerService } from './services/administrateur-controller.service';
+import { ApplicationControllerService } from './services/application-controller.service';
 import { UtilisateurControllerService } from './services/utilisateur-controller.service';
+import { RecommendationControllerService } from './services/recommendation-controller.service';
 
 /**
  * Module that provides all services and configuration.
@@ -20,9 +26,15 @@ import { UtilisateurControllerService } from './services/utilisateur-controller.
   declarations: [],
   providers: [
     CandidatControllerService,
+    FormationControllerService,
     ProfilControllerService,
+    OffreEmploiControllerService,
+    NotificationControllerService,
     AuthControllerService,
+    AdministrateurControllerService,
+    ApplicationControllerService,
     UtilisateurControllerService,
+    RecommendationControllerService,
     ApiConfiguration
   ],
 })
