@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CompleteProfileComponent } from './complete-profile.component';
+import { AnnonceListComponent } from './annonce-list.component';
 
-describe('CompleteProfileComponent', () => {
-  let component: CompleteProfileComponent;
-  let fixture: ComponentFixture<CompleteProfileComponent>;
+describe('AnnonceListComponent', () => {
+  let component: AnnonceListComponent;
+  let fixture: ComponentFixture<AnnonceListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CompleteProfileComponent]
+      imports: [AnnonceListComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CompleteProfileComponent);
+    fixture = TestBed.createComponent(AnnonceListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -15,6 +15,8 @@ import { EditProfilComponent } from './pages/edit-profil/edit-profil.component';
 import { JobListComponent } from './admin/job-list/job-list.component';
 import { ContactListComponent } from './admin/contact-list/contact-list.component';
 import { PostulerComponent } from './pages/postuler/postuler.component';
+import { AnnonceListComponent } from './pages/annonce-list/annonce-list.component';
+import { CreateannonceComponent } from './pages/createannonce/createannonce.component';
 
 export const routes: Routes = [
   {
@@ -32,7 +34,7 @@ export const routes: Routes = [
     component:RegisterComponent
   },
   {
-    path:'acceuil',
+    path:'',
     component:LandingComponent
   },
   
@@ -40,22 +42,28 @@ export const routes: Routes = [
     path:'contact',
     component:ContactClientComponent
   },
-  
-
+  {
+    path:'jobs',
+    component:AnnonceListComponent
+  },
+  {
+    path:'annonce',
+    component:  CreateannonceComponent
+  },
   {
     path:'profile',
     component:ProfileComponent
   },
   { path: 'postuler', component: PostulerComponent },
 
-  { path: 'admin/login', component: AdminLoginComponent },
   { path: 'acceuil-client', component: AcceuilClientComponent },
   
   {
     path: '',
     component: LayoutComponent,
     children: [
-      { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+      { path: 'admin/login', component: AdminLoginComponent , canActivate: [AuthGuard]},
+      { path: 'dashboard', component: DashboardComponent },
       { path: 'gestion-users', component: UsersListComponent },
       { path: 'gestion-jobs', component: JobListComponent },
       { path: 'gestion-contacts', component: ContactListComponent },

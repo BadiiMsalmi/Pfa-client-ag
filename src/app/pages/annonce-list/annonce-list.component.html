@@ -1,0 +1,92 @@
+<!-- home.component.html -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
+    <div class="container">
+        <a class="navbar-brand" routerLink="/acceuil-client">
+            <span class="brand-name">
+              <span class="brand-bold">KHEDMTI</span><span class="brand-highlight">.TN</span>
+            </span>
+          </a>
+      <!-- Menu -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/acceuil-client">Accueil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/contact">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/profile">Profil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/jobs">Emplois</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/annonce">Annonce</a>
+            </li>
+            <li class="nav-item">
+  
+            <a class="nav-link logout-link" href="#">
+              <i class="logout-icon"></i>
+              Logout
+            </a>
+            </li>
+          </ul>
+      </div>
+    </div>
+  </nav>
+  
+<div class="card xl:flex xl:justify-content-center">
+    <div class="w-full p-4" style="max-width: 1500px;">
+        <h3 class="mb-4 text-center">List des Offres d'emplois</h3>
+
+        <!-- Champ de recherche -->
+         <div class="flex justify-content-center">
+        <input
+            type="text"
+            [(ngModel)]="searchQuery"
+            placeholder="Rechercher des emplois ou des entreprises"
+            class="p-inputtext p-component w-full mb-4 "
+            style="max-width: 60%; height: 3rem; font-size: 1rem;"
+        />
+    </div>
+        <!-- Liste des jobs -->
+        <ul class="list-none p-0 m-0">
+            <li *ngFor="let job of filteredJobs()" class="mb-4 p-4 border-round shadow-1 bg-white">
+                <div class="flex align-items-center gap-3">
+                    <!-- Image -->
+                    <img
+                        [src]="job.image"
+                        [alt]="job.title"
+                        class="w-6rem shadow-2 flex-shrink-0 border-round"
+                    />
+                    <!-- Détails du job -->
+                    <div class="flex-1">
+                        <div class="flex justify-content-between align-items-center">
+                            <h5 class="m-0 font-medium">{{ job.title }}</h5>
+                            <span class="font-bold text-900">{{ job.salary }}</span>
+                        </div>
+                        <div class="flex justify-content-between align-items-center mt-2">
+                            <p class="m-0 text-sm text-secondary">{{ job.company }}</p>
+                            <button class="p-button p-button-rounded p-button-outlined" routerLink="/postuler">
+                                Voir et Postuler
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<footer class="footer navbar-light ">
+    <div class="container">
+       
+        <!-- Copyright -->
+        <div class="row">
+            <div class="col text-center">
+                <p class="small mb-0">© 2024 KHEDMTI.TN. All rights reserved. | Designed with <span style="color: red;">♥</span> by KHEDMTI Team.</p>
+            </div>
+        </div>
+    </div>
+  </footer>
+  

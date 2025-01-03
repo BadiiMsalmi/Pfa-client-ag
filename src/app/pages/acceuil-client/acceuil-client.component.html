@@ -1,23 +1,28 @@
 <!-- home.component.html -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
     <div class="container">
-        <a class="navbar-brand" href="#">
-            <span class="brand-name">
-              <span class="brand-bold">KHEDMTI</span><span class="brand-highlight">.TN</span>
-            </span>
-          </a>
-          
+      <a class="navbar-brand" routerLink="/acceuil-client">
+        <span class="brand-name">
+          <span class="brand-bold">KHEDMTI</span><span class="brand-highlight">.TN</span>
+        </span>
+      </a>
       <!-- Menu -->
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" routerLink="/acceuil-client">Accueil</a> 
+            <a class="nav-link" routerLink="/acceuil-client">Accueil</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/contact"  >Contact</a>
+            <a class="nav-link" routerLink="/contact">Contact</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/profile">Profil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/jobs">Emplois</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/annonce">Annonce</a>
           </li>
           <li class="nav-item">
 
@@ -31,15 +36,11 @@
     </div>
   </nav>
   
-  <!-- Search input -->
-  <div class="container mt-4 custom-search-container" >
-    <input type="text" class="form-control custom-search" placeholder="Rechercher..." />
-  </div>
-  
+
   
   <br>
   <!-- Main section -->
-  <section class="section section-lg pt-lg-4 mt--200">
+  <section class="section section-lg pt-lg-12 mt--200">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-12">
@@ -135,9 +136,9 @@
                     <div class="flex flex-column md:align-items-end gap-5">
                       <span class="text-xl font-semibold text-900">{{ job.salary }}</span>
                       <div class="flex flex-row-reverse md:flex-row gap-2">
-                        <p-button icon="pi pi-heart" [outlined]="true"></p-button>
-                        <p-button icon="pi pi-eye"   routerLink="/postuler"
-                          label="Voir et postuler"   />
+                        <a href="javascript:void(0)"routerLink="/postuler" class="btn btn-primary ">
+                          Voir et postuler</a>
+                        
                       </div>
                     </div>
                   </div>

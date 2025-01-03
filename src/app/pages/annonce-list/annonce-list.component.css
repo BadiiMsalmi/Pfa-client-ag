@@ -1,0 +1,94 @@
+.card {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.p-button {
+    background-color: #007ad9;
+    color: white;
+    border: none;
+    height: 2.5rem;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+.p-button:hover {
+    background-color: #005bb5;
+}
+
+.text-secondary {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+/* Navbar */
+.custom-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: #c9c1f5; /* Fond blanc cassé */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    margin-bottom: 0px;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
+  
+  /* Logo dans la navbar */
+  .custom-navbar .navbar-brand img {
+    height: 50px;
+  }
+  
+  /* Liens dans la navbar */
+  .custom-navbar .nav-link {
+    color: #007bff; /* Violet pour le contraste */
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.2s;
+    margin: 0 10px;
+  }
+  
+  .custom-navbar .nav-link:hover {
+    background-color: #cdd5f8; /* Rose clair */
+    color: #ffffff;
+    transform: scale(1.05);
+  }
+  /* Style pour le texte "KHEDMTI.TN" */
+.brand-name {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.8rem; /* Taille générale */
+    display: flex;
+    align-items: center;
+    text-transform: uppercase; /* Majuscules */
+    color: #6c757d; /* Gris pour KHEDMTI */
+  }
+  
+  .brand-bold {
+    font-weight: bold;
+    color: #6c757d; /* Gris */
+  }
+  
+  .brand-highlight {
+    font-weight: bold;
+    color: #007bff; /* Bleu pour .TN */
+    margin-left: 5px; /* Espacement entre KHEDMTI et .TN */
+  }
+  /* Footer */
+.footer {
+    background: #464545; /* Changer la couleur de fond ici */
+    color: #ffffff;
+    padding: 20px 0;
+    margin-top: 0; /* Suppression de l'espace entre le footer et la section */
+    position: relative; /* Ajouter si nécessaire pour éviter un décalage */
+    }
+    
+  
+  /* Autres styles de footer */
+  .footer a:hover {
+  color: #ff6f61;
+  text-decoration: underline;
+  }
