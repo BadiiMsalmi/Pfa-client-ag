@@ -1,10 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
   <div class="container">
-      <a class="navbar-brand" href="#">
-          <span class="brand-name">
-            <span class="brand-bold">KHEDMTI</span><span class="brand-highlight">.TN</span>
-          </span>
-        </a>
+    <a class="navbar-brand" routerLink="/acceuil-client">
+      <span class="brand-name">
+        <span class="brand-bold">KHEDMTI</span><span class="brand-highlight">.TN</span>
+      </span>
+    </a>
 
     <!-- Menu -->
     <div class="collapse navbar-collapse" id="navbarNav">
@@ -19,6 +19,13 @@
           <a class="nav-link" routerLink="/profile">Profil</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" routerLink="/jobs">Emplois</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/annonce">Annonce</a>
+        </li>
+        <li class="nav-item">
+
           <a class="nav-link logout-link" (click)="logout()">
             <i class="logout-icon"></i>
             Logout
@@ -57,7 +64,6 @@
       </ng-template>
 
     </div>
-
   </div>
 
   <!-- Bloc droit -->
