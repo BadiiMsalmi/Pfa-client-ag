@@ -1,72 +1,86 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ButtonModule } from 'primeng/button';
-import { DataViewModule } from 'primeng/dataview';
-import { TagModule } from 'primeng/tag';
-import { RatingModule } from 'primeng/rating';
-import { DialogModule } from 'primeng/dialog';
-import { StepsModule } from 'primeng/steps';
-import { FileUploadModule } from 'primeng/fileupload';
-import { routes } from '../../app.routes';
-import { provideRouter } from '@angular/router';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { CandidatControllerService } from '../../services/services/candidat-controller.service';
+import { OffreEmploiSearchDto } from '../../services/models/offre-emploi-search-dto';
+import {NgForOf} from '@angular/common';
+import {Router, RouterLink} from '@angular/router';
+import {Button} from 'primeng/button';
 
 @Component({
   selector: 'app-annonce-list',
-  standalone: true,
-  imports: [
-      ReactiveFormsModule,  
-      FileUploadModule,
-      StepsModule,
-      FormsModule,
-      CommonModule,
-      DataViewModule,
-      TagModule,
-      ButtonModule,
-      DialogModule
-  ],
   templateUrl: './annonce-list.component.html',
-  styleUrl: './annonce-list.component.css'
+  styleUrls: ['./annonce-list.component.css'],
+  imports: [
+    ReactiveFormsModule,
+    NgForOf,
+    RouterLink,
+    Button
+  ],
+  standalone: true
 })
-export class AnnonceListComponent {
-  searchQuery = ''; // Recherche
-  jobs = [ // Liste des jobs
-      {
-          id: 1,
-          title: 'Software Engineer',
-          company: 'TechCorp',
-          image: 'https://via.placeholder.com/64',
-          salary: '2500 - 3500 DT',
-      },
-      {
-          id: 2,
-          title: 'Product Manager',
-          company: 'Innovate Inc.',
-          image: 'https://via.placeholder.com/64',
-          salary: '2500 - 4000 DT',
-      },
-      {
-          id: 3,
-          title: 'UX Designer',
-          company: 'Creative Minds',
-          image: 'https://via.placeholder.com/64',
-          salary: '1500 - 2500 DT',
-      },
-      {
-          id: 4,
-          title: 'Data Scientist',
-          company: 'Data Solutions',
-          image: 'https://via.placeholder.com/64',
-          salary: '2000 - 3500 DT',
-      },
-  ];
+export class AnnonceListComponent implements OnInit {
+  // Form controls for each search field
+  titreControl = new FormControl('');
+  localisationControl = new FormControl('');
+  experienceControl = new FormControl('');
+  salaireControl = new FormControl('');
 
-  // Méthode pour filtrer les jobs par titre ou entreprise
-  filteredJobs() {
-      return this.jobs.filter(
-          (job) =>
-              job.title.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
-              job.company.toLowerCase().includes(this.searchQuery.toLowerCase())
-      );
+  searchQuery: OffreEmploiSearchDto = {
+    titre: '',
+    localisation: '',
+    experience: null,
+    salaire: null,
+  };
+  jobs: OffreEmploiSearchDto[] = [];
+
+  constructor(
+    private candidatService: CandidatControllerService,
+    private router : Router
+  ) {}
+
+  ngOnInit() {
+    // Combine and subscribe to changes in search fields
+    this.titreControl.valueChanges
+      .pipe(debounceTime(300), distinctUntilChanged())
+      .subscribe((value) => {
+        // @ts-ignore
+        this.searchQuery.titre = value;
+        this.performSearch();
+      });
+
+    this.localisationControl.valueChanges
+      .pipe(debounceTime(300), distinctUntilChanged())
+      .subscribe((value) => {
+        // @ts-ignore
+        this.searchQuery.localisation = value;
+        this.performSearch();
+      });
+
+    this.experienceControl.valueChanges
+      .pipe(debounceTime(300), distinctUntilChanged())
+      .subscribe((value) => {
+        this.searchQuery.experience = value ? +value : null;
+        this.performSearch();
+      });
+
+    this.salaireControl.valueChanges
+      .pipe(debounceTime(300), distinctUntilChanged())
+      .subscribe((value) => {
+        this.searchQuery.salaire = value ? +value : null;
+        this.performSearch();
+      });
+  }
+
+  performSearch() {
+    this.candidatService
+      .searchOffres({ body: this.searchQuery })
+      .subscribe((results) => {
+        this.jobs = results;
+      });
+  }
+
+  goToOffre(id: number | undefined){
+    this.router.navigate(['postuler'], { queryParams: { jobId: id }})
   }
 }

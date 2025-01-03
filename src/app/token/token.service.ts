@@ -12,4 +12,10 @@ export class TokenService {
   get token(){
     return localStorage.getItem('token') as string
   }
+
+  getIdFromToken(){
+    // @ts-ignore
+    let decodedJWT = JSON.parse(window.atob(localStorage.getItem('token').split('.')[1]));
+    return decodedJWT.id
+  }
 }

@@ -12,6 +12,8 @@ import { AuthControllerService } from '../../services/services/auth-controller.s
 import {Router} from '@angular/router';
 import {OffreEmploiControllerService} from '../../services/services/offre-emploi-controller.service';
 import {OffreEmploiDto} from '../../services/models/offre-emploi-dto';
+import {RecommendationControllerService} from '../../services/services/recommendation-controller.service';
+import {TokenService} from '../../token/token.service';
 
 @Component({
   selector: 'app-acceuil-client',
@@ -37,7 +39,9 @@ export class AcceuilClientComponent implements OnInit {
   constructor(
     private authService: AuthControllerService,
     private router: Router,
-    private offreEmploiService: OffreEmploiControllerService
+    private offreEmploiService: OffreEmploiControllerService,
+    private RecoService :RecommendationControllerService,
+    private tokenService : TokenService
   ) {
   }
   visible: boolean = false;
@@ -67,7 +71,7 @@ export class AcceuilClientComponent implements OnInit {
   }
 
   ngOnInit():void {
-    this.offreEmploiService.getAllOffres().subscribe((
+    this.RecoService.getOffresRecommendations({candidatId:this.tokenService.getIdFromToken()}).subscribe((
       {
         next:(res)=>{
           this.jobs = res;

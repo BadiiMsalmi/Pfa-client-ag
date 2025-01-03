@@ -19,7 +19,7 @@ export function getOffresRecommendations(http: HttpClient, rootUrl: string, para
   if (params) {
     rb.path('candidatId', params.candidatId, {});
   }
-
+  rb.header('Authorization', `Bearer ${localStorage.getItem('token')}`);
   return http.request(
     rb.build({ responseType: 'json', accept: '*/*', context })
   ).pipe(

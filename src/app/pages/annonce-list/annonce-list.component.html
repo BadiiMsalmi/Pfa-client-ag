@@ -25,7 +25,7 @@
               <a class="nav-link" routerLink="/annonce">Annonce</a>
             </li>
             <li class="nav-item">
-  
+
             <a class="nav-link logout-link" href="#">
               <i class="logout-icon"></i>
               Logout
@@ -35,52 +35,74 @@
       </div>
     </div>
   </nav>
-  
+
 <div class="card xl:flex xl:justify-content-center">
     <div class="w-full p-4" style="max-width: 1500px;">
         <h3 class="mb-4 text-center">List des Offres d'emplois</h3>
 
         <!-- Champ de recherche -->
-         <div class="flex justify-content-center">
+      <div class="flex justify-content-center gap-3">
         <input
-            type="text"
-            [(ngModel)]="searchQuery"
-            placeholder="Rechercher des emplois ou des entreprises"
-            class="p-inputtext p-component w-full mb-4 "
-            style="max-width: 60%; height: 3rem; font-size: 1rem;"
+          type="text"
+          [formControl]="titreControl"
+          placeholder="Rechercher par titre"
+          class="p-inputtext p-component w-full mb-2"
+          style="max-width: 60%; height: 3rem; font-size: 1rem;margin: 0.5rem;"
         />
-    </div>
-        <!-- Liste des jobs -->
-        <ul class="list-none p-0 m-0">
-            <li *ngFor="let job of filteredJobs()" class="mb-4 p-4 border-round shadow-1 bg-white">
-                <div class="flex align-items-center gap-3">
-                    <!-- Image -->
-                    <img
-                        [src]="job.image"
-                        [alt]="job.title"
-                        class="w-6rem shadow-2 flex-shrink-0 border-round"
-                    />
-                    <!-- Détails du job -->
-                    <div class="flex-1">
-                        <div class="flex justify-content-between align-items-center">
-                            <h5 class="m-0 font-medium">{{ job.title }}</h5>
-                            <span class="font-bold text-900">{{ job.salary }}</span>
-                        </div>
-                        <div class="flex justify-content-between align-items-center mt-2">
-                            <p class="m-0 text-sm text-secondary">{{ job.company }}</p>
-                            <button class="p-button p-button-rounded p-button-outlined" routerLink="/postuler">
-                                Voir et Postuler
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </li>
-        </ul>
+        <input
+          type="text"
+          [formControl]="localisationControl"
+          placeholder="Rechercher par localisation"
+          class="p-inputtext p-component w-full mb-2"
+          style="max-width: 60%; height: 3rem; font-size: 1rem;margin: 0.5rem;"
+        />
+        <input
+          type="number"
+          [formControl]="experienceControl"
+          placeholder="Rechercher par expérience"
+          class="p-inputtext p-component w-full mb-2"
+          style="max-width: 50%; height: 3rem; font-size: 1rem;margin: 0.5rem;"
+        />
+        <input
+          type="number"
+          [formControl]="salaireControl"
+          placeholder="Rechercher par salaire minimum"
+          class="p-inputtext p-component w-full mb-2"
+          style="max-width: 60%; height: 3rem; font-size: 1rem;margin: 0.5rem;"
+        />
+      </div>
+
+      <ul class="list-none p-0 m-0">
+        <li *ngFor="let job of jobs" class="mb-4 p-4 border-round shadow-1 bg-white">
+          <div class="flex align-items-center gap-3">
+            <img
+              [alt]="job.titre"
+              class="w-6rem shadow-2 flex-shrink-0 border-round"
+            />
+            <div class="flex-1">
+              <div class="flex justify-content-between align-items-center">
+                <h5 class="m-0 font-medium">{{ job.titre }}</h5>
+                <span class="font-bold text-900">{{ job.salaire }}</span>
+              </div>
+              <div class="flex justify-content-between align-items-center mt-2">
+                <p class="m-0 text-sm text-secondary">{{ job.localisation }}</p>
+                <p-button
+                  class="p-button p-button-rounded p-button-outlined"
+                  label="Voir et Postuler"
+                  (click)="goToOffre(job.id)"
+                />
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+
     </div>
 </div>
 <footer class="footer navbar-light ">
     <div class="container">
-       
+
         <!-- Copyright -->
         <div class="row">
             <div class="col text-center">
@@ -89,4 +111,3 @@
         </div>
     </div>
   </footer>
-  

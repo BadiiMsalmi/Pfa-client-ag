@@ -19,7 +19,7 @@ export function getFormationRecommendations(http: HttpClient, rootUrl: string, p
   if (params) {
     rb.path('candidatId', params.candidatId, {});
   }
-
+  rb.header('Authorization', `Bearer ${localStorage.getItem('token')}`);
   return http.request(
     rb.build({ responseType: 'json', accept: '*/*', context })
   ).pipe(
@@ -30,4 +30,4 @@ export function getFormationRecommendations(http: HttpClient, rootUrl: string, p
   );
 }
 
-getFormationRecommendations.PATH = '/api/v1/recommendations/api/v1/recommendations/formations/{candidatId}';
+getFormationRecommendations.PATH = '/api/v1/recommendations/formations/{candidatId}';

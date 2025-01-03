@@ -4,9 +4,9 @@
 
 export interface OffreEmploiSearchDto {
   description?: string;
-  experience?: number;
+  experience?: number | null;
   id?: number;
   localisation?: string;
-  salaire?: number;
+  salaire?: number | null;
   titre?: string;
 }
