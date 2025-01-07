@@ -1,39 +1,157 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
-    <div class="container">
-        <a class="navbar-brand" routerLink="/acceuil-client">
-            <span class="brand-name">
-              <span class="brand-bold">KHEDMTI</span><span class="brand-highlight">.TN</span>
-            </span>
-          </a>
-          
-      <!-- Menu -->
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/acceuil-client">Accueil</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/contact">Contact</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/profile">Profil</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/jobs">Emplois</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/annonce">Annonce</a>
-          </li>
-          <li class="nav-item">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/acceuil-client">
+      <span class="brand-name">
+        <span class="brand-bold">KHEDMTI</span><span class="brand-highlight">.TN</span>
+      </span>
+    </a>
 
-          <a class="nav-link logout-link" href="#">
+    <!-- Menu -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/acceuil-client">Accueil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/contact">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/profile">Profil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/jobs">Emplois</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/annonce">Annonce</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link logout-link" (click)="logout()">
             <i class="logout-icon"></i>
             Logout
           </a>
-          </li>
-        </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="content-container">
+  <h1>Créer une Offre d'Emploi</h1>
+
+  <form [formGroup]="jobForm" (ngSubmit)="onSubmit()" class="job-form">
+    <!-- Titre -->
+    <div class="form-group">
+      <label for="titre">Titre</label>
+      <input
+        id="titre"
+        type="text"
+        formControlName="titre"
+        class="form-control"
+        placeholder="Entrez le titre de l'offre"
+      />
+    </div>
+
+    <!-- Description -->
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea
+        id="description"
+        formControlName="description"
+        class="form-control"
+        placeholder="Entrez la description de l'offre"
+      ></textarea>
+    </div>
+
+    <!-- Compétences -->
+    <div class="form-group">
+      <label for="competences">Compétences</label>
+      <select
+        id="competences"
+        formControlName="competences"
+        class="form-control"
+        multiple
+      >
+        <option
+          *ngFor="let competence of competencesList"
+          [value]="competence.id"
+        >
+          {{ competence.name }}
+        </option>
+      </select>
+    </div>
+
+    <!-- Add New Competence -->
+    <div class="form-group">
+      <label for="newCompetence">Ajouter une nouvelle compétence</label>
+      <div class="input-group">
+        <input
+          type="text"
+          id="newCompetence"
+          class="form-control"
+          [formControl]="newCompetenceControl"
+        placeholder="Entrez une nouvelle compétence"
+        />
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="addCompetence()"
+        >
+          Ajouter
+        </button>
       </div>
     </div>
-  </nav>
-  
- 
+
+    <!-- Expérience -->
+    <div class="form-group">
+      <label for="experience">Expérience (en années)</label>
+      <input
+        id="experience"
+        type="number"
+        formControlName="experience"
+        class="form-control"
+        placeholder="Entrez les années d'expérience"
+      />
+    </div>
+
+    <!-- Localisation -->
+    <div class="form-group">
+      <label for="localisation">Localisation</label>
+      <input
+        id="localisation"
+        type="text"
+        formControlName="localisation"
+        class="form-control"
+        placeholder="Entrez la localisation"
+      />
+    </div>
+
+    <!-- Salaire -->
+    <div class="form-group">
+      <label for="salaire">Salaire</label>
+      <input
+        id="salaire"
+        type="number"
+        formControlName="salaire"
+        class="form-control"
+        placeholder="Entrez le salaire"
+        step="0.01"
+      />
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary" [disabled]="jobForm.invalid">
+      Soumettre
+    </button>
+  </form>
+</div>
+
+<footer class="footer navbar-light">
+  <div class="container">
+    <!-- Copyright -->
+    <div class="row">
+      <div class="col text-center">
+        <p class="small mb-0">© 2024 KHEDMTI.TN. All rights reserved. | Designed with <span style="color: red;">♥</span> by KHEDMTI Team.</p>
+      </div>
+    </div>
+  </div>
+</footer>

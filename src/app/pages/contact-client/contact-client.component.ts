@@ -9,7 +9,9 @@ import { DialogModule } from 'primeng/dialog';
 import { MenuItem } from 'primeng/api';
 import { BrowserModule } from '@angular/platform-browser';
 import { FileUploadModule } from 'primeng/fileupload';  // Module pour FileUpload
-import { StepsModule } from 'primeng/steps'; 
+import { StepsModule } from 'primeng/steps';
+import {AuthControllerService} from '../../services/services/auth-controller.service';
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-contact-client',
   standalone: true,
@@ -20,7 +22,7 @@ import { StepsModule } from 'primeng/steps';
     TagModule,
     ButtonModule,
     DialogModule,
-    ReactiveFormsModule,  
+    ReactiveFormsModule,
     FileUploadModule,
     StepsModule
   ],
@@ -39,6 +41,11 @@ export class ContactClientComponent implements OnInit{
 
   successMessage = ''; // Propriété pour le message de succès
 
+  constructor(
+    private authService: AuthControllerService,
+    private router : Router
+  ) {
+  }
   ngOnInit() {}
 
   // Fonction pour soumettre le formulaire
@@ -49,7 +56,7 @@ export class ContactClientComponent implements OnInit{
 
     // Afficher le message de succès
     this.successMessage = 'Votre Contact ajouté avec succès !';
-    
+
     // Réinitialiser le formulaire
     this.contact = { name: '', email: '', message: '' };
 
@@ -59,5 +66,16 @@ export class ContactClientComponent implements OnInit{
     }, 3000);
   }
 
+  logout(): void {
+    this.authService.logout().subscribe({
+      next: () => {
+        localStorage.removeItem('token');
+        this.router.navigate(['/acceuil']);
+      },
+      error: (err) => {
+        console.error('Error during logout:', err);
+      },
+    });
+  }
 
 }

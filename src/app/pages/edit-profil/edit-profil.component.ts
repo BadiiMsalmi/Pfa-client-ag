@@ -87,8 +87,8 @@ export class EditProfilComponent {
   logout(): void {
     this.authService.logout().subscribe({
       next: () => {
-        localStorage.removeItem('token'); // Remove token from localStorage
-        this.router.navigate(['/acceuil']); // Redirect to login page
+        localStorage.removeItem('token');
+        this.router.navigate(['/acceuil']);
       },
       error: (err) => {
         console.error('Error during logout:', err);

@@ -27,7 +27,7 @@
           </li>
           <li class="nav-item">
 
-          <a class="nav-link logout-link" href="#">
+          <a class="nav-link logout-link" (click)="logout()">
             <i class="logout-icon"></i>
             Logout
           </a>
@@ -45,12 +45,12 @@
           <div *ngIf="successMessage" class="alert alert-success" role="alert">
             {{ successMessage }}
           </div>
-          
+
           <div class="card bg-gradient-secondary shadow">
             <div class="card-body p-lg-5">
               <h4 class="mb-1">Want to work with us?</h4>
               <p class="mt-0">Your project is very important to us.</p>
-              
+
               <!-- Champs de formulaire -->
               <div class="form-group mt-5" [ngClass]="{'focused': focus}">
                 <div class="input-group input-group-alternative">
@@ -65,7 +65,7 @@
               <div class="form-group mb-4">
                 <textarea [(ngModel)]="contact.message" class="form-control form-control-alternative" name="message" rows="4" placeholder="Type a message..."></textarea>
               </div>
-  
+
               <!-- Bouton d'envoi -->
               <div class="btn-center">
                 <button type="button" class="btn btn-default btn-round btn-block btn-lg" (click)="onSubmit()">
@@ -78,12 +78,12 @@
       </div>
     </div>
   </section>
-  
-  
+
+
 
 <footer class="footer navbar-light ">
   <div class="container">
-     
+
       <!-- Copyright -->
       <div class="row">
           <div class="col text-center">

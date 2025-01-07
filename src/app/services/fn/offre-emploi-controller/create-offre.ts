@@ -20,7 +20,7 @@ export function createOffre(http: HttpClient, rootUrl: string, params: CreateOff
   if (params) {
     rb.body(params.body, 'application/json');
   }
-
+  rb.header('Authorization', `Bearer ${localStorage.getItem('token')}`);
   return http.request(
     rb.build({ responseType: 'json', accept: '*/*', context })
   ).pipe(
