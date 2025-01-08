@@ -10,11 +10,13 @@ import { Competence } from '../../services/models/competence';
 import { OffreEmploiDto } from '../../services/models/offre-emploi-dto';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import {NavbarHeaderComponent} from '../navbar-header/navbar-header.component';
+import {FooterComponent} from '../footer/footer.component';
 
 @Component({
   selector: 'app-createannonce',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterLink],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterLink, NavbarHeaderComponent, FooterComponent],
   templateUrl: './createannonce.component.html',
   styleUrls: ['./createannonce.component.css'],
 })

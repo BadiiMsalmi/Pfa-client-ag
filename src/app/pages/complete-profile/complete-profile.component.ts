@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { AdministrateurControllerService } from '../../services/services/administrateur-controller.service';
 import { CompetenceDto } from '../../services/models/competence-dto';
-import { FormsModule } from '@angular/forms';
-import { NgForOf } from '@angular/common';
+import {FormBuilder, FormGroup, FormsModule, Validators} from '@angular/forms';
+import {NgForOf, NgIf} from '@angular/common';
 import { Competence } from '../../services/models/competence';
 import { ProfilControllerService } from '../../services/services/profil-controller.service';  // Import ProfilControllerService
 import { ProfilRecruteurDto } from '../../services/models/profil-recruteur-dto';
 import {ActivatedRoute, Router} from '@angular/router';
+import {StepsModule} from 'primeng/steps';
+import {MenuItem} from 'primeng/api';
+import {ButtonDirective} from 'primeng/button';
 @Component({
   selector: 'app-complete-profile',
   standalone: true,
@@ -14,22 +17,49 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./complete-profile.component.css'],
   imports: [
     FormsModule,
-    NgForOf
+    NgForOf,
+    StepsModule,
+    NgIf,
+    ButtonDirective
+
   ]
 })
 export class CompleteProfileComponent implements OnInit {
-  user = { email: '', entreprise: '', experiences: 0, selectedCompetences: [] };
+  user = { email: '', entreprise: '', experiences: 0,bio:'', selectedCompetences: [] };
   competences: Competence[] = [];
   newCompetenceName = '';
   isRecruiter = false;
   receivedValue: string | null = null;
 
+  activeIndex = 0;
+  steps: MenuItem[] = [];
+  step1Form: FormGroup;
+  step2Form: FormGroup;
+
   constructor(
     private administrateurService: AdministrateurControllerService,
     private profilControllerService: ProfilControllerService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private fb: FormBuilder
   ) {
+
+    // Formulaire pour l'étape 1 : Nom et pays
+    this.step1Form = this.fb.group({
+      name: ['', Validators.required],
+      country: ['', Validators.required],
+    });
+
+    // Formulaire pour l'étape 2 : Description
+    this.step2Form = this.fb.group({
+      description: ['', Validators.required],
+    });
+
+    // Définition des étapes pour le Stepper
+    this.steps = [
+      { label: 'Remplir les informations' },
+      { label: 'Confirmation' },
+    ];
   }
 
   ngOnInit(): void {
@@ -85,6 +115,7 @@ export class CompleteProfileComponent implements OnInit {
         email: this.user.email,
         experiences: this.user.experiences,
         competences: this.user.selectedCompetences,
+        bio: this.user.bio
       };
 
       console.log('Form Submitted:', profileData);
@@ -105,6 +136,7 @@ export class CompleteProfileComponent implements OnInit {
       const recruteurProfile: ProfilRecruteurDto = {
         email: this.user.email,
         entreprise: this.user.entreprise,
+        bio: this.user.bio
       };
 
       this.profilControllerService

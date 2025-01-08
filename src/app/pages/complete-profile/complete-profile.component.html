@@ -1,4 +1,15 @@
-<div class="container">
+
+<!-- Conteneur principal avec fond blanc -->
+<div>
+  <br>
+  <p-steps [(activeIndex)]="activeIndex"  [readonly]="true" [model]="steps"></p-steps>
+</div>
+
+
+<div class="main-container">
+  <h3 class="step-title">Completer profil</h3>
+<div *ngIf="activeIndex === 0" class="step-container">
+
   <form (ngSubmit)="onSubmit()" #competenceForm="ngForm">
     <!-- Email Input -->
     <div class="form-group mb-3">
@@ -10,7 +21,21 @@
         class="form-control"
         [(ngModel)]="user.email"
         required
-        placeholder="Enter your email"
+        placeholder="Addresse email"
+      />
+    </div>
+
+    <!-- Email Input -->
+    <div class="form-group mb-3">
+      <label for="email">Bio</label>
+      <input
+        type="text"
+        id="bio"
+        name="bio"
+        class="form-control"
+        [(ngModel)]="user.bio"
+        required
+        placeholder="Votre bio"
       />
     </div>
 
@@ -24,13 +49,13 @@
         class="form-control"
         [(ngModel)]="user.entreprise"
 
-        placeholder="Enter your entreprise"
+        placeholder="Entrer votre ntreprise"
       />
     </div>
 
     <!-- Years of Experience Input -->
     <div class="form-group mb-3" [hidden]="isRecruiter">
-      <label for="experience">Years of Experience</label>
+      <label for="experience">Années d'experience</label>
       <input
         type="number"
         id="experience"
@@ -45,7 +70,7 @@
 
     <!-- Competences Dropdown -->
     <div class="form-group mb-3" [hidden]="isRecruiter">
-      <label for="competences">Select Competences</label>
+      <label for="competences">Selectionné vos compétences</label>
       <select
         id="competences"
         name="competences"
@@ -62,7 +87,7 @@
 
     <!-- Add New Competence -->
     <div class="form-group mb-3" [hidden]="isRecruiter">
-      <label for="newCompetence">Add New Competence</label>
+      <label for="newCompetence">Ajouter une nouvelle compétence</label>
       <div class="input-group">
         <input
           type="text"
@@ -70,7 +95,7 @@
           name="newCompetence"
           class="form-control"
           [(ngModel)]="newCompetenceName"
-          placeholder="Enter a new competence"
+          placeholder="Nom de compétence"
         />
         <button
           type="button"
@@ -78,7 +103,7 @@
           (click)="addCompetence()"
           [disabled]="!newCompetenceName.trim()"
         >
-          Add Competence
+          Ajouter
         </button>
       </div>
     </div>
@@ -86,11 +111,10 @@
     <!-- Submit Button -->
     <div class="form-group">
       <button
-        type="submit"
-        class="btn btn-success"
+        pButton type="submit" label="Confirmer" class="button-submit"
       >
-        Submit
       </button>
     </div>
   </form>
+</div>
 </div>

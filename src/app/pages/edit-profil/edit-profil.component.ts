@@ -12,6 +12,9 @@ import { FileUploadModule } from 'primeng/fileupload';  // Module pour FileUploa
 import { StepsModule } from 'primeng/steps';
 import {AuthControllerService} from '../../services/services/auth-controller.service';
 import {Router} from '@angular/router';
+import {NavbarHeaderComponent} from '../navbar-header/navbar-header.component';
+import {FooterComponent} from '../footer/footer.component';
+import {InputTextModule} from 'primeng/inputtext';
 @Component({
   selector: 'app-edit-profil',
   standalone: true,
@@ -24,7 +27,10 @@ import {Router} from '@angular/router';
     DialogModule,
     ReactiveFormsModule,
     FileUploadModule,
-    StepsModule
+    StepsModule,
+    NavbarHeaderComponent,
+    FooterComponent,
+    InputTextModule
   ],
   templateUrl: './edit-profil.component.html',
   styleUrl: './edit-profil.component.css'

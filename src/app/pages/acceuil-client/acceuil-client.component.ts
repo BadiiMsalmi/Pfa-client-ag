@@ -14,6 +14,8 @@ import {OffreEmploiControllerService} from '../../services/services/offre-emploi
 import {OffreEmploiDto} from '../../services/models/offre-emploi-dto';
 import {RecommendationControllerService} from '../../services/services/recommendation-controller.service';
 import {TokenService} from '../../token/token.service';
+import {NavbarHeaderComponent} from '../navbar-header/navbar-header.component';
+import {FooterComponent} from '../footer/footer.component';
 
 @Component({
   selector: 'app-acceuil-client',
@@ -28,7 +30,9 @@ import {TokenService} from '../../token/token.service';
     DataViewModule,
     TagModule,
     ButtonModule,
-    DialogModule
+    DialogModule,
+    NavbarHeaderComponent,
+    FooterComponent
   ],
 
   templateUrl: './acceuil-client.component.html',

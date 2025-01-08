@@ -1,0 +1,220 @@
+
+
+/* Navbar */
+.custom-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: #c9c1f5; /* Fond blanc cassé */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  margin-bottom: 0; /* Enlever la marge en bas du navbar */
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+/* Logo dans la navbar */
+.custom-navbar .navbar-brand img {
+  height: 50px;
+}
+
+/* Liens dans la navbar */
+.custom-navbar .nav-link {
+  color: #007bff; /* Violet pour le contraste */
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: background-color 0.3s, transform 0.2s;
+  margin: 0 10px;
+}
+
+.custom-navbar .nav-link:hover {
+  background-color: #cdd5f8; /* Rose clair */
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+/* Footer */
+.footer {
+  background-color: #464545;
+  color: #fff;
+  padding: 15px 0;
+  margin-top: 0; /* Supprime l'espace entre la section et le footer */
+  position: relative;
+}
+
+.footer a:hover {
+  color: #ff6f61;
+  text-decoration: underline;
+}
+
+/* Style pour le texte "KHEDMTI.TN" */
+.brand-name {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  color: #6c757d;
+}
+
+.brand-bold {
+  font-weight: bold;
+  color: #6c757d;
+}
+
+.brand-highlight {
+  font-weight: bold;
+  color: #007bff;
+  margin-left: 5px;
+}
+/* Styles généraux */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #ffffff; /* Fond général */
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* Conteneur principal */
+.main-container {
+  max-width: 1300px;
+  margin: 50px auto;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Étapes */
+.step-container {
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.step-title {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+/* Champs de saisie */
+.field-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.field {
+  flex: 1 1 48%;
+}
+
+.input-field, .input-textarea {
+  width: 100%;
+  padding: 8px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+label {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.input-field:focus, .input-textarea:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Boutons */
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.button-prev, .button-next, .button-submit {
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.button-prev {
+  background-color: #333;
+  color: white;
+  border: none;
+}
+
+.button-next, .button-submit {
+  background-color: #007bff;
+  color: white;
+  border: none;
+}
+
+.button-prev:hover, .button-next:hover, .button-submit:hover {
+  background-color: #0056b3;
+}
+
+.button-next:disabled, .button-submit:disabled {
+  background-color: #bdbdbd;
+  cursor: not-allowed;
+}
+
+/* Footer */
+.footer {
+  background-color: #464545;
+  color: #fff;
+  padding: 20px 0;
+  position: relative;
+}
+
+.footer a:hover {
+  color: #ff6f61;
+  text-decoration: underline;
+}
+
+/* Navbar */
+.custom-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: #c9c1f5;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  margin-bottom: 0;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+/* Logo dans la navbar */
+.custom-navbar .navbar-brand img {
+  height: 50px;
+}
+
+/* Liens dans la navbar */
+.custom-navbar .nav-link {
+  color: #007bff;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.custom-navbar .nav-link:hover {
+  background-color: #cdd5f8;
+  color: #ffffff;
+  transform: scale(1.05);
+}
+

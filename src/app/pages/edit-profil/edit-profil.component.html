@@ -1,45 +1,5 @@
-<head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  </head>
+<app-navbar-header></app-navbar-header>
 
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
-      <div class="container">
-        <a class="navbar-brand" routerLink="/acceuil-client">
-          <span class="brand-name">
-            <span class="brand-bold">KHEDMTI</span><span class="brand-highlight">.TN</span>
-          </span>
-        </a>
-
-        <!-- Menu -->
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/acceuil-client">Accueil</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/contact">Contact</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/profile">Profil</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/jobs">Emplois</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/annonce">Annonce</a>
-            </li>
-            <li class="nav-item">
-
-              <a class="nav-link logout-link" (click)="logout()">
-                <i class="logout-icon"></i>
-                Logout
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
 
     <!-- Conteneur principal avec fond blanc -->
     <div class="main-container">
@@ -53,16 +13,16 @@
           <div class="field-row">
             <div class="field">
               <label for="name">Nom :</label>
-              <input id="name" type="text" formControlName="name" pInputText class="input-field" />
+              <input type="text" formControlName="name" pInputText class="input-field" />
             </div>
             <div class="field">
               <label for="country">Age :</label>
-              <input id="country" type="text" formControlName="country" pInputText class="input-field" />
+              <input  type="text" formControlName="country" pInputText class="input-field" />
             </div>
           </div>
             <div class="field">
               <label for="name">Adresse :</label>
-              <input id="name" type="text" formControlName="name" pInputText class="input-field" />
+              <input type="text" formControlName="name" pInputText class="input-field" />
             </div>
 
           <div class="button-container">
@@ -118,15 +78,4 @@
       </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="footer navbar-light ">
-      <div class="container">
-
-          <!-- Copyright -->
-          <div class="row">
-              <div class="col text-center">
-                  <p class="small mb-0">© 2024 KHEDMTI.TN. All rights reserved. | Designed with <span style="color: red;">♥</span> by KHEDMTI Team.</p>
-              </div>
-          </div>
-      </div>
-    </footer>
+   <app-footer></app-footer>

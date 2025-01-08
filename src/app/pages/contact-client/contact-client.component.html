@@ -1,41 +1,4 @@
-<head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"></head>
-<nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
-  <div class="container">
-    <a class="navbar-brand" routerLink="/acceuil-client">
-      <span class="brand-name">
-        <span class="brand-bold">KHEDMTI</span><span class="brand-highlight">.TN</span>
-      </span>
-    </a>
-
-      <!-- Menu -->
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/acceuil-client">Accueil</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/contact">Contact</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/profile">Profil</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/jobs">Emplois</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/annonce">Annonce</a>
-          </li>
-          <li class="nav-item">
-
-          <a class="nav-link logout-link" (click)="logout()">
-            <i class="logout-icon"></i>
-            Logout
-          </a>
-          </li>
-        </ul>
-      </div>
-  </div>
-</nav>
+<app-navbar-header></app-navbar-header>
 
 <section class="section section-lg pt-lg-0 section-contact-us">
     <div class="container">
@@ -81,14 +44,4 @@
 
 
 
-<footer class="footer navbar-light ">
-  <div class="container">
-
-      <!-- Copyright -->
-      <div class="row">
-          <div class="col text-center">
-              <p class="small mb-0">© 2024 KHEDMTI.TN. All rights reserved. | Designed with <span style="color: red;">♥</span> by KHEDMTI Team.</p>
-          </div>
-      </div>
-  </div>
-</footer>
+<app-footer></app-footer>

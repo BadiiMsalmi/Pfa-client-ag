@@ -18,4 +18,10 @@ export class TokenService {
     let decodedJWT = JSON.parse(window.atob(localStorage.getItem('token').split('.')[1]));
     return decodedJWT.id
   }
+
+  getRoleFromToken(){
+    // @ts-ignore
+    let decodedJWT = JSON.parse(window.atob(localStorage.getItem('token').split('.')[1]));
+    return decodedJWT.role
+  }
 }

@@ -14,20 +14,22 @@ import {AuthControllerService} from '../../services/services/auth-controller.ser
 import {Router} from '@angular/router';
 import {UtilisateurControllerService} from '../../services/services/utilisateur-controller.service';
 import {UserDetailsDto} from '../../services/models/user-details-dto';
+import {NavbarHeaderComponent} from "../navbar-header/navbar-header.component";
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [
-    FormsModule,
-    CommonModule,
-    DataViewModule,
-    TagModule,
-    ButtonModule,
-    DialogModule,
-    ReactiveFormsModule,
-    FileUploadModule,
-    StepsModule
-  ],
+    imports: [
+        FormsModule,
+        CommonModule,
+        DataViewModule,
+        TagModule,
+        ButtonModule,
+        DialogModule,
+        ReactiveFormsModule,
+        FileUploadModule,
+        StepsModule,
+        NavbarHeaderComponent
+    ],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })

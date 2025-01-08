@@ -12,10 +12,12 @@ import { FileUploadModule } from 'primeng/fileupload';  // Module pour FileUploa
 import { StepsModule } from 'primeng/steps';
 import {AuthControllerService} from '../../services/services/auth-controller.service';
 import {Router} from '@angular/router';
+import {NavbarHeaderComponent} from '../navbar-header/navbar-header.component';
+import {FooterComponent} from '../footer/footer.component';
 @Component({
   selector: 'app-contact-client',
   standalone: true,
- imports: [
+  imports: [
     FormsModule,
     CommonModule,
     DataViewModule,
@@ -24,7 +26,9 @@ import {Router} from '@angular/router';
     DialogModule,
     ReactiveFormsModule,
     FileUploadModule,
-    StepsModule
+    StepsModule,
+    NavbarHeaderComponent,
+    FooterComponent
   ],
   templateUrl: './contact-client.component.html',
   styleUrl: './contact-client.component.css'

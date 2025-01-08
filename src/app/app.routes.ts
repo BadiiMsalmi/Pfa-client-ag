@@ -17,6 +17,8 @@ import { ContactListComponent } from './admin/contact-list/contact-list.componen
 import { PostulerComponent } from './pages/postuler/postuler.component';
 import {AnnonceListComponent} from './pages/annonce-list/annonce-list.component';
 import {CreateannonceComponent} from './pages/createannonce/createannonce.component';
+import {NotificationComponent} from './pages/notification/notification.component';
+import {CompleteProfileComponent} from './pages/complete-profile/complete-profile.component';
 
 export const routes: Routes = [
   {
@@ -34,7 +36,7 @@ export const routes: Routes = [
     component:RegisterComponent
   },
   {
-    path:'',
+    path:'authenticate',
     component:LandingComponent
   },
   {
@@ -57,11 +59,15 @@ export const routes: Routes = [
 
   { path: 'acceuil-client', component: AcceuilClientComponent },
 
+  {path:'notifications' , component:NotificationComponent},
+
+  {path:'completeProfile', component:CompleteProfileComponent},
+
   {
-    path: '',
+    path: 'admin',
     component: LayoutComponent,
     children: [
-      { path: 'admin/login', component: AdminLoginComponent , canActivate: [AuthGuard]},
+      { path: 'login', component: AdminLoginComponent , canActivate: [AuthGuard]},
       { path: 'dashboard', component: DashboardComponent },
       { path: 'gestion-users', component: UsersListComponent },
       { path: 'gestion-jobs', component: JobListComponent },

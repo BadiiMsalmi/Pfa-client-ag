@@ -24,7 +24,7 @@ export class AdminLoginComponent {
 
   onLogin(): void {
     if (this.authService.login(this.email, this.password)) {
-      this.router.navigate(['/dashboard']); // Rediriger après connexion
+      //this.router.navigate(['/dashboard']); // Rediriger après connexion
     } else {
       this.errorMessage = 'Adresse email ou mot de passe incorrect';
     }

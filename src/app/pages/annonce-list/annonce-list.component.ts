@@ -6,6 +6,8 @@ import { OffreEmploiSearchDto } from '../../services/models/offre-emploi-search-
 import {NgForOf} from '@angular/common';
 import {Router, RouterLink} from '@angular/router';
 import {Button} from 'primeng/button';
+import {NavbarHeaderComponent} from '../navbar-header/navbar-header.component';
+import {FooterComponent} from '../footer/footer.component';
 
 @Component({
   selector: 'app-annonce-list',
@@ -15,7 +17,9 @@ import {Button} from 'primeng/button';
     ReactiveFormsModule,
     NgForOf,
     RouterLink,
-    Button
+    Button,
+    NavbarHeaderComponent,
+    FooterComponent
   ],
   standalone: true
 })

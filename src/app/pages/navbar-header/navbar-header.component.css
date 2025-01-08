@@ -1,0 +1,165 @@
+
+/* Navbar */
+.custom-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: #c9c1f5; /* Fond blanc cassé */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  margin-bottom: 0px;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+
+}
+
+/* Logo dans la navbar */
+.custom-navbar .navbar-brand img {
+  height: 50px;
+}
+
+/* Liens dans la navbar */
+.custom-navbar .nav-link {
+  color: #007bff; /* Violet pour le contraste */
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: background-color 0.3s, transform 0.2s;
+  margin: 0 10px;
+}
+
+.custom-navbar .nav-link:hover {
+  background-color: #cdd5f8; /* Rose clair */
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+/* Champ de recherche */
+.custom-search {
+  width: 100%;
+  max-width: 800px;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background-color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  margin: 30px auto; /* Espacement */
+  display: block;
+  transition: box-shadow 0.3s, border-color 0.3s, transform 0.2s;
+  margin-bottom: 200px; /* Ajustez la valeur pour créer l'espace voulu */
+
+}
+
+.custom-search:focus {
+  outline: none;
+  border-color: #bfc0f7; /* Bordure rose clair */
+  box-shadow: 0 0 15px rgba(248, 205, 218, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Fond sous le champ de recherche */
+.custom-search-wrapper {
+  background-color: rgba(248, 205, 218, 0.1); /* Fond rose très clair */
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+}
+
+/* Section principale */
+.section {
+  padding: 70px 0;
+  background-color: rgba(255, 255, 255, 0.95); /* Fond blanc avec légère transparence */
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 0; /* Espacement entre les sections */
+}
+
+/* Carte */
+.card {
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #ffffff; /* Fond blanc */
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  margin-bottom: 30px;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Contenu des cartes */
+.card-body {
+  padding: 20px;
+}
+
+/* Styles supplémentaires pour le texte */
+.card h6 {
+  color: #6a1b9a; /* Violet pour le titre */
+}
+
+.card p {
+  color: #4b5563; /* Couleur grise pour le texte */
+}
+
+/* Animation pour une apparence fluide */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+body {
+  animation: fadeIn 1s ease-out;
+}
+/* Style pour le texte "KHEDMTI.TN" */
+.brand-name {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.8rem; /* Taille générale */
+  display: flex;
+  align-items: center;
+  text-transform: uppercase; /* Majuscules */
+  color: #6c757d; /* Gris pour KHEDMTI */
+}
+
+.brand-bold {
+  font-weight: bold;
+  color: #6c757d; /* Gris */
+}
+
+.brand-highlight {
+  font-weight: bold;
+  color: #007bff; /* Bleu pour .TN */
+  margin-left: 5px; /* Espacement entre KHEDMTI et .TN */
+}
+.footer {
+  background: #464545; /* Changer la couleur de fond ici */
+  color: #ffffff;
+  padding: 20px 0;
+  margin-top: 0; /* Suppression de l'espace entre le footer et la section */
+  position: relative; /* Ajouter si nécessaire pour éviter un décalage */
+}
+
+/* Autres styles de footer */
+.footer a:hover {
+  color: #ff6f61;
+  text-decoration: underline;
+}
+a {
+  text-decoration: none;
+  color: #007bff; /* Violet pour le contraste */
+  font-weight: 600;/* Couleur par défaut */
+}
+
+a:hover {
+  color: #333; /* Couleur au survol */
+}

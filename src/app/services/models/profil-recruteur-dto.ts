@@ -5,4 +5,5 @@
 export interface ProfilRecruteurDto {
   email?: string;
   entreprise?: string;
+  bio?: string;
 }
