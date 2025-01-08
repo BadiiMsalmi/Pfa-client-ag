@@ -1,39 +1,110 @@
-  /* Navbar */
-  .custom-navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 30px;
-    background: #c9c1f5; /* Fond blanc cassé */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-    margin-bottom: 0px;
-    position: sticky;
-    top: 0;
-    z-index: 20;
 
-  }
-  
-  /* Logo dans la navbar */
-  .custom-navbar .navbar-brand img {
-    height: 50px;
-  }
-  
-  /* Liens dans la navbar */
-  .custom-navbar .nav-link {
-    color: #007bff; /* Violet pour le contraste */
-    font-weight: 600;
-    padding: 10px 20px;
-    border-radius: 8px;
-    transition: background-color 0.3s, transform 0.2s;
-    margin: 0 10px;
-  }
-  
-  .custom-navbar .nav-link:hover {
-    background-color: #cdd5f8; /* Rose clair */
-    color: #ffffff;
-    transform: scale(1.05);
-  }
+/* Navbar personnalisée */
+.custom-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: #c9c1f5; /* Fond violet clair */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  margin-bottom: 0px;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+/* Liens dans la navbar */
+.custom-navbar .nav-link {
+  color: #007bff; /* Violet pour les liens */
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: background-color 0.3s, transform 0.2s;
+  margin: 0 10px;
+}
+
+.custom-navbar .nav-link:hover {
+  background-color: #cdd5f8; /* Effet de survol rose clair */
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+/* Bouton avec icône de notification */
+.notification-button {
+  background: none;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.notification-button:hover {
+  background-color: #cdd5f8; /* Survol du bouton avec fond */
+  transform: scale(1.05);
+}
+
+/* Icône de notification */
+.notification-icon {
+  font-size: 10px;  /* Taille de l'icône */
+  color: #007bff;  /* Couleur par défaut */
+  transition: color 0.3s;
+}
+
+.notification-button:hover .notification-icon {
+  color: #ffffff; /* Changement de couleur de l'icône au survol */
+}
+
+
+.notifications-dropdown {
+  position: absolute;
+  top: 80px;
+  right: 10px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  width: 350px;
+  padding: 0px;
+}
+
+.notification-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.notification-icon {
+  font-size: 24px;
+  margin-right: 10px;
+
+  padding: 5px;
+  border-radius: 50%;
+}
+
+.notification-content {
+  flex: 1;
+}
+
+.notification-content p {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.notification-content small {
+  font-size: 12px;
+  color: #777;
+}
+
+.notifications-dropdown li:hover {
+  background-color: #f1f1f1;
+}
+
    /* Style pour le texte "KHEDMTI.TN" */
  .brand-name {
     font-family: 'Roboto', sans-serif;
@@ -54,3 +125,178 @@
     color: #007bff; /* Bleu pour .TN */
     margin-left: 5px; /* Espacement entre KHEDMTI et .TN */
   }
+  /* create-job.component.css */
+
+.job-form-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #f5f7fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+  }
+  
+  .form-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #007ad9;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .row {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .col-6 {
+    flex: 1;
+  }
+  
+  label {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    display: block;
+    font-weight: 500;
+    color: #333;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+  
+  .form-control:focus {
+    border-color: #007ad9;
+    outline: none;
+  }
+  
+  textarea.form-control {
+    resize: vertical;
+  }
+  
+  .dropdown {
+    width: 100%;
+    height: 2.5rem;
+    font-size: 1rem;
+  }
+  
+  input[type="file"] {
+    padding: 5px;
+    background-color: #f5f5f5;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  input[type="file"]:hover {
+    background-color: #eaeaea;
+  }
+  
+/* Centrer le bouton de soumission */
+.job-form-container .btn-submit {
+    width: 20%;
+    padding: 12px 25px; /* Ajouter un peu plus de padding */
+    background-color: #007ad9;
+    color: white;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    justify-content: center;
+    display: flex;
+    margin: 0 auto; /* Centrer le bouton horizontalement */
+    text-align: center;
+  }
+  
+  .btn-submit:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  
+  .btn-submit:hover {
+    background-color: #005bb5;
+  }
+  
+  @media (max-width: 768px) {
+    .row {
+      flex-direction: column;
+    }
+  
+    .col-6 {
+      width: 100%;
+    }
+  }
+  /* Style général pour les boutons radio */
+.p-field-radiobutton {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px; /* Espacement entre les boutons radio */
+  }
+  
+  /* Espacement entre les éléments du formulaire */
+  .p-field-radiobutton .p-radiobutton {
+    margin-right: 15px; /* Espacement horizontal entre les boutons radio */
+  }
+  
+  /* Style pour l'étiquette du label */
+  .p-field-radiobutton label {
+    font-size: 1rem;
+    color: #333;
+    margin-right: 10px;
+    font-weight: 500;
+  }
+  
+  /* Style des boutons radio (personnalisation) */
+  .p-radiobutton .p-radiobutton-box {
+    border-radius: 50%; /* Arrondir les bords du bouton */
+    border: 2px solid #4CAF50; /* Bordure verte */
+    width: 20px;
+    height: 20px;
+    transition: all 0.3s ease;
+  }
+  
+  /* Changer la couleur lorsque le bouton est sélectionné */
+  .p-radiobutton.p-radiobutton-checked .p-radiobutton-box {
+    background-color: #4CAF50; /* Vert pour l'élément sélectionné */
+    border-color: #4CAF50;
+  }
+  
+  /* Changer la couleur de l'indicateur lors de la sélection */
+  .p-radiobutton.p-radiobutton-checked .p-radiobutton-icon {
+    background-color: white; /* Icône blanche lors de la sélection */
+  }
+  
+  /* Effet au survol pour un aspect interactif */
+  .p-radiobutton:hover .p-radiobutton-box {
+    border-color: #45a049; /* Légère modification du bord */
+  }
+  
+  /* Style du texte du label */
+  .p-radiobutton-label {
+    font-size: 1rem;
+    color: #333;
+    font-weight: 400;
+  }
+  
+/* Footer */
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    margin-top: 0; /* Ensure no space between footer and contact section */
+  }
+  
+  .footer a:hover {
+    color: #ff6f61;
+    text-decoration: underline;
+  }
+  

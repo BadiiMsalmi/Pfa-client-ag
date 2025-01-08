@@ -100,8 +100,16 @@
       <div *ngIf="activeIndex === 2" class="step-container">
         <h3 class="step-title">Étape 3 : Téléchargement du CV</h3>
         
-        <p-fileUpload name="cv" (onUpload)="onUpload($event)" accept=".pdf,.doc,.docx" class="file-upload"></p-fileUpload>
-        <div class="button-container">
+        <p-fileUpload 
+        name="cv" 
+        (onUpload)="onUpload($event)" 
+        accept=".pdf,.doc,.docx" 
+        [auto]="true" 
+        [showUploadButton]="false" 
+        [showCancelButton]="false" 
+        class="file-upload">
+    </p-fileUpload>
+            <div class="button-container">
           <button pButton type="button" label="Précédent" (click)="prevStep()" class="button-prev"></button>
           <button pButton type="button" label="Suivant" (click)="nextStep()" class="button-next"></button>
         </div>

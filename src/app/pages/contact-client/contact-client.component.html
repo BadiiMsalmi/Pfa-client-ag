@@ -10,6 +10,7 @@
       <!-- Menu -->
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
+          
           <li class="nav-item">
             <a class="nav-link" routerLink="/acceuil-client">Accueil</a>
           </li>
@@ -26,14 +27,36 @@
             <a class="nav-link" routerLink="/annonce">Annonce</a>
           </li>
           <li class="nav-item">
-
-          <a class="nav-link logout-link" href="#">
-            <i class="logout-icon"></i>
-            Logout
-          </a>
+            <a class="nav-link logout-link" href="#">
+              <i class="logout-icon"></i>
+              Logout
+            </a>
           </li>
+          <li class="nav-item">
+            <!-- Bouton avec icône de notification -->
+            <button class="notification-button nav-link" (click)="toggleNotifications()">
+              <i class="pi pi-bell notification-icon"></i>
+              <span *ngIf="unreadCount > 0" class="notification-badge">{{ unreadCount }}</span>
+
+            </button>
+          
+            <!-- Liste des notifications -->
+            <div *ngIf="showNotifications" class="notifications-dropdown">
+              <ul>
+                <li *ngFor="let notification of notifications" class="notification-item">
+                  <i class="{{ notification.icon }} notification-icon"></i>
+                  <div class="notification-content">
+                    <p>{{ notification.text }}</p>
+                    <small>{{ notification.date }}</small>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </li>
+         
         </ul>
       </div>
+      
   </div>
 </nav>
 

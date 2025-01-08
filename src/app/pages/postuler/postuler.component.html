@@ -31,102 +31,63 @@
           Logout
         </a>
         </li>
+        <li class="nav-item">
+          <!-- Bouton avec icône de notification -->
+          <button class="notification-button nav-link" (click)="toggleNotifications()">
+            <i class="pi pi-bell notification-icon"></i>
+            <span *ngIf="unreadCount > 0" class="notification-badge">{{ unreadCount }}</span>
+
+          </button>
+        
+          <!-- Liste des notifications -->
+          <div *ngIf="showNotifications" class="notifications-dropdown">
+            <ul>
+              <li *ngFor="let notification of notifications" class="notification-item">
+                <i class="{{ notification.icon }} notification-icon"></i>
+                <div class="notification-content">
+                  <p>{{ notification.text }}</p>
+                  <small>{{ notification.date }}</small>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
 
-<div class="modern-container">
-  <!-- Bloc gauche -->
-  <div class="modern-left-block">
-    <img src="path_to_your_logo.png" alt="Logo" class="details-logo">
-    <br>
-    <div class="details">
-      <ul>
-        <li><strong>Type de poste :</strong> CDI</li>
-        <li><strong>Lieu de travail :</strong> Mejez El Bab, Béja, Tunisie</li>
-        <li><strong>Expérience :</strong> Plus que 10 ans</li>
-        <li><strong>Niveau d'études </strong> Bac + 5</li>
-        <li><strong>Salaire :</strong> 1500D </li>
-        <li><strong>Disponibilité :</strong> Plein temps</li>
-        <li><strong>Langues :</strong> Arabe, Français, Anglais</li>
-        <li><strong>Mobilité :</strong> Locale</li>
-      </ul>
-    </div>
+<div class="main-container">
+  <div class="left-side">
+    <img src="https://s3-eu-west-1.amazonaws.com/tpd/logos/64dc6a8abb8fcb6fa88fc404/0x0.png" alt="Company Image" class="company-image">
   </div>
-
-  <!-- Bloc droit -->
-  <form [formGroup]="formGroup" (ngSubmit)="onSubmit">
-    <div class="modern-right-block">
-      <div class="modern-top-block">
-        <div class="nom-prenom">
-          <div class="form-group">
-            <label for="nom"><h5>Nom:</h5></label>
-            <input type="text" id="nom" placeholder="Taper votre nom" formControlName="nom" />
-          </div>
-          <div class="form-group">
-            <label for="prenom"><h5>Prénom:</h5></label>
-            <input type="text" id="prenom" placeholder="Taper votre prénom"formControlName="prénom" />
-          </div>
-        </div>
-
-        <div class="form-group-inline">
-          <div>
-            <label for="pays"><h5>Pays :</h5></label>
-            <select id="pays" name="pays" class="form-control">
-              <option value="tunisie">Tunisie</option>
-              <option value="france">France</option>
-              <option value="maroc">Maroc</option>
-            </select>
-          </div>
-
-          <div>
-            <label for="region"><h5>Région :</h5></label>
-            <select id="region" name="region" class="form-control">
-              <option value="ariana">Ariana</option>
-              <option value="tunis">Tunis</option>
-              <option value="sfax">Sfax</option>
-              <option value="monastir">Monastir</option>
-              <option value="gabes">Gabès</option>
-              <option value="gafsa">Gafsa</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- Téléphone -->
-        <div class="form-group">
-          <label for="telephone"><h5>Téléphone :</h5></label>
-          <div class="phone-input-container">
-            <select class="country-code" id="country-code" name="country-code">
-              <option value="+216">Tunisie (+216)</option>
-              <option value="+33">France (+33)</option>
-              <option value="+1">États-Unis (+1)</option>
-              <option value="+44">Royaume-Uni (+44)</option>
-              <option value="+212">Maroc (+212)</option>
-            </select>
-            <input type="tel" class="phone-number" placeholder="Numéro de téléphone" id="telephone" name="telephone" required  formControlName="telephone">
-          </div>
-        </div>
+  <div class="right-side">
+    <div class="company-info">
+      <div class="company-name-date">
+        <h2 class="company-name">Tech Innovators Inc.</h2>
+        <span class="date">Jan 8, 2025</span>
       </div>
-
-      <div class="modern-bottom-block">
-        <h5>Lettre de Motivation:</h5>
-        <textarea placeholder="Entrez votre message"></textarea>
-
-        <!-- Formulaire pour télécharger le CV -->
-        <div class="form-group">
-          <label for="cv"><h5>Votre CV :</h5></label>
-          <input type="file" id="cv" name="cv" class="form-control-file" multiple />
-        </div>
-
-        <div >
-          <button type="submit" class="btn btn-primary">Envoyer</button>
-        </div>
+      <div class="contact-info">
+        <span class="address">123 Innovation Blvd, Tech City, TN</span>
+        <span class="email">careers&#64;techinnovators.com</span>
       </div>
     </div>
-
-  </form>
+    <div class="description">
+      <p class="competences">
+        <strong>Compétences nécessaires :</strong> 
+        Nous recherchons un développeur full-stack passionné pour rejoindre notre équipe dynamique. Le candidat idéal devra avoir une expertise solide en JavaScript, Angular, Node.js, ainsi qu'une expérience avec les bases de données NoSQL telles que MongoDB. Une bonne connaissance des API REST et des principes de conception orientés objet est également essentielle.
+      </p>
+    
+      <p class="experience">
+        <strong>Années d'expérience : </strong>3 à 5 ans</p>
+      <p class="salary"> <strong>Salaire : </strong>4500 TND / mois</p>
+    </div>
+    
+    <div class="apply-btn-container">
+      <button class="apply-btn">Postuler</button>
+    </div>  </div>
 </div>
+
     <!-- Footer -->
     <footer class="footer navbar-light ">
       <div class="container">

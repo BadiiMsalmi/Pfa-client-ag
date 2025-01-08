@@ -182,7 +182,31 @@
     color: #ff6f61;
     text-decoration: underline;
   }
-  
+  /* Modifier la couleur du bouton "Choose" */
+.custom-file-upload .ui-fileupload-choose {
+  background-color: #4caf50; /* Couleur de fond */
+  color: #fff;              /* Couleur du texte */
+  border: none;             /* Supprimer la bordure */
+  border-radius: 5px;       /* Arrondi des bords */
+  padding: 8px 16px;        /* Espacement interne */
+  transition: background-color 0.3s ease; /* Effet de transition */
+}
+
+.custom-file-upload .ui-fileupload-choose:hover {
+  background-color: #45a049; /* Couleur au survol */
+}
+
+/* Modifier la couleur de l'icône "X" */
+.custom-file-upload .ui-fileupload-file .ui-fileupload-remove {
+  color: #f44336; /* Couleur rouge pour le X */
+  font-size: 16px; /* Taille de l'icône */
+  transition: color 0.3s ease; /* Effet de transition */
+}
+
+.custom-file-upload .ui-fileupload-file .ui-fileupload-remove:hover {
+  color: #d32f2f; /* Couleur au survol */
+}
+
   /* Navbar */
   .custom-navbar {
     display: flex;

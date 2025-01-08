@@ -11,13 +11,12 @@ body {
   overflow-x: hidden;
 }
 
-/* Navbar */
 .custom-navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 30px;
-  background: #c9c1f5; /* Fond blanc cassé */
+  background: #c9c1f5; /* Fond violet clair */
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   margin-bottom: 0px;
@@ -26,14 +25,9 @@ body {
   z-index: 20;
 }
 
-/* Logo dans la navbar */
-.custom-navbar .navbar-brand img {
-  height: 50px;
-}
-
 /* Liens dans la navbar */
 .custom-navbar .nav-link {
-  color: #007bff; /* Violet pour le contraste */
+  color: #007bff; /* Violet pour les liens */
   font-weight: 600;
   padding: 10px 20px;
   border-radius: 8px;
@@ -42,48 +36,84 @@ body {
 }
 
 .custom-navbar .nav-link:hover {
-  background-color: #cdd5f8; /* Rose clair */
+  background-color: #cdd5f8; /* Effet de survol rose clair */
   color: #ffffff;
   transform: scale(1.05);
 }
-.custom-search-container {
-  background-image: url('/assets/search.jpg' );
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat; /* Pas de répétition */
-  padding: 100px; /* Vous pouvez ajouter du padding autour de l'input */
-  border-radius: 8px; /* Arrondir les bords du conteneur si nécessaire */
-}
-/* Champ de recherche */
-.custom-search {
-  width: 100%;
-  max-width: 800px;
-  padding: 12px 15px;
+
+/* Bouton avec icône de notification */
+.notification-button {
+  background: none;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
   border-radius: 8px;
-  border: 1px solid #ddd;
-  background-color: #ffffff;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  font-size: 16px;
-  margin: 30px auto; /* Espacement */
-  display: block;
-  transition: box-shadow 0.3s, border-color 0.3s, transform 0.2s;
-  margin-bottom: 200px; /* Ajustez la valeur pour créer l'espace voulu */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
-.custom-search:focus {
-  outline: none;
-  border-color: #bfc0f7; /* Bordure rose clair */
-  box-shadow: 0 0 15px rgba(248, 205, 218, 0.5);
-  transform: translateY(-2px);
+.notification-button:hover {
+  background-color: #cdd5f8; /* Survol du bouton avec fond */
+  transform: scale(1.05);
 }
 
-/* Fond sous le champ de recherche */
-.custom-search-wrapper {
-  background-color: rgba(248, 205, 218, 0.1); /* Fond rose très clair */
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  margin: 20px 0;
+/* Icône de notification */
+.notification-icon {
+  font-size: 10px;  /* Taille de l'icône */
+  color: #007bff;  /* Couleur par défaut */
+  transition: color 0.3s;
+}
+
+.notification-button:hover .notification-icon {
+  color: #ffffff; /* Changement de couleur de l'icône au survol */
+}
+
+
+.notifications-dropdown {
+  position: absolute;
+  top: 80px;
+  right: 10px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  width: 350px;
+  padding: 0px;
+}
+
+.notification-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.notification-icon {
+  font-size: 24px;
+  margin-right: 10px;
+
+  padding: 5px;
+  border-radius: 50%;
+}
+
+.notification-content {
+  flex: 1;
+}
+
+.notification-content p {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.notification-content small {
+  font-size: 12px;
+  color: #777;
+}
+
+.notifications-dropdown li:hover {
+  background-color: #f1f1f1;
 }
 
 /* Section principale */
@@ -193,4 +223,51 @@ text-decoration: underline;
 
 .social-icons a img:hover {
   transform: scale(1.2);
+}
+.hero-section {
+  position: relative;
+  background-image: url('/assets/search.jpg'); /* Remplacez par votre chemin d'image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 60vh; /* Ajustez la hauteur selon vos besoins */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff; /* Texte en blanc pour contraster avec l'image */
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.hero-content {
+  background: rgba(0, 0, 0, 0.5); /* Couche sombre pour améliorer la lisibilité */
+  padding: 30px;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.hero-content .btn {
+  background-color: #007bff;
+  border: none;
+  padding: 10px 20px;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.hero-content .btn:hover {
+  background-color: #007bff;
+  transform: scale(1.05);
 }

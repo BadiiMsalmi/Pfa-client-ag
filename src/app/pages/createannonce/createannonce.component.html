@@ -1,39 +1,177 @@
+<!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
-    <div class="container">
-        <a class="navbar-brand" routerLink="/acceuil-client">
-            <span class="brand-name">
-              <span class="brand-bold">KHEDMTI</span><span class="brand-highlight">.TN</span>
-            </span>
-          </a>
-          
-      <!-- Menu -->
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/acceuil-client">Accueil</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/contact">Contact</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/profile">Profil</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/jobs">Emplois</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/annonce">Annonce</a>
-          </li>
-          <li class="nav-item">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/acceuil-client">
+      <span class="brand-name">
+        <span class="brand-bold">KHEDMTI</span><span class="brand-highlight">.TN</span>
+      </span>
+    </a>
 
+    <!-- Menu -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/acceuil-client">Accueil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/contact">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/profile">Profil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/jobs">Emplois</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/annonce">Annonce</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link logout-link" href="#">
             <i class="logout-icon"></i>
             Logout
           </a>
-          </li>
-        </ul>
+        </li>
+        <li class="nav-item">
+          <!-- Bouton avec icône de notification -->
+          <button class="notification-button nav-link" (click)="toggleNotifications()">
+            <i class="pi pi-bell notification-icon"></i>
+            <span *ngIf="unreadCount > 0" class="notification-badge">{{ unreadCount }}</span>
+
+          </button>
+        
+          <!-- Liste des notifications -->
+          <div *ngIf="showNotifications" class="notifications-dropdown">
+            <ul>
+              <li *ngFor="let notification of notifications" class="notification-item">
+                <i class="{{ notification.icon }} notification-icon"></i>
+                <div class="notification-content">
+                  <p>{{ notification.text }}</p>
+                  <small>{{ notification.date }}</small>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- create-job.component.html -->
+<div class="job-form-container mb-4">
+  <h3 class="mb-4 text-center">Créer une annonce de travail</h3>
+  <br>
+  <form [formGroup]="jobForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <div class="row">
+        <div class="col-6">
+          <label for="companyName">Nom de société</label>
+          <input
+            id="companyName"
+            type="text"
+            formControlName="companyName"
+            placeholder="Nom de la société"
+            class="form-control"
+            required
+          />
+        </div>
+        <div class="col-6">
+          <label for="jobTitle">Nom du poste</label>
+          <input
+            id="jobTitle"
+            type="text"
+            formControlName="jobTitle"
+            placeholder="Nom du poste"
+            class="form-control"
+            required
+          />
+        </div>
       </div>
     </div>
-  </nav>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-6">
+          <label for="salary">Salaire</label>
+          <input
+            id="salary"
+            type="number"
+            formControlName="salary"
+            placeholder="Salaire"
+            class="form-control"
+            required
+          />
+        </div>
+
+        <div class="col-6">
+          <label for="experienceDuration">Durée d'expérience</label>
+          <input
+            id="experienceDuration"
+            type="number"
+            formControlName="experienceDuration"
+            placeholder="Durée d'expérience"
+            class="form-control"
+            required
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="skills">Compétences demandées</label>
+      <textarea
+        id="skills"
+        formControlName="skills"
+        placeholder="Liste des compétences"
+        rows="4"
+        class="form-control"
+        required
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-6">
+          <label for="jobTitle">Localisation</label>
+          <input
+            id="jobTitle"
+            type="text"
+            formControlName="jobTitle"
+            placeholder="Nom du poste"
+            class="form-control"
+            required
+          />
+        </div>
+          
+        <div class="col-6">
+          <label for="companyImage">Image de la société</label>
+          <input
+            id="companyImage"
+            type="file"
+            (change)="onImageSelected($event)"
+            class="form-control"
+            accept="image/*"
+          />
+          <label for="companyImage">Sélectionner une image</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-submit" [disabled]="!jobForm.valid">Valider l'annonce</button>
+    </div>
+  </form>
+</div>
+
+<footer class="footer navbar-light ">
+    <div class="container">
+       
+        <!-- Copyright -->
+        <div class="row">
+            <div class="col text-center">
+                <p class="small mb-0">© 2024 KHEDMTI.TN. All rights reserved. | Designed with <span style="color: red;">♥</span> by KHEDMTI Team.</p>
+            </div>
+        </div>
+    </div>
+  </footer>
   
- 
